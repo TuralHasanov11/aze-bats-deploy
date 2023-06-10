@@ -1,0 +1,43 @@
+{% load static %} {% load i18n %}
+<footer class="footer footer--front-3">
+  <div class="container">
+    <div class="row bottom-50">
+      <div class="col-md-6 col-lg-4">
+        <a class="logo logo--footer" href="{% url 'base:index' %}"
+          ><img class="logo__img" src="{{site_info.logo_image}}" alt="logo"
+        /></a>
+        <div class="footer__details">
+          <p>
+            <strong>{% translate "Phone" %}:</strong>
+            <a href="tel:{{site_info.phone}}">{{site_info.phone}}</a>
+          </p>
+          <p>
+            <strong>{% translate "Email" %}:</strong>
+            <a href="mailto:{{site_info.email}}">{{site_info.email}}</a>
+          </p>
+        </div>
+        <ul class="socials bottom-30">
+          {% for item in site_info.social_links %}
+          <li class="socials__item">
+            <a class="socials__link" target="_blank" rel="noopener noreferrer" href="{{item.link}}"
+              ><i class="{{item.icon}}" aria-hidden="true"></i
+            ></a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="col-lg-5 d-none d-lg-block">
+        <h6 class="footer__title">{% translate "Menu" %}</h6>
+        <ul class="footer-menu footer-menu--style-2">
+          {% for item in footer_menu %}
+          <li class="footer-menu__item">
+            <a class="footer-menu__link" href="{% url item.route %}"
+              >{{item.title}}</a
+            >
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>

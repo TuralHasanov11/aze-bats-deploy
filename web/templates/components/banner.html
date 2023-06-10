@@ -1,0 +1,40 @@
+{% load i18n %} 
+{% load static %}
+<section class="promo promo--front-3">
+  <div class="promo-slider promo-slider--style-2">
+    <div class="promo-slider__item promo-slider__item--style-2">
+      <picture>
+        <source
+          srcset="{{site_info.banner_image}}"
+          media="(min-width: 992px)"
+        />
+        <img class="img--bg" src="{{site_info.banner_image}}" alt="img" />
+      </picture>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-xl-7">
+            <div class="align-container">
+              <div class="align-container__item">
+                <div class="promo-slider__wrapper-1">
+                  <h2 class="promo-slider__title">
+                    <span>{{banner.title}}</span>
+                  </h2>
+                </div>
+                <div class="promo-slider__wrapper-2">
+                  <p class="promo-slider__subtitle">{{banner.text}}</p>
+                </div>
+                <div class="promo-slider__wrapper-3">
+                  <a
+                    class="button button--rounded promo-slider__button button--main"
+                    href="{% url 'bats:index' %}"
+                    >{% translate "See bats" %}</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

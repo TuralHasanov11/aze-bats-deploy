@@ -1,0 +1,13 @@
+<div class="events-item">
+  <div class="events-item__img">
+    <img class="img--bg" src="{{visit.cover_image.url}}" />
+  </div>
+  <h6 class="events-item__title">
+    <a
+      class="events-item__link"
+      href="{% url 'activities:site-visit-detail' slug=visit.slug %}"
+      >{{visit.name}}</a
+    >
+  </h6>
+  <p class="text-dark">{{visit.description|truncatechars:255|safe}}</p>
+</div>

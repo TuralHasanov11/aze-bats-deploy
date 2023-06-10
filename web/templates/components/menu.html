@@ -1,0 +1,113 @@
+{% load i18n %}
+<div class="menu-dropdown menu-dropdown--front-3">
+  <div class="menu-dropdown__inner" data-value="start">
+    <div class="screen screen--start">
+      <div class="screen__item {% if 'base' in request.resolver_match.namespaces and request.resolver_match.url_name in menu.home.route %}item--active{% endif %}">
+        <a class="screen__link" href="{% url menu.home.route %}">{{menu.home.text}}</a>
+      </div>
+      <div class="screen__item {% if 'bats' in request.resolver_match.namespaces and request.resolver_match.url_name in menu.bats.route %}item--active{% endif %}"><a class="screen__link" href="{% url menu.bats.route %}">{{menu.bats.text}}</a></div>
+      {% if user.is_authenticated %}
+      <div class="screen__item screen--trigger {% if 'administration' in request.resolver_match.namespaces %}item--active{% endif %}" data-category="admin">
+        <span>{% translate "Admin" %}</span
+        ><span>
+          <svg class="icon">
+            <use xlink:href="#chevron"></use></svg
+        ></span>
+      </div>
+      {% endif %}
+      <div class="screen__item {% if 'bats' in request.resolver_match.namespaces and request.resolver_match.url_name in menu.gallery.route %}item--active{% endif %}">
+        <a class="screen__link" href="{% url menu.gallery.route %}">{{menu.gallery.text}}</a>
+      </div>
+      <div class="screen__item {% if 'base' in request.resolver_match.namespaces and request.resolver_match.url_name in menu.articles.route %}item--active{% endif %}"><a class="screen__link" href="{% url menu.articles.route %}">{{menu.articles.text}}</a></div>
+      <div class="screen__item screen--trigger {% if 'activities' in request.resolver_match.namespaces %}item--active{% endif %}" data-category="activities">
+        <span>{% translate "Activities" %}</span
+        ><span>
+          <svg class="icon">
+            <use xlink:href="#chevron"></use></svg
+        ></span>
+      </div>
+      <div class="screen__item screen--trigger" data-category="language">
+        <span>{% translate "Language" %}</span
+        ><span>
+          <svg class="icon">
+            <use xlink:href="#chevron"></use></svg
+        ></span>
+      </div>
+
+      <div class="screen__item">
+        <form class="search-form" action="{% url 'base:search' %}">
+          <input class="search-form__input" value="{{request.GET.search|default:''}}" type="search" name="search" placeholder="{% translate "Search" %}" required/>
+          <button class="search-form__submit" type="submit">
+            <svg class="icon">
+              <use xlink:href="#search"></use>
+            </svg>
+          </button>
+        </form>
+      </div>
+      
+      <ul class="screen__socials">
+        {% for item in site_info.social_links %}
+        <li>
+          <a class="item--facebook" target="_blank" rel="noopener noreferrer" href="{{item.link}}">
+            <i class="{{item.icon}}" aria-hidden="true"></i>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+      
+    </div>
+  </div>
+  {% if user.is_authenticated %}
+  <div class="menu-dropdown__inner" data-value="admin">
+    <div class="screen screen--sub">
+      <div class="screen__heading">
+        <h6 class="screen__back">
+          <svg class="icon">
+            <use xlink:href="#chevron-left"></use>
+          </svg>
+          <span>{% translate "Admin" %}</span>
+        </h6>
+      </div>
+      {% for item in menu.admin %}
+      <div class="screen__item {% if 'administration' in request.resolver_match.namespaces and request.resolver_match.url_name in item.route %}item--active{% endif %}">
+        <a class="screen__link" href="{% url item.route %}">{{item.text}}</a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+  <div class="menu-dropdown__inner" data-value="activities">
+    <div class="screen screen--sub">
+      <div class="screen__heading">
+        <h6 class="screen__back">
+          <svg class="icon">
+            <use xlink:href="#chevron-left"></use>
+          </svg>
+          <span>{% translate "Activities" %}</span>
+        </h6>
+      </div>
+      {% for item in menu.activities %}
+      <div class="screen__item {% if 'activities' in request.resolver_match.namespaces and request.resolver_match.url_name in item.route %}item--active{% endif %}">
+        <a class="screen__link" href="{% url item.route %}">{{item.text}}</a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="menu-dropdown__inner" data-value="language">
+    <div class="screen screen--sub">
+      <div class="screen__heading">
+        <h6 class="screen__back">
+          <svg class="icon">
+            <use xlink:href="#chevron-left"></use>
+          </svg>
+          <span>{% translate "Language" %}</span>
+        </h6>
+      </div>
+      {% for lang in languages %}
+      <div class="screen__item">
+        <a class="screen__link" href="/{{ lang.code }}{{ request.get_full_path|slice:'3:' }}">{{lang.code|upper}}</a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

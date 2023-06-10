@@ -1,0 +1,11 @@
+<div class="blog-item">
+  <div class="blog-item__img">
+    <img class="img--bg" src="{{project.cover_image.url}}" alt="blog" />
+  </div>
+  <h4 class="blog-item__title">
+    <a href="{% url 'activities:project-detail' slug=project.slug %}"
+      >{{project.name}}</a
+    >
+  </h4>
+  <p class="text-dark">{{project.description|truncatechars:255|safe}}</p>
+</div>

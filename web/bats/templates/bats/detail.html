@@ -1,0 +1,55 @@
+{% extends 'app.html' %}
+{% load i18n %}
+{% block title %}{{bat.name}}{% endblock title %}
+{% block content %}
+
+
+{% with promo_image=bat.cover_image.url promo_pre_title=bat.genus.name promo_title=bat.name %}
+{% include "components/promo_dynamic.html" with promo_image=promo_image promo_pre_title=promo_pre_title promo_title=promo_title %}
+{% endwith %}
+
+<section class="section blog-post">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 bottom-50">
+                <ul class="breadcrumbs breadcrumbs--with-dot">
+                    <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="{% url 'base:index' %}">{% translate "Home" %}</a></li>
+                    <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="{% url 'bats:index' %}?genus={{bat.genus.slug}}">{{bat.genus.name}}</a></li>
+                    <li class="breadcrumbs__item breadcrumbs__item--active">{{bat.name}}</li>
+                </ul>
+            </div>
+            <div class="col-lg-8">
+                <div class="blog-post__top">
+                    {% include "components/gallery.html" with images=bat.species_images.all %}
+                </div>
+                <h4 class="blog-post__title">{% translate "Description" %}</h4>
+                {{bat.species_attributes_result.description|safe}}
+                <h4 class="blog-post__title">{% translate "Distribution" %}</h4>
+                {{bat.species_attributes_result.distribution|safe}}
+                <h4 class="blog-post__title">{% translate "Biology" %}</h4>
+                {{bat.species_attributes_result.biology|safe}}
+                <h4 class="blog-post__title">{% translate "Conservation" %}</h4>
+                {{bat.species_attributes_result.conservation|safe}}
+                <h4 class="blog-post__title">{% translate "Habitat" %}</h4>
+                {{bat.species_attributes_result.habitat|safe}}
+                <h4 class="blog-post__title">{% translate "Threats" %}</h4>
+                {{bat.species_attributes_result.threats|safe}}
+                {% if bat.is_red_book %}
+                <h4 class="blog-post__title">{% translate "Red Book details" %}</h4>
+                {{bat.species_red_book_result.description|safe}}
+                {% endif %}
+            </div>
+            <div class="col-md-8 offset-md-2 col-lg-4 offset-lg-0">
+                <div class="blog__inner-block bottom-50">
+                    <h5 class="blog__title">{% translate "Scientific classification" %}</h5>
+                    <ul class="categories-list">
+                        <li class="categories-list__item"><span class="categories-list__name">{% translate "Family" %}</span><div class="tags tags--style-2"><span class="tags__item">{{bat.genus.family.name}}</span></div></li>
+                        <li class="categories-list__item"><span class="categories-list__name">{% translate "Genus" %}</span><div class="tags tags--style-2"><a class="tags__item" href="{% url 'bats:index' %}?genus={{bat.genus.slug}}">{{bat.genus.name}}</a></div></li>
+                        <li class="categories-list__item"><span class="categories-list__name">{% translate "Specie" %}</span><div class="tags tags--style-2"><span class="tags__item" >{{bat.name}}</span></div></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

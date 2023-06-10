@@ -1,0 +1,26 @@
+{% extends 'app.html' %} 
+{% load static %} 
+{% load i18n %} 
+{% block title %}{% translate "Projects" %}{% endblock title %} 
+{% block content %}
+
+{% with promo_image='img/projects.jpg' promo_pre_title="" promo_title="Projects" %}
+{% include "components/promo.html" with promo_image=promo_image promo_pre_title=promo_pre_title promo_title=promo_title %}
+{% endwith %}
+
+<section class="section blog">
+  <div class="container">
+    <div class="row">
+      {% for project in projects %}
+      <div class="col-12 col-md-6 col-xl-4">
+        {% include "components/project.html" with project=project %}
+      </div>
+      {% endfor %}
+
+      <div class="col-12 text-center">
+        {% include "components/pagination.html" with pagination=projects %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

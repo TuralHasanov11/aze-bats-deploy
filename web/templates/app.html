@@ -1,0 +1,41 @@
+{% load static %}
+{% load i18n %} 
+{% load query_transform %} 
+{% get_current_language as CURRENT_LANGUAGE  %} 
+{% get_available_languages as LANGUAGES %} 
+{% get_language_info_list for LANGUAGES as languages%}
+
+<!DOCTYPE html>
+<html lang="{{CURRENT_LANGUAGE}}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="description" />
+    <meta name="keywords" content="keywords" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>{{config.app.name}} - {% block title %}{% endblock title %}</title>
+    <link
+      rel="stylesheet"
+      href="{% static 'css/bootstrap-utilities.min.css' %}"
+    />
+    <link rel="stylesheet" href="{% static 'css/bootstrap-reboot.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/styles.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    {% block stylesheet %}{% endblock stylesheet %}
+  </head>
+  <body>
+    <div class="page-wrapper">
+      {% include "components/menu.html" %} 
+      {% include "components/header.html"%}
+
+      <main class="main">{% block content %} {% endblock content %}</main>
+      {% include "components/footer.html" %}
+    </div>
+
+    <script src="{% static 'js/webfont.js' %}"></script>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/libs.min.js' %}"></script>
+    <script src="{% static 'js/common.js' %}"></script>
+    {% block scripts %}{% endblock scripts %}
+  </body>
+</html>

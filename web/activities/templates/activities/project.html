@@ -1,0 +1,25 @@
+{% extends 'app.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %}{{project.name}}{% endblock title %}
+{% block content %}
+
+{% with promo_image=project.cover_image.url promo_pre_title="Project" promo_title=project.name %}
+{% include "components/promo_dynamic.html" with promo_image=promo_image promo_pre_title=promo_pre_title promo_title=promo_title %}
+{% endwith %}
+
+<section class="section event-details">
+    <div class="container">
+        <div class="row ">
+            <div class="col-md-10 offset-md-1 col-lg-9 offset-lg-1 col-xl-8 offset-xl-2">
+                <div class="bottom-50">
+                    {% include "components/gallery.html" with images=project.project_images.all %}
+                </div>
+                <div>
+                    {{project.project_attributes_result.description|safe}}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

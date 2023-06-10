@@ -1,0 +1,89 @@
+{% extends 'app.html' %} 
+{% load i18n %}
+{% load static %}
+{% block title %}
+{% translate "Home" %}{% endblock title %}
+{% block content %}
+
+{% include "components/banner.html" with banner=banner %}
+
+{% include "components/statistics.html" with statistics=statistics %}
+
+{% if projects %}
+<section class="section events-carousel no-padding-bottom"><img class="events-carousel__bg" src="{% static 'img/skin-bg.jpg' %}" alt="bg"/>
+  <div class="container">
+    <div class="row bottom-50 align-items-end">
+      <div class="col-lg-8">
+        <div class="heading heading--style-2 heading--green">
+          <h2 class="heading__title no-margin-bottom"><span>{% translate "Recent Projects" %}</span></h2>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="destination-slider__dots dots--style-2 text-left text-lg-right"></div>
+      </div>
+    </div>
+  </div>
+  <div class="slider-holder">
+    <div class="slider-holder__wrapper">
+      <div class="destination-slider">
+        {% for project in projects %}
+          {% include "components/slider/project.html" with project=project %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if bats %}
+<section class="section animals">
+
+  <div class="container">
+      <div class="row no-gutters left-3 right-3">
+          {% for bat in bats %}
+          <div class="col-12 col-md-6 col-xl-4">
+              {% include "components/bat.html" with bat=bat %}
+          </div>
+          {% endfor %}
+      </div>
+  </div>
+</section>
+{% endif %}
+
+{% if visits %}
+<section class="section donation donation--style-2 no-padding-bottom">
+  <div class="container bottom-50">
+    <div class="row align-items-end">
+      <div class="col-lg-8">
+        <div class="heading heading--style-2 heading--green">
+          <h2 class="heading__title no-margin-bottom"><span>{% translate "Recent Site Visits" %}</span></h2>
+        </div>
+      </div>
+      <div class="col-lg-4 text-lg-right">
+        <div class="donation-slider__dots dots--style-2"></div>
+      </div>
+    </div>
+  </div>
+  <div class="slider-holder bottom-50">
+    <div class="slider-holder__wrapper">
+      <div class="donation-slider">
+        {% for visit in visits %}
+          {% include "components/slider/visit.html" with visit=visit %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if authors %}
+<section class="section testimonials testimonials--style-1 testimonials--green">
+  <div class="container">
+    {% for author in authors %}
+      {% include "components/author.html" with author=author %}
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% endblock content %}

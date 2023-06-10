@@ -1,0 +1,41 @@
+{% extends 'app.html' %} 
+{% load i18n %}
+{% load static %}
+{% block title %}{% translate "Admin" %} - {% translate "Dashboard" %}{% endblock title %}
+{% block content %} 
+<section class="promo-primary">
+    <picture>
+        <source srcset="{% static 'img/dashboard.jpg' %}" media="(min-width: 992px)"/><img class="img--bg" src="{% static 'img/dashboard.jpg' %}" alt="img"/>
+    </picture>
+    <div class="container">
+        <div class="row">
+            <div class="col-auto">
+                <div class="align-container">
+                    <div class="align-container__item">
+                        <h1 class="promo-primary__title"><span>{% translate "Admin" %}</span></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section elements">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-10">
+                <h4 class="elements__title">{% translate "Sections" %}</h4>
+            </div>
+        </div>
+        <div class="row offset-margin">
+            {% for item in menu.admin %}
+            <div class="col-sm-6 col-md-4 col-xl-3">
+                <div class="pricing-item pricing-item--style-1 text-center">
+                    <div class="pricing-item__lower"><a class="pricing-item__button button button--rounded button--main" href="{% url item.route %}">{{item.text}}</a></div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock content %}

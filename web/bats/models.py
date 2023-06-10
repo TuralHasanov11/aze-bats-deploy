@@ -1,4 +1,4 @@
-from administration import custom_models
+from administration import models as custom_models
 from core import helpers
 from django import urls
 from django.conf import settings
@@ -37,7 +37,7 @@ class Genus(models.Model):
 class Species(models.Model):
     name = custom_models.NameField(unique=True)
     slug = custom_models.SlugField()
-    cover_image = custom_models.ImageField()
+    cover_image = custom_models.ImageField(directory="bats")
     genus = models.ForeignKey(Genus, related_name="genus", on_delete=models.CASCADE)
     is_red_book = models.BooleanField(default=False, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -79,7 +79,7 @@ class SpeciesAttributes(models.Model):
 
 class SpeciesImage(models.Model):
     species = models.ForeignKey(Species, on_delete=models.CASCADE, related_name="species_images")
-    image = custom_models.ImageField()
+    image = custom_models.ImageField(directory="bats")
 
     def __str__(self):
         return str(self.species)

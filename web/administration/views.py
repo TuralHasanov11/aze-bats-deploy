@@ -106,7 +106,7 @@ def batCreate(request):
 
 @login_required
 @require_http_methods(["GET", "POST"])
-def batUpdateDelete(request, id: int):
+def batUpdate(request, id: int):
     bat = Species.objects.prefetch_related("species_images").get(id=id)
     if request.POST:
         form = BatSpeciesForm(instance=bat, data=request.POST, files=request.FILES)
@@ -195,7 +195,7 @@ def authorListCreate(request):
 
 @login_required
 @require_http_methods(["GET", "POST", "DELETE"])
-def authorUpdateDelete(request, id):
+def authorUpdate(request, id):
     author = Author.objects.prefetch_related(
         Prefetch(
             "author_attributes",
@@ -319,7 +319,7 @@ def projectCreate(request):
 
 @login_required
 @require_http_methods(["GET", "POST", "DELETE"])
-def projectUpdateDelete(request, id):
+def projectUpdate(request, id):
     project = Project.objects.get(id=id)
     if request.POST:
         form = ProjectForm(
@@ -370,7 +370,7 @@ class SiteVisitListView(LoginRequiredMixin, ListView):
 
 @login_required
 @require_http_methods(["GET", "POST"])
-def visitCreate(request):
+def siteVisitCreate(request):
     if request.POST:
         form = SiteVisitForm(data=request.POST, files=request.FILES)
         images_formset = SiteVisitImageFormset(data=request.POST, files=request.FILES)
@@ -405,7 +405,7 @@ def visitCreate(request):
 
 @login_required
 @require_http_methods(["GET", "POST"])
-def visitUpdateDelete(request, id):
+def siteVisitUpdate(request, id):
     visit = SiteVisit.objects.prefetch_related("site_visit_images").get(id=id)
     if request.POST:
         form = SiteVisitForm(

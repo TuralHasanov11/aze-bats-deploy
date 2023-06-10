@@ -1,4 +1,4 @@
-from administration import custom_models
+from administration import models as custom_models
 from django.db import models
 
 
@@ -15,7 +15,7 @@ class Article(models.Model):
 
 
 class Author(models.Model):
-    cover_image = custom_models.ImageField()
+    cover_image = custom_models.ImageField(directory="authors")
 
 
 class AuthorAttributes(models.Model):

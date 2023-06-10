@@ -1,8 +1,5 @@
-from activities.models import (Project, ProjectAttributes, SiteVisit,
-                               SiteVisitAttributes)
-from django.db.models import Prefetch
+from activities.models import Project, SiteVisit
 from django.shortcuts import render
-from django.utils.translation import get_language
 from django.views.decorators.http import require_GET
 from django.views.generic.list import ListView
 
@@ -16,14 +13,7 @@ class ProjectListView(ListView):
 
 @require_GET
 def projectDetail(request, slug: str):
-    project = Project.objects.prefetch_related(
-        "project_images",
-        Prefetch(
-            "project_attributes",
-            queryset=ProjectAttributes.objects.filter(language=get_language()),
-        ),
-    ).get(slug=slug)
-    project.project_attributes_result = project.project_attributes.all().first()
+    project = Project.objects.prefetch_related("project_images").get(slug=slug)
     return render(request, "activities/project.html", {"project": project})
 
 
@@ -36,12 +26,5 @@ class SiteVisitListView(ListView):
 
 @require_GET
 def siteVisitDetail(request, slug: str):
-    visit = SiteVisit.objects.prefetch_related(
-        "site_visit_images",
-        Prefetch(
-            "site_visit_attributes",
-            queryset=SiteVisitAttributes.objects.filter(language=get_language()),
-        ),
-    ).get(slug=slug)
-    visit.site_visit_attributes_result = visit.site_visit_attributes.all().first()
+    visit = SiteVisit.objects.prefetch_related("site_visit_images").get(slug=slug)
     return render(request, "activities/visit.html", {"visit": visit})

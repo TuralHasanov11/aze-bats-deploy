@@ -28,7 +28,9 @@ class ImageField(models.ImageField):
     description = _("Image field")
 
     def __init__(self, *args, **kwargs):
-        uploader = helpers.UploadImageStrategy(kwargs['directory'])
+        if "directory" in kwargs:
+            directory = kwargs.pop('directory')
+        uploader = helpers.UploadImageStrategy(directory)
         kwargs['upload_to'] = uploader.uploadTo
         super().__init__(*args, **kwargs)
 

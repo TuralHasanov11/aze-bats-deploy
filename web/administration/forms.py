@@ -446,7 +446,6 @@ class SiteInfoForm(forms.ModelForm):
         model = SiteInfo
         fields = [
             "phone",
-            "address",
             "email",
             "facebook_link",
             "instagram_link",

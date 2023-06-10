@@ -216,7 +216,7 @@ LOGGING = {
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]

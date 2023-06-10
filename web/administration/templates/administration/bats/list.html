@@ -63,13 +63,13 @@
               <td>
                 <a
                   class="btn btn-warning"
-                  href="{% url 'administration:bat-update-delete' id=bat.id %}"
+                  href="{% url 'administration:bat-update' id=bat.id %}"
                   >{% translate "Edit" %}</a
                 >
                 <button
                   type="button"
                   class="btn btn-danger btn-delete"
-                  data-url="{% url 'administration:bat-update-delete' id=bat.id %}"
+                  data-url="{% url 'administration:bat-delete' id=bat.id %}"
                 >
                   {% translate "Delete" %}
                 </button>

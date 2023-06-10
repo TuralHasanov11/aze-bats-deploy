@@ -5,7 +5,7 @@
 {% translate "Home" %}{% endblock title %}
 {% block content %}
 
-{% include "components/banner.html" with banner=banner %}
+{% include "components/banner.html" with banner=banner banner_image=banner_image %}
 
 {% include "components/statistics.html" with statistics=statistics %}
 
@@ -37,7 +37,15 @@
 
 {% if bats %}
 <section class="section animals">
-
+  <div class="container">
+    <div class="row bottom-50 align-items-end">
+      <div class="col-lg-8">
+        <div class="heading heading--style-2 heading--green">
+          <h2 class="heading__title no-margin-bottom"><span>{% translate "Some of the Bats" %}</span></h2>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="container">
       <div class="row no-gutters left-3 right-3">
           {% for bat in bats %}

@@ -1,6 +1,6 @@
 from administration import models as custom_models
 from core import helpers
-from django import urls
+from django.urls import reverse
 from django.conf import settings
 from django.db import models
 from django.utils.translation import gettext_lazy as _
@@ -34,7 +34,7 @@ class Genus(models.Model):
         return super().save(*args, **kwargs)
 
 
-class Species(models.Model):
+class Bat(models.Model):
     name = custom_models.NameField(unique=True)
     slug = custom_models.SlugField()
     cover_image = custom_models.ImageField(directory="bats")
@@ -44,18 +44,25 @@ class Species(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        verbose_name_plural = _("Species")
         ordering = ["name"]
 
     def __str__(self):
         return self.name
 
     def get_absolute_url(self):
-        return urls.reverse("bats:detail", kwargs={"slug": self.slug})
+        return reverse("bats:detail", kwargs={"slug": self.slug})
     
     @property
     def get_absolute_cover_image_url(self):
         return "{0}{1}".format(settings.MEDIA_URL, self.cover_image.url)
+    
+    @property
+    def bat_attributes_result(self):
+        return self.bat_attributes.all().first()
+    
+    @property
+    def bat_red_book_result(self):
+        return self.bat_red_book.all().first()
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -63,8 +70,8 @@ class Species(models.Model):
         return super().save(*args, **kwargs)
 
 
-class SpeciesAttributes(models.Model):
-    species = models.ForeignKey(Species, related_name="species_attributes", on_delete=models.CASCADE)
+class BatAttributes(models.Model):
+    bat = models.ForeignKey(Bat, related_name="bat_attributes", on_delete=models.CASCADE)
     description = custom_models.RichTextEditorField()
     habitat = custom_models.RichTextEditorField()
     threats = custom_models.RichTextEditorField()
@@ -73,22 +80,16 @@ class SpeciesAttributes(models.Model):
     biology = custom_models.RichTextEditorField()
     language = custom_models.LanguageField()
 
-    def __str__(self):
-        return str(self.species)
 
-
-class SpeciesImage(models.Model):
-    species = models.ForeignKey(Species, on_delete=models.CASCADE, related_name="species_images")
+class BatImage(models.Model):
+    bat = models.ForeignKey(Bat, on_delete=models.CASCADE, related_name="bat_images")
     image = custom_models.ImageField(directory="bats")
 
     def __str__(self):
-        return str(self.species)
+        return str(self.image.url)
     
 
-class SpeciesRedBook(models.Model):
+class BatRedBook(models.Model):
     language = custom_models.LanguageField()
-    species = models.ForeignKey(Species, related_name="species_red_book", on_delete=models.CASCADE)
-    description = custom_models.RichTextEditorField()
-
-    def __str__(self):
-        return str(self.species)    
+    bat = models.ForeignKey(Bat, related_name="bat_red_book", on_delete=models.CASCADE)
+    description = custom_models.RichTextEditorField() 

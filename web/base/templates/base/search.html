@@ -3,7 +3,7 @@
 {% load static %}
 {% block title %}{% translate "Search" %}{% endblock title %}
 {% block content %}
-<section class="section events-carousel no-padding-bottom"><img class="events-carousel__bg" src="{% static 'img/skin-bg.jpg' %}" alt="bg"/>
+<section class="section events-carousel no-padding-bottom">
     <div class="container">
       <div class="row bottom-50 align-items-end">
         <div class="col-lg-8">
@@ -16,7 +16,8 @@
 </section>
 
 {% if projects %}
-<section class="section events-carousel no-padding-bottom"><img class="events-carousel__bg" src="{% static 'img/skin-bg.jpg' %}" alt="bg"/>
+<section class="section events-carousel">
+  <img class="events-carousel__bg" src="{% static 'img/skin-bg.jpg' %}" alt="bg"/>
     <div class="container">
       <div class="row bottom-50 align-items-end">
         <div class="col-lg-8">
@@ -44,11 +45,20 @@
 
 {% if bats %}
 <section class="section animals">
+  <div class="container bottom-50">
+    <div class="row align-items-end">
+      <div class="col-lg-8">
+        <div class="heading heading--style-2 heading--green">
+          <h2 class="heading__title no-margin-bottom"><span>{% translate "Bats" %}</span></h2>
+        </div>
+      </div>
+    </div>
+  </div>
     <div class="container">
         <div class="row no-gutters left-3 right-3">
             {% for bat in bats %}
             <div class="col-12 col-md-6 col-xl-4">
-                {% include "components/bat2.html" with bat=bat %}
+                {% include "components/bat.html" with bat=bat %}
             </div>
             {% endfor %}
         </div>
@@ -57,7 +67,7 @@
   {% endif %}
 
 {% if visits %}
-<section class="section donation donation--style-2 no-padding-bottom">
+<section class="section donation donation--style-2">
     <div class="container bottom-50">
       <div class="row align-items-end">
         <div class="col-lg-8">

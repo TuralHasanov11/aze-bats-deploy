@@ -5,7 +5,7 @@
 
 
 {% with promo_image=bat.cover_image.url promo_pre_title=bat.genus.name promo_title=bat.name %}
-{% include "components/promo_dynamic.html" with promo_image=promo_image promo_pre_title=promo_pre_title promo_title=promo_title %}
+{% include "components/promo.html" with promo_image=promo_image promo_pre_title=promo_pre_title promo_title=promo_title %}
 {% endwith %}
 
 <section class="section blog-post">
@@ -19,24 +19,26 @@
                 </ul>
             </div>
             <div class="col-lg-8">
+                {% if bat.bat_images %}
                 <div class="blog-post__top">
-                    {% include "components/gallery.html" with images=bat.species_images.all %}
+                    {% include "components/gallery.html" with images=bat.bat_images.all %}
                 </div>
+                {% endif %}
                 <h4 class="blog-post__title">{% translate "Description" %}</h4>
-                {{bat.species_attributes_result.description|safe}}
+                {{bat.bat_attributes_result.description|safe}}
                 <h4 class="blog-post__title">{% translate "Distribution" %}</h4>
-                {{bat.species_attributes_result.distribution|safe}}
+                {{bat.bat_attributes_result.distribution|safe}}
                 <h4 class="blog-post__title">{% translate "Biology" %}</h4>
-                {{bat.species_attributes_result.biology|safe}}
+                {{bat.bat_attributes_result.biology|safe}}
                 <h4 class="blog-post__title">{% translate "Conservation" %}</h4>
-                {{bat.species_attributes_result.conservation|safe}}
+                {{bat.bat_attributes_result.conservation|safe}}
                 <h4 class="blog-post__title">{% translate "Habitat" %}</h4>
-                {{bat.species_attributes_result.habitat|safe}}
+                {{bat.bat_attributes_result.habitat|safe}}
                 <h4 class="blog-post__title">{% translate "Threats" %}</h4>
-                {{bat.species_attributes_result.threats|safe}}
+                {{bat.bat_attributes_result.threats|safe}}
                 {% if bat.is_red_book %}
                 <h4 class="blog-post__title">{% translate "Red Book details" %}</h4>
-                {{bat.species_red_book_result.description|safe}}
+                {{bat.bat_red_book_result.description|safe}}
                 {% endif %}
             </div>
             <div class="col-md-8 offset-md-2 col-lg-4 offset-lg-0">

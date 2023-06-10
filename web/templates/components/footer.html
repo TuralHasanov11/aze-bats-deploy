@@ -2,9 +2,9 @@
 <footer class="footer footer--front-3">
   <div class="container">
     <div class="row bottom-50">
-      <div class="col-md-6 col-lg-4">
+      <div class="col-md-6">
         <a class="logo logo--footer" href="{% url 'base:index' %}"
-          ><img class="logo__img" src="{{site_info.logo_image}}" alt="logo"
+          ><img class="logo__img" src="{{site_info.logo_image.url}}" alt="logo"
         /></a>
         <div class="footer__details">
           <p>
@@ -26,7 +26,7 @@
           {% endfor %}
         </ul>
       </div>
-      <div class="col-lg-5 d-none d-lg-block">
+      <div class="col-lg-6 d-none d-lg-block">
         <h6 class="footer__title">{% translate "Menu" %}</h6>
         <ul class="footer-menu footer-menu--style-2">
           {% for item in footer_menu %}

@@ -1,6 +1,7 @@
 <section class="section gallery no-padding-top no-padding-bottom">
   <div class="row gallery-masonry no-gutters">
     {% for image in images %}
+    {% if image.image %}
     <div class="category_1 col-sm-6 col-lg-4 col-xl-3 gallery-masonry__item">
       <a
         class="gallery-masonry__img gallery-masonry__item--height-1"
@@ -10,6 +11,7 @@
         <img class="img--bg" src="{{image.image.url}}" alt="img" />
       </a>
     </div>
+    {% endif %}
     {% endfor %}
   </div>
 </section>

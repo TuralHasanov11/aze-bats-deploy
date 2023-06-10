@@ -15,9 +15,11 @@ class AuthorModel(admin.ModelAdmin):
 class ArticleModel(admin.ModelAdmin):
     pass
 
+
 @admin.register(models.SiteInfo)
 class SiteInfoModel(admin.ModelAdmin):
     pass
+
 
 @admin.register(models.SiteText)
 class SiteTextModel(admin.ModelAdmin):

@@ -1,7 +1,7 @@
 from administration import views
 from django.urls import path
 
-app_name='administration'
+app_name = 'administration'
 
 urlpatterns = [
     path('', views.DashboardView.as_view(), name="dashboard"),
@@ -14,6 +14,7 @@ urlpatterns = [
     path('projects', views.ProjectListView.as_view(), name="project-list"),
     path('projects/create', views.projectCreate, name="project-create"),
     path('projects/<int:id>', views.projectUpdate, name="project-update"),
+    path('projects/<int:id>/delete', views.ProjectDeleteView.as_view(), name="project-delete"),
     path('visits', views.SiteVisitListView.as_view(), name="visit-list"),
     path('visits/create', views.siteVisitCreate, name="visit-create"),
     path('visits/<int:id>', views.siteVisitUpdate, name="visit-update"),
@@ -24,4 +25,6 @@ urlpatterns = [
     path('articles', views.ArticleListCreateView.as_view(), name="article-list-create"),
     path('articles/<int:id>', views.ArticleUpdateView.as_view(), name="article-update"),
     path('articles/<int:id>/delete', views.ArticleUpdateView.as_view(), name="article-delete"),
+    path('site-info', views.siteInfo, name="site-info"),
+    path('site-text', views.siteTexts, name="site-texts"),
 ]

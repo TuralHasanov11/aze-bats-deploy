@@ -2,6 +2,8 @@ from activities.models import Project, SiteVisit
 from django.shortcuts import render
 from django.views.decorators.http import require_GET
 from django.views.generic.list import ListView
+from base.models import SiteInfo
+from django.utils.translation import get_language
 
 
 class ProjectListView(ListView):
@@ -10,6 +12,14 @@ class ProjectListView(ListView):
     paginate_by = 10
     context_object_name = "projects"
 
+    def get_queryset(self):
+        return super().get_queryset().filter(language=get_language())
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["project_promo_image"] = SiteInfo.objects.only('project_promo_image').first().project_promo_image
+        return context
+    
 
 @require_GET
 def projectDetail(request, slug: str):
@@ -22,6 +32,14 @@ class SiteVisitListView(ListView):
     template_name = "activities/visits.html"
     paginate_by = 10
     context_object_name = "visits"
+
+    def get_queryset(self):
+        return super().get_queryset().filter(language=get_language())
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["site_visit_promo_image"] = SiteInfo.objects.only('site_visit_promo_image').first().site_visit_promo_image
+        return context
 
 
 @require_GET

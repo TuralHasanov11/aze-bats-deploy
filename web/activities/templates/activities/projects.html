@@ -4,7 +4,7 @@
 {% block title %}{% translate "Projects" %}{% endblock title %} 
 {% block content %}
 
-{% with promo_image='img/projects.jpg' promo_pre_title="" promo_title="Projects" %}
+{% with promo_image=project_promo_image.url promo_pre_title="" promo_title="Projects" %}
 {% include "components/promo.html" with promo_image=promo_image promo_pre_title=promo_pre_title promo_title=promo_title %}
 {% endwith %}
 

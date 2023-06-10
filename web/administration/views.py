@@ -1,13 +1,13 @@
 from activities.models import Project, SiteVisit
 from administration.forms import (ArticleForm, AuthorAttributesFormset,
-                                  AuthorForm, BatSpeciesForm, ProjectForm,
+                                  AuthorForm, BatForm, ProjectForm,
                                   ProjectImageFormset, SiteVisitForm,
                                   SiteVisitImageFormset,
-                                  SpeciesAttributesFormset,
-                                  SpeciesImageFormset, SpeciesRedBookFormset,
+                                  BatAttributesFormset,
+                                  BatImageFormset, BatRedBookFormset, SiteInfoForm, SiteTextFormSet,
                                   UserLoginForm)
-from base.models import Article, Author, AuthorAttributes
-from bats.models import Species
+from base.models import Article, Author, SiteText, SiteInfo
+from bats.models import Bat
 from django.contrib import messages
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
@@ -15,10 +15,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.paginator import Paginator
 from django.db import IntegrityError, transaction
-from django.db.models import Prefetch
 from django.shortcuts import redirect, render
 from django.urls import reverse, reverse_lazy
-from django.utils import translation
 from django.utils.translation import gettext_lazy as _
 from django.views.decorators.http import require_http_methods
 from django.views.generic import TemplateView
@@ -42,9 +40,9 @@ class DashboardView(LoginRequiredMixin, TemplateView):
 
 
 class BatListView(LoginRequiredMixin, ListView):
-    model = Species
+    model = Bat
     login_url = reverse_lazy("administration:index")
-    template_name = "administration/services/index.html"
+    template_name = "administration/bats/list.html"
     context_object_name = "bats"
 
     def get_queryset(self):
@@ -55,12 +53,12 @@ class BatListView(LoginRequiredMixin, ListView):
 @require_http_methods(["GET", "POST"])
 def batCreate(request):
     if request.POST:
-        form = BatSpeciesForm(request.POST, request.FILES)
-        attributes_formset = SpeciesAttributesFormset(
+        form = BatForm(request.POST, request.FILES)
+        attributes_formset = BatAttributesFormset(
             data=request.POST, files=request.FILES
         )
-        red_book_formset = SpeciesRedBookFormset(data=request.POST, files=request.FILES)
-        images_formset = SpeciesImageFormset(data=request.POST, files=request.FILES)
+        red_book_formset = BatRedBookFormset(data=request.POST, files=request.FILES)
+        images_formset = BatImageFormset(data=request.POST, files=request.FILES)
         if (
             form.is_valid()
             and attributes_formset.is_valid()
@@ -72,15 +70,15 @@ def batCreate(request):
                     bat = form.save()
                     for attr in attributes_formset:
                         attr = attr.save(commit=False)
-                        attr.species = bat
+                        attr.bat = bat
                         attr.save()
                     for img in images_formset:
                         img = img.save(commit=False)
-                        img.species = bat
+                        img.bat = bat
                         img.save()
                     for item in red_book_formset:
                         item = item.save(commit=False)
-                        item.species = bat
+                        item.bat = bat
                         item.save()
             except IntegrityError:
                 messages.error(request, f'{_("Bat cannot be added!")}')
@@ -88,10 +86,10 @@ def batCreate(request):
             return redirect("administration:bat-list")
         messages.error(request, f'{_("Bat cannot be added!")}')
     else:
-        form = BatSpeciesForm()
-        attributes_formset = SpeciesAttributesFormset()
-        images_formset = SpeciesImageFormset()
-        red_book_formset = SpeciesRedBookFormset()
+        form = BatForm()
+        attributes_formset = BatAttributesFormset()
+        images_formset = BatImageFormset()
+        red_book_formset = BatRedBookFormset()
     return render(
         request,
         "administration/bats/create.html",
@@ -107,16 +105,16 @@ def batCreate(request):
 @login_required
 @require_http_methods(["GET", "POST"])
 def batUpdate(request, id: int):
-    bat = Species.objects.prefetch_related("species_images").get(id=id)
+    bat = Bat.objects.get(id=id)
     if request.POST:
-        form = BatSpeciesForm(instance=bat, data=request.POST, files=request.FILES)
-        attributes_formset = SpeciesAttributesFormset(
+        form = BatForm(instance=bat, data=request.POST, files=request.FILES)
+        attributes_formset = BatAttributesFormset(
             instance=bat, data=request.POST, files=request.FILES
         )
-        images_formset = SpeciesImageFormset(
+        images_formset = BatImageFormset(
             instance=bat, data=request.POST, files=request.FILES
         )
-        red_book_formset = SpeciesRedBookFormset(
+        red_book_formset = BatRedBookFormset(
             instance=bat, data=request.POST, files=request.FILES
         )
         if (
@@ -137,10 +135,10 @@ def batUpdate(request, id: int):
             return redirect("administration:bat-update", id=id)
         messages.error(request, f'{_("Bat cannot be added!")}')
     else:
-        form = BatSpeciesForm(instance=bat)
-        attributes_formset = SpeciesAttributesFormset(instance=bat)
-        images_formset = SpeciesImageFormset(instance=bat)
-        red_book_formset = SpeciesRedBookFormset(instance=bat)
+        form = BatForm(instance=bat)
+        attributes_formset = BatAttributesFormset(instance=bat)
+        images_formset = BatImageFormset(instance=bat)
+        red_book_formset = BatRedBookFormset(instance=bat)
     return render(
         request,
         "administration/bats/update.html",
@@ -155,7 +153,7 @@ def batUpdate(request, id: int):
 
 
 class BatDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
-    model = Species
+    model = Bat
     login_url = reverse_lazy("administration:index")
     success_message = _("Bat deleted!")
     success_url = reverse_lazy("administration:bat-list")
@@ -196,29 +194,21 @@ def authorListCreate(request):
 @login_required
 @require_http_methods(["GET", "POST", "DELETE"])
 def authorUpdate(request, id):
-    author = Author.objects.prefetch_related(
-        Prefetch(
-            "author_attributes",
-            queryset=AuthorAttributes.objects.filter(
-                language=translation.get_language()
-            ),
-        )
-    ).get(id=id)
-    author.author_attributes_result = author.author_attributes.all().first()
+    author = Author.objects.get(id=id)
     if request.POST:
         form = AuthorForm(instance=author, data=request.POST, files=request.FILES)
         attributes_formset = AuthorAttributesFormset(
-            data=request.POST, files=request.FILES
+            instance=author, data=request.POST, files=request.FILES
         )
         if form.is_valid() and attributes_formset.is_valid():
             try:
                 with transaction.atomic():
-                    author = form.save()
+                    form.save()
                     attributes_formset.save()
             except IntegrityError:
                 messages.error(request, f"{_('Author cannot be updated!')}")
             messages.success(request, f'{_("Author updated!")}')
-            return redirect("administration:author-update-delete", id=id)
+            return redirect("administration:author-update", id=id)
         messages.error(request, f"{_('Author cannot be updated!')}")
     else:
         form = AuthorForm(instance=author)
@@ -261,10 +251,10 @@ class ArticleUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     login_url = reverse_lazy('administration:index')
     template_name = 'administration/articles/update.html'
     context_object_name = 'article'
-    success_message = _("Article was updated!")
+    success_message = _("Article updated!")
 
     def get_success_url(self):
-        return reverse("administration:article-update-delete", kwargs={"pk": self.object.pk})
+        return reverse("administration:article-update", kwargs={"pk": self.object.pk})
     
 
 class ArticleDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
@@ -339,7 +329,7 @@ def projectUpdate(request, id):
             except IntegrityError:
                 messages.error(request, f'{_("Project cannot be updated!")}')
             messages.success(request, f'{_("Project updated!")}')
-            return redirect("administration:project-update-delete", id=id)
+            return redirect("administration:project-update", id=id)
         messages.error(request, f'{_("Project cannot be updated!")}')
     else:
         form = ProjectForm(instance=project)
@@ -348,10 +338,12 @@ def projectUpdate(request, id):
         request,
         "administration/projects/update.html",
         {
+            "project": project,
             "form": form,
             "images_formset": images_formset,
         },
     )
+
 
 class ProjectDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = Project
@@ -406,7 +398,7 @@ def siteVisitCreate(request):
 @login_required
 @require_http_methods(["GET", "POST"])
 def siteVisitUpdate(request, id):
-    visit = SiteVisit.objects.prefetch_related("site_visit_images").get(id=id)
+    visit = SiteVisit.objects.get(id=id)
     if request.POST:
         form = SiteVisitForm(
             instance=visit, data=request.POST, files=request.FILES
@@ -425,7 +417,7 @@ def siteVisitUpdate(request, id):
             except IntegrityError:
                 messages.error(request, f'{_("Site Visit cannot be updated!")}')
             messages.success(request, f'{_("Site Visit updated!")}')
-            return redirect("administration:visit-update-delete", id=id)
+            return redirect("administration:visit-update", id=id)
         messages.error(request, f'{_("Site Visit cannot be updated!")}')
     else:
         form = SiteVisitForm(instance=visit)
@@ -440,8 +432,46 @@ def siteVisitUpdate(request, id):
         },
     )
 
+
 class SiteVisitDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = SiteVisit
     login_url = reverse_lazy("administration:index")
     success_message = _("Site Visit deleted!")
     success_url = reverse_lazy("administration:visit-list")
+
+
+@login_required
+@require_http_methods(['GET', 'POST'])
+def siteInfo(request):
+    siteInfo = SiteInfo.objects.first()
+    if request.method == 'POST':
+        if siteInfo:
+            form = SiteInfoForm(
+                instance=siteInfo, data=request.POST, files=request.FILES)
+        else:
+            form = SiteInfoForm(
+                data=request.POST, files=request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, _("Site Info saved!"))
+            return redirect("administration:site-info")
+        messages.error(request, _("Site Info cannot be saved!"))
+    else:
+        form = SiteInfoForm(instance=siteInfo)
+    return render(request, 'administration/site/info.html', {"form": form, "site_info": siteInfo})
+
+
+@login_required
+@require_http_methods(['GET', 'POST'])
+def siteTexts(request):
+    if request.method == 'POST':
+        formset = SiteTextFormSet(
+            initial=SiteText.objects.all(), data=request.POST)
+        if formset.is_valid():
+            formset.save()
+            messages.success(request, _("Texts saved!"))
+            return redirect("administration:site-texts")
+        messages.error(request, _("Texts cannot be saved!"))
+    else:
+        formset = SiteTextFormSet(initial=SiteText.objects.all())
+    return render(request, 'administration/site/texts.html', {"formset": formset})

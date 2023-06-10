@@ -23391,7 +23391,6 @@ section.instagram {
 .footer-menu {
     display: -webkit-inline-box;
     display: -ms-inline-flexbox;
-    display: inline-flex;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     width: 100%;

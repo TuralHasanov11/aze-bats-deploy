@@ -1,34 +1,35 @@
 from activities.models import Project, SiteVisit
 from base.models import Article, Author, AuthorAttributes, SiteText
-from bats.models import Species
+from bats.models import Bat
 from django.db.models import Prefetch
 from django.shortcuts import redirect, render
 from django.utils.translation import get_language
 from django.views.decorators.http import require_GET
 from django.views.generic.list import ListView
+from base.models import SiteInfo
 
 
 @require_GET
 def index(request):
     authors = Author.objects.prefetch_related(Prefetch(
         'author_attributes', queryset=AuthorAttributes.objects.filter(language=get_language()))).all()
-    for author in authors:
-        author.author_attributes_result = author.author_attributes.all().first()
 
-    bats = Species.objects.all()[:12]
-    batCount = Species.objects.count()
+    bats = Bat.objects.all()[:12]
+    batCount = Bat.objects.count()
     projectCount = Project.objects.count()
     visits = SiteVisit.objects.all()[:4]
     projects = Project.objects.all()[:4]
-    visitCount = Species.objects.count()
-    bannerText = SiteText.objects.filter(language=get_language()).first()
+    visitCount = Bat.objects.count()
+    banner = SiteText.objects.filter(language=get_language()).only('banner_text', 'banner_title').first()
+    bannerImage = SiteInfo.objects.only('banner_image').first().banner_image
 
     return render(request, "base/index.html", {
         "authors": authors,
         "bats": bats,
         "projects": projects,
         "visits": visits,
-        "banner": bannerText,
+        "banner": banner,
+        "banner_image": bannerImage,
         "statistics": {
             "bat_count": batCount,
             "project_count": projectCount,
@@ -43,13 +44,18 @@ class ArticleListView(ListView):
     paginate_by = 10
     context_object_name = "articles"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["article_promo_image"] = SiteInfo.objects.only('article_promo_image').first().article_promo_image
+        return context
+    
 
 @require_GET
 def search(request):
     query = request.GET.get('search', None)
     if query:
-        projects = Project.objects.filter(name__contains=query)[:20]
-        visits = SiteVisit.objects.filter(name__contains=query)[:20]
-        bats = Species.objects.filter(name__contains=query)[:20]
-        return render(request, "base/search.html", {"visits": projects, "projects": visits, "bats": bats})
+        projects = Project.objects.filter(name__icontains=query)[:20]
+        visits = SiteVisit.objects.filter(name__icontains=query)[:20]
+        bats = Bat.objects.filter(name__icontains=query)[:20]
+        return render(request, "base/search.html", {"visits": visits, "projects": projects, "bats": bats})
     return redirect('base:index')

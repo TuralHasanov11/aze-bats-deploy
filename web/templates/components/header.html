@@ -7,7 +7,7 @@
         <div class="header__lower-inner">
           <ul class="lang-select">
             <li class="lang-select__item lang-select__item--active">
-              <span>{{LANGUAGE_CODE|upper}}</span>
+              <span>{{CURRENT_LANGUAGE|upper}}</span>
               <ul class="lang-select__sub-list">
                 {% for lang in languages %}
                 <li>
@@ -45,7 +45,7 @@
     <div class="row align-items-center">
       <div class="col-6 col-lg-3">
         <a class="logo" href="{% url 'base:index' %}"
-          ><img class="logo__img" src="{{site_info.logo_image}}" alt="logo"
+          ><img class="logo__img" src="{{site_info.logo_image.url}}" alt="logo"
         /></a>
       </div>
       <div class="col-6 col-lg-9 d-flex justify-content-end align-items-center">

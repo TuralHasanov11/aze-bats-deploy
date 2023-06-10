@@ -4,7 +4,7 @@
 {% block title %} {% translate "Bats" %} {% endblock title %} 
 {% block content %}
 
-{% with promo_image="img/bats-bg.jpg" promo_pre_title="Images" promo_title="Gallery" %}
+{% with promo_image=bat_promo_image.url promo_pre_title="Images" promo_title="Gallery" %}
 {% include "components/promo.html" with promo_image=promo_image promo_pre_title=promo_pre_title promo_title=promo_title %}
 {% endwith %}
 

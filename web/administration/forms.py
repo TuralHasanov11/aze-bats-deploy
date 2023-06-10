@@ -1,7 +1,7 @@
 from activities.models import Project, ProjectImage, SiteVisit, SiteVisitImage
 from base.models import Author, AuthorAttributes, SiteInfo, SiteText
-from bats.models import (Genus, Species, SpeciesAttributes, SpeciesImage,
-                         SpeciesRedBook)
+from bats.models import (Genus, Bat, BatAttributes, BatImage,
+                         BatRedBook)
 from ckeditor_uploader import widgets as ckeditor_widgets
 from django import forms
 from django.conf import settings
@@ -9,10 +9,11 @@ from django.contrib.auth import forms as auth_forms
 from django.utils.translation import gettext_lazy as _
 
 
-class BatSpeciesForm(forms.ModelForm):
+class BatForm(forms.ModelForm):
     is_red_book = forms.BooleanField(
         label=_("Is it a Red Book specie?"),
         widget=forms.CheckboxInput(attrs={"class": "form-check-input"}),
+        required=False
     )
     name = forms.CharField(
         label=_("Name"),
@@ -41,11 +42,11 @@ class BatSpeciesForm(forms.ModelForm):
     )
 
     class Meta:
-        model = Species
+        model = Bat
         fields = ("name", "genus", "cover_image", "is_red_book")
 
 
-class SpeciesAttributesForm(forms.ModelForm):
+class BatAttributesForm(forms.ModelForm):
     language = forms.ChoiceField(
         label=_("Language"),
         widget=forms.Select(
@@ -73,7 +74,7 @@ class SpeciesAttributesForm(forms.ModelForm):
     )
 
     class Meta:
-        model = SpeciesAttributes
+        model = BatAttributes
         fields = (
             "description",
             "language",
@@ -85,7 +86,7 @@ class SpeciesAttributesForm(forms.ModelForm):
         )
 
 
-class SpeciesRedBookForm(forms.ModelForm):
+class BatRedBookForm(forms.ModelForm):
     language = forms.ChoiceField(
         label=_("Language"),
         widget=forms.Select(
@@ -100,11 +101,11 @@ class SpeciesRedBookForm(forms.ModelForm):
     )
 
     class Meta:
-        model = SpeciesRedBook
+        model = BatRedBook
         fields = ("description", "language")
 
 
-class SpeciesImageForm(forms.ModelForm):
+class BatImageForm(forms.ModelForm):
     image = forms.ImageField(
         label=_("Image"),
         widget=forms.ClearableFileInput(
@@ -118,25 +119,25 @@ class SpeciesImageForm(forms.ModelForm):
         fields = ("image",)
 
 
-SpeciesImageFormset = forms.inlineformset_factory(
-    Species,
-    SpeciesImage,
-    form=SpeciesImageForm,
+BatImageFormset = forms.inlineformset_factory(
+    Bat,
+    BatImage,
+    form=BatImageForm,
     extra=5,
     max_num=10,
     can_delete=True,
 )
-SpeciesAttributesFormset = forms.inlineformset_factory(
-    Species,
-    SpeciesAttributes,
-    form=SpeciesAttributesForm,
+BatAttributesFormset = forms.inlineformset_factory(
+    Bat,
+    BatAttributes,
+    form=BatAttributesForm,
     max_num=len(settings.LANGUAGES),
     can_delete=True,
 )
-SpeciesRedBookFormset = forms.inlineformset_factory(
-    Species,
-    SpeciesRedBook,
-    form=SpeciesRedBookForm,
+BatRedBookFormset = forms.inlineformset_factory(
+    Bat,
+    BatRedBook,
+    form=BatRedBookForm,
     max_num=len(settings.LANGUAGES),
     can_delete=True,
 )
@@ -175,7 +176,7 @@ class AuthorAttributesForm(forms.ModelForm):
         choices=settings.LANGUAGES,
     )
     description = forms.CharField(
-        label=_("Description"), widget=ckeditor_widgets.CKEditorUploadingWidget()
+        label=_("Description"), required=False, widget=ckeditor_widgets.CKEditorUploadingWidget()
     )
 
     class Meta:
@@ -376,6 +377,7 @@ class SiteInfoForm(forms.ModelForm):
                 "title": _("Please enter phone"),
             }
         ),
+        required=False,
     )
     email = forms.EmailField(
         label=_("Email"),
@@ -386,6 +388,7 @@ class SiteInfoForm(forms.ModelForm):
                 "title": _("Please enter email"),
             }
         ),
+        required=False,
     )
     facebook_link = forms.URLField(
         label=_("Facebook link"),
@@ -396,6 +399,7 @@ class SiteInfoForm(forms.ModelForm):
                 "title": _("Please enter facebook link"),
             }
         ),
+        required=False,
     )
     instagram_link = forms.URLField(
         label=_("Instagram link"),
@@ -406,6 +410,7 @@ class SiteInfoForm(forms.ModelForm):
                 "title": _("Please enter instagram link"),
             }
         ),
+        required=False,
     )
     youtube_link = forms.URLField(
         label=_("YouTube link"),
@@ -416,6 +421,7 @@ class SiteInfoForm(forms.ModelForm):
                 "title": _("Please enter youtube link"),
             }
         ),
+        required=False,
     )
     banner_image = forms.ImageField(
         label=_("Banner Image"),
@@ -423,7 +429,46 @@ class SiteInfoForm(forms.ModelForm):
             attrs={
                 "class": "form-control",
                 "placeholder": _("Banner Image"),
-                "title": _("Please upload banner image"),
+                "multiple": False,
+            }
+        ),
+        required=False,
+    )
+    project_promo_image = forms.ImageField(
+        label=_("Project Promo Image"),
+        widget=forms.ClearableFileInput(
+            attrs={
+                "class": "form-control",
+                "multiple": False,
+            }
+        ),
+        required=False,
+    )
+    site_visit_promo_image = forms.ImageField(
+        label=_("Site Visit Promo Image"),
+        widget=forms.ClearableFileInput(
+            attrs={
+                "class": "form-control",
+                "multiple": False,
+            }
+        ),
+        required=False,
+    )
+    article_promo_image = forms.ImageField(
+        label=_("Article Promo Image"),
+        widget=forms.ClearableFileInput(
+            attrs={
+                "class": "form-control",
+                "multiple": False,
+            }
+        ),
+        required=False,
+    )
+    bat_promo_image = forms.ImageField(
+        label=_("Bat Promo Image"),
+        widget=forms.ClearableFileInput(
+            attrs={
+                "class": "form-control",
                 "multiple": False,
             }
         ),
@@ -435,7 +480,6 @@ class SiteInfoForm(forms.ModelForm):
             attrs={
                 "class": "form-control",
                 "placeholder": _("Logo Image"),
-                "title": _("Please upload logo image"),
                 "multiple": False,
             }
         ),
@@ -452,6 +496,10 @@ class SiteInfoForm(forms.ModelForm):
             "youtube_link",
             "banner_image",
             "logo_image",
+            "project_promo_image",
+            "site_visit_promo_image",
+            "article_promo_image",
+            "bat_promo_image",
         ]
 
 
@@ -502,5 +550,4 @@ class SiteTextForm(forms.ModelForm):
 
 
 SiteTextFormSet = forms.modelformset_factory(
-    model=SiteText, form=SiteTextForm, max_num=len(settings.LANGUAGES)
-)
+    model=SiteText, form=SiteTextForm, max_num=len(settings.LANGUAGES))

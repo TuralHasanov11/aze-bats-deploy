@@ -127,6 +127,13 @@
                     >{{ formset_item.image.label }}:</label
                   >
                   {{formset_item.image}} {{ formset_item.image.errors }}
+                  {% if formset_item.image.value %}
+                  <img
+                    src="{{formset_item.image.value.url}}"
+                    class="my-2"
+                    style="width: 100px; height: 100px"
+                  />
+                  {% endif %}
                 </div>
               </div>
               <hr />

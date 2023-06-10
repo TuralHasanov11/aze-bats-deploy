@@ -23,6 +23,60 @@
       </ul>
     </div>
     <div class="row">
+      <div class="col-xl-10">
+        <h4 class="elements__title">{% translate "Authors" %}</h4>
+      </div>
+    </div>
+    <div class="card card-body mb-5">
+      <div class="table-responsive">
+        <table class="table align-middle table-striped table-hover">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">{% translate "Name" %}</th>
+              <th scope="col">{% translate "Image" %}</th>
+              <th scope="col">{% translate "Operations" %}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for author in authors %}
+            <tr class="data-row">
+              <td>{{author.id}}</td>
+              <td>
+                {% for item in author.author_attributes.all %}
+                <li class="list-unstyled">
+                  {{item.name}} - {{item.language|upper}}
+                </li>
+                {% endfor %}
+              </td>
+              <td>
+                <img
+                  style="width: 60px; height: 60px"
+                  src="{{author.cover_image.url}}"
+                  class="rounded"
+                />
+              </td>
+              <td>
+                <a
+                  class="btn btn-warning"
+                  href="{% url 'administration:author-update' id=author.id %}"
+                  >{% translate "Edit" %}</a
+                >
+                <button
+                  type="button"
+                  class="btn btn-danger btn-delete"
+                  data-url="{% url 'administration:author-delete' id=author.id %}"
+                >
+                  {% translate "Delete" %}
+                </button>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row">
       <div class="col-12">
         <div class="heading heading--primary heading--center">
           <h2 class="heading__title no-margin-bottom">
@@ -96,62 +150,6 @@
           </div>
           {% csrf_token %}
         </form>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-xl-10">
-        <h4 class="elements__title">{% translate "Authors" %}</h4>
-      </div>
-    </div>
-    <div class="card card-body my-3">
-      <div class="table-responsive">
-        <table class="table align-middle table-striped table-hover">
-          <thead class="table-dark">
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">{% translate "Name" %}</th>
-              <th scope="col">{% translate "Image" %}</th>
-              <th scope="col">{% translate "Operations" %}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for author in authors %}
-            <tr class="data-row">
-              <td>{{author.id}}</td>
-              <td>
-                {% for item in author.author_attributes.all %}
-                <li class="list-unstyled">
-                  {{item.name}} - {{item.language|upper}}
-                </li>
-                {% endfor %}
-              </td>
-              <td>
-                <img
-                  style="width: 60px; height: 60px"
-                  src="{{author.cover_image.url}}"
-                  class="rounded"
-                />
-              </td>
-              <td>
-                <a
-                  class="btn btn-warning"
-                  href="{% url 'administration:author-update-delete' id=author.id %}"
-                  >{% translate "Edit" %}</a
-                >
-                <button
-                  type="button"
-                  class="btn btn-danger btn-delete"
-                  data-url="{% url 'administration:author-update-delete' id=author.id %}"
-                >
-                  {% translate "Delete" %}
-                </button>
-              </td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
       </div>
     </div>
   </div>

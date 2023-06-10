@@ -30,6 +30,8 @@ class ImageField(models.ImageField):
     def __init__(self, *args, **kwargs):
         if "directory" in kwargs:
             directory = kwargs.pop('directory')
+        else:
+            directory = "uploads"
         uploader = helpers.UploadImageStrategy(directory)
         kwargs['upload_to'] = uploader.uploadTo
         super().__init__(*args, **kwargs)

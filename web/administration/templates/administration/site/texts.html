@@ -1,0 +1,104 @@
+{% extends 'app.html' %} {% load static %} {% block stylesheet %}
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+{% endblock stylesheet %} {% load i18n %} {% block title %}{% translate "Admin"
+%} - {% translate "Site Info" %} {% endblock title %} {% block content %}
+<section class="section">
+  <div class="container py-5">
+    <div class="bottom-40">
+      <ul class="breadcrumbs breadcrumbs--with-dot">
+        <li class="breadcrumbs__item">
+          <a
+            class="breadcrumbs__link"
+            href="{% url 'administration:dashboard' %}"
+            >{% translate "Dashboard" %}</a
+          >
+        </li>
+        <li class="breadcrumbs__item">
+          <a
+            class="breadcrumbs__link"
+            href="{% url 'administration:site-info' %}"
+            >{% translate "Articles" %}</a
+          >
+        </li>
+        <li class="breadcrumbs__item breadcrumbs__item--active">
+            {% translate "Site Info" %}
+        </li>
+      </ul>
+    </div>
+    <div class="row bottom-50">
+      <div class="col-12 bottom-20">
+        <div class="heading heading--primary heading--center">
+          <h2 class="heading__title no-margin-bottom">
+            <span>{% translate "Edit" %} - {% translate "Site Info" %}</span>
+          </h2>
+        </div>
+      </div>
+    </div>
+    <div class="container my-3">
+      {% include 'components/messages.html' with messages=messages %}
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <form class="form" method="post" enctype="multipart/form-data">
+          {{ formset.media }}
+          <div class="card card-body">
+            {% include "components/form/hidden_fields.html" with hidden_fields=formset.hidden_fields %}
+            {{formset.non_form_errors}}
+            <div class="row">
+                {{ formset.management_form }} 
+              {% for formset_item in formset %} 
+              {% include "components/form/hidden_fields.html" with hidden_fields=formset_item.hidden_fields %} 
+              {{formset_item.non_form_errors}} {{ formset_item.media }}
+              <h5 class="fw-bold">{{formset_item.language.value|upper}}</h5>
+              <div class="row">
+                <div class="col-12 bottom-20">
+                  <label
+                    class="form-label"
+                    for="{{ formset_item.language.id_for_label }}"
+                    >{{ formset_item.language.label }}</label
+                  >
+                  {{formset_item.language}} {{ formset_item.language.errors }}
+                </div>
+                <div class="col-12 bottom-20">
+                    <label
+                      class="form-label"
+                      for="{{ formset_item.about.id_for_label }}"
+                      >{{ formset_item.about.label }}</label
+                    >
+                    {{formset_item.about}} {{ formset_item.about.errors }}
+                  </div>
+                  <div class="col-12 bottom-20">
+                    <label
+                      class="form-label"
+                      for="{{ formset_item.banner.id_for_label }}"
+                      >{{ formset_item.banner.label }}</label
+                    >
+                    {{formset_item.banner}} {{ formset_item.banner.errors }}
+                  </div>
+                  <div class="col-12 bottom-20">
+                    <label
+                      class="form-label"
+                      for="{{ formset_item.privacy_policy.id_for_label }}"
+                      >{{ formset_item.privacy_policy.label }}</label
+                    >
+                    {{formset_item.privacy_policy}} {{ formset_item.privacy_policy.errors }}
+                  </div>
+              </div>
+              <hr />
+              {% endfor %}
+
+              <div class="col-12 bottom-20 text-center">
+                <button class="form__submit text_decoration-none" type="submit">
+                  {% translate "Save" %}
+                </button>
+              </div>
+            </div>
+          </div>
+          {% csrf_token %}
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock content%}

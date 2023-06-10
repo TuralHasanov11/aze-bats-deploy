@@ -50,13 +50,13 @@
               <td>
                 <a
                   class="btn btn-warning"
-                  href="{% url 'administration:project-update-delete' id=project.id %}"
+                  href="{% url 'administration:project-update' id=project.id %}"
                   >{% translate "Edit" %}</a
                 >
                 <button
                   type="button"
                   class="btn btn-danger btn-delete"
-                  data-url="{% url 'administration:project-update-delete' id=project.id %}"
+                  data-url="{% url 'administration:project-delete' id=project.id %}"
                 >
                   {% translate "Delete" %}
                 </button>

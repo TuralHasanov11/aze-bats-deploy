@@ -2,26 +2,31 @@ from bats import models
 from django.contrib import admin
 
 
-class SpeciesImageInlineAdmin(admin.StackedInline):
-    model= models.SpeciesImage
+class BatImageInlineAdmin(admin.StackedInline):
+    model= models.BatImage
 
-class SpeciesAttributesInlineAdmin(admin.StackedInline):
-    model= models.SpeciesAttributes
+class BatAttributesInlineAdmin(admin.StackedInline):
+    model= models.BatAttributes
 
-class SpeciesImageInlineAdmin(admin.StackedInline):
-    model= models.SpeciesImage
 
-class SpeciesRedBookInlineAdmin(admin.StackedInline):
-    model= models.SpeciesRedBook
+class BatImageInlineAdmin(admin.StackedInline):
+    model= models.BatImage
 
-@admin.register(models.Species)
-class SpeciesAdmin(admin.ModelAdmin):
+
+class BatRedBookInlineAdmin(admin.StackedInline):
+    model= models.BatRedBook
+
+
+@admin.register(models.Bat)
+class BatAdmin(admin.ModelAdmin):
     list_display = ("name", "is_red_book", 'genus', 'created_at')
     prepopulated_fields = {"slug": ("name",)}  
-    inlines= [SpeciesImageInlineAdmin, SpeciesAttributesInlineAdmin, SpeciesRedBookInlineAdmin]
+    inlines= [BatImageInlineAdmin, BatAttributesInlineAdmin, BatRedBookInlineAdmin]
+
 
 @admin.register(models.Genus)
 class GenusModel(admin.ModelAdmin):
+    list_display = ("name", "family")
     prepopulated_fields = {"slug": ("name",)}  
 
 @admin.register(models.Family)

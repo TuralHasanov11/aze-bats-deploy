@@ -17,6 +17,10 @@ class Article(models.Model):
 class Author(models.Model):
     cover_image = custom_models.ImageField(directory="authors")
 
+    @property
+    def author_attributes_result(self):
+        return self.author_attributes.all().first()
+
 
 class AuthorAttributes(models.Model):
     author = models.ForeignKey(
@@ -31,8 +35,9 @@ class AuthorAttributes(models.Model):
 
 class SiteText(models.Model):
     language = custom_models.LanguageField()
+    banner_title = models.CharField(max_length=255, null=True, blank=True)
     about = models.TextField(null=True, blank=True)
-    banner = custom_models.RichTextEditorField()
+    banner_text = models.TextField(null=True, blank=True)
     privacy_policy = custom_models.RichTextEditorField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -52,6 +57,14 @@ class SiteInfo(models.Model):
     youtube_link = models.URLField(null=True, blank=True)
     banner_image = models.ImageField(
         upload_to="site/", null=True, blank=True, default="site/banner.jpg")
+    article_promo_image = models.ImageField(
+        upload_to="site/", null=True, blank=True, default="site/article_promo_image.jpg")
+    bat_promo_image = models.ImageField(
+        upload_to="site/", null=True, blank=True, default="site/bat_promo_image.jpg")
+    project_promo_image = models.ImageField(
+        upload_to="site/", null=True, blank=True, default="site/project_promo_image.jpg")
+    site_visit_promo_image = models.ImageField(
+        upload_to="site/", null=True, blank=True, default="site/site_visit_promo_image.jpg")
     logo_image = models.ImageField(
         upload_to="site/", null=True, blank=True, default="site/logo.png")
     created_at = models.DateTimeField(auto_now_add=True)

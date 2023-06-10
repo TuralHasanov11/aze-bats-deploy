@@ -1,0 +1,180 @@
+{% extends 'app.html' %} {% load static %} {% block stylesheet %}
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+{% endblock stylesheet %} {% load i18n %} {% block title %}{% translate "Admin"
+%} - {% translate "Site Info" %} {% endblock title %} {% block content %}
+<section class="section">
+  <div class="container py-5">
+    <div class="bottom-40">
+      <ul class="breadcrumbs breadcrumbs--with-dot">
+        <li class="breadcrumbs__item">
+          <a
+            class="breadcrumbs__link"
+            href="{% url 'administration:dashboard' %}"
+            >{% translate "Dashboard" %}</a
+          >
+        </li>
+        <li class="breadcrumbs__item">
+          <a
+            class="breadcrumbs__link"
+            href="{% url 'administration:site-info' %}"
+            >{% translate "Articles" %}</a
+          >
+        </li>
+        <li class="breadcrumbs__item breadcrumbs__item--active">
+            {% translate "Site Info" %}
+        </li>
+      </ul>
+    </div>
+    <div class="row bottom-50">
+      <div class="col-12 bottom-20">
+        <div class="heading heading--primary heading--center">
+          <h2 class="heading__title no-margin-bottom">
+            <span>{% translate "Edit" %} - {% translate "Site Info" %}</span>
+          </h2>
+        </div>
+      </div>
+    </div>
+    <div class="container my-3">
+      {% include 'components/messages.html' with messages=messages %}
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <form class="form" method="post" enctype="multipart/form-data">
+          {{ form.media }}
+          <div class="card card-body">
+            {% include "components/form/hidden_fields.html" with hidden_fields=form.hidden_fields %}
+            {{form.non_form_errors}}
+            <div class="row">
+              <div class="col-12 col-md-6 bottom-20">
+                <label
+                  class="elements__subtitle fs-5"
+                  for="{{ form.phone.id_for_label }}"
+                  >{{ form.phone.label }}</label
+                >
+                {{form.phone}} {{ form.phone.errors }}
+              </div>
+              <div class="col-12 col-md-6 bottom-20">
+                <label
+                  class="elements__subtitle fs-5"
+                  for="{{ form.email.id_for_label }}"
+                  >{{ form.email.label }}</label
+                >
+                {{form.email}} {{ form.email.errors }}
+              </div>
+              <div class="col-12 col-md-6 bottom-20">
+                <label
+                  class="elements__subtitle fs-5"
+                  for="{{ form.facebook_link.id_for_label }}"
+                  >{{ form.facebook_link.label }}</label
+                >
+                {{form.facebook_link}} {{ form.facebook_link.errors }}
+              </div>
+              <div class="col-12 col-md-6 bottom-20">
+                <label
+                  class="elements__subtitle fs-5"
+                  for="{{ form.instagram_link.id_for_label }}"
+                  >{{ form.instagram_link.label }}</label
+                >
+                {{form.instagram_link}} {{ form.instagram_link.errors }}
+              </div>
+              <div class="col-12 col-md-6 bottom-20">
+                <label
+                  class="elements__subtitle fs-5"
+                  for="{{ form.youtube_link.id_for_label }}"
+                  >{{ form.youtube_link.label }}</label
+                >
+                {{form.youtube_link}} {{ form.youtube_link.errors }}
+              </div>
+              <div class="col-12 bottom-20">
+                <label
+                  class="elements__subtitle fs-5"
+                  for="{{ form.banner_image.id_for_label }}"
+                  >{{ form.banner_image.label }}</label
+                >
+                {{form.banner_image}} {{ form.banner_image.errors }}
+                <img
+                    src="{{form.banner_image.value.url}}"
+                    class="my-2"
+                    style="width: 100px; height: 100px"
+                />
+              </div>
+              <div class="col-12 bottom-20">
+                <label
+                  class="elements__subtitle fs-5"
+                  for="{{ form.article_promo_image.id_for_label }}"
+                  >{{ form.article_promo_image.label }}</label
+                >
+                {{form.article_promo_image}} {{ form.article_promo_image.errors }}
+                <img
+                    src="{{form.article_promo_image.value.url}}"
+                    class="my-2"
+                    style="width: 100px; height: 100px"
+                />
+              </div>
+              <div class="col-12 bottom-20">
+                <label
+                  class="elements__subtitle fs-5"
+                  for="{{ form.bat_promo_image.id_for_label }}"
+                  >{{ form.bat_promo_image.label }}</label
+                >
+                {{form.bat_promo_image}} {{ form.bat_promo_image.errors }}
+                <img
+                    src="{{form.bat_promo_image.value.url}}"
+                    class="my-2"
+                    style="width: 100px; height: 100px"
+                />
+              </div>
+              <div class="col-12 bottom-20">
+                <label
+                  class="elements__subtitle fs-5"
+                  for="{{ form.project_promo_image.id_for_label }}"
+                  >{{ form.project_promo_image.label }}</label
+                >
+                {{form.project_promo_image}} {{ form.project_promo_image.errors }}
+                <img
+                    src="{{form.project_promo_image.value.url}}"
+                    class="my-2"
+                    style="width: 100px; height: 100px"
+                />
+              </div>
+              <div class="col-12 bottom-20">
+                <label
+                  class="elements__subtitle fs-5"
+                  for="{{ form.site_visit_promo_image.id_for_label }}"
+                  >{{ form.site_visit_promo_image.label }}</label
+                >
+                {{form.site_visit_promo_image}} {{ form.site_visit_promo_image.errors }}
+                <img
+                    src="{{form.site_visit_promo_image.value.url}}"
+                    class="my-2"
+                    style="width: 100px; height: 100px"
+                />
+              </div>
+              <div class="col-12 bottom-20">
+                <label
+                  class="elements__subtitle fs-5"
+                  for="{{ form.logo_image.id_for_label }}"
+                  >{{ form.logo_image.label }}</label
+                >
+                {{form.logo_image}} {{ form.logo_image.errors }}
+                <img
+                    src="{{form.logo_image.value.url}}"
+                    class="my-2"
+                    style="width: 100px; height: 100px"
+                />
+              </div>
+              <div class="col-12 bottom-20 text-center">
+                <button class="form__submit text_decoration-none" type="submit">
+                  {% translate "Save" %}
+                </button>
+              </div>
+            </div>
+          </div>
+          {% csrf_token %}
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock content%}

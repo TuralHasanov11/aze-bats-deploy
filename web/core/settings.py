@@ -13,12 +13,10 @@ DEBUG = str(os.environ.get("DEBUG")) == "True"
 SITE_URL = os.environ.get("SITE_URL")
 SITE_HOST = os.environ.get("SITE_HOST")
 
-ALLOWED_HOSTS = [SITE_HOST]
-
 if DEBUG:
     ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 else:
-    ALLOWED_HOSTS = [os.environ.get("SITE_URL"), ]
+    ALLOWED_HOSTS = [SITE_HOST]
 
 
 INSTALLED_APPS = [

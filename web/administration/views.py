@@ -26,13 +26,13 @@ from django.views.generic.list import ListView
 
 class LoginView(auth_views.LoginView):
     authentication_form = UserLoginForm
-    redirect_field_name = reverse_lazy("administration:index")
+    redirect_field_name = reverse_lazy("administration:dashboard")
     redirect_authenticated_user = True
     template_name = "administration/auth/login.html"
 
 
 class LogoutView(LoginRequiredMixin, auth_views.LogoutView):
-    next_page = reverse_lazy("main:index")
+    next_page = reverse_lazy("base:index")
 
 
 class DashboardView(LoginRequiredMixin, TemplateView):

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-13 09:52+0100\n"
+"POT-Creation-Date: 2023-06-10 23:22+0200\n"
 "PO-Revision-Date: 2022-11-13 09:49+0400\n"
 "Last-Translator:   <hasanovtural11@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,21 +25,21 @@ msgstr ""
 #: .\administration\templates\administration\projects\list.html:18
 #: .\administration\templates\administration\projects\list.html:24
 #: .\administration\templates\administration\projects\update.html:22
-#: .\base\templates\base\search.html:24 .\core\context_processors.py:21
-#: .\core\context_processors.py:30 .\templates\components\footer.html:52
-#: .\templates\components\statistics.html:28
+#: .\base\templates\base\search.html:40 .\core\context_processors.py:50
+#: .\core\context_processors.py:64 .\core\context_processors.py:81
+#: .\templates\components\statistics.html:31
 msgid "Projects"
 msgstr ""
 
-#: .\activities\templates\activities\visit.html:20 .\administration\forms.py:64
-#: .\administration\forms.py:86 .\administration\forms.py:125
-#: .\administration\forms.py:186 .\administration\forms.py:245
-#: .\bats\templates\bats\detail.html:25
+#: .\activities\templates\activities\visit.html:20 .\administration\forms.py:58
+#: .\administration\forms.py:98 .\administration\forms.py:179
+#: .\administration\forms.py:257 .\administration\forms.py:309
+#: .\bats\templates\bats\detail.html:27
 msgid "Description"
 msgstr ""
 
 #: .\activities\templates\activities\visit.html:24
-#: .\administration\forms.py:247
+#: .\administration\forms.py:312
 msgid "Results"
 msgstr ""
 
@@ -49,106 +49,239 @@ msgstr ""
 #: .\administration\templates\administration\visits\list.html:19
 #: .\administration\templates\administration\visits\list.html:25
 #: .\administration\templates\administration\visits\update.html:21
-#: .\base\templates\base\search.html:65 .\core\context_processors.py:23
-#: .\core\context_processors.py:31 .\templates\components\footer.html:55
-#: .\templates\components\statistics.html:38
+#: .\base\templates\base\search.html:90 .\core\context_processors.py:51
+#: .\core\context_processors.py:65 .\core\context_processors.py:83
+#: .\templates\components\statistics.html:44
 msgid "Site Visits"
 msgstr ""
 
-#: .\administration\forms.py:11 .\administration\forms.py:12
-msgid "Username"
-msgstr ""
-
-#: .\administration\forms.py:13 .\administration\forms.py:14
-msgid "Password"
-msgstr ""
-
-#: .\administration\forms.py:19 .\administration\forms.py:34
+#: .\administration\forms.py:14
 msgid "Is it a Red Book specie?"
 msgstr ""
 
-#: .\administration\forms.py:20 .\administration\forms.py:21
-#: .\administration\forms.py:35 .\administration\forms.py:36
-#: .\administration\forms.py:120 .\administration\forms.py:121
-#: .\administration\forms.py:137 .\administration\forms.py:138
-#: .\administration\forms.py:150 .\administration\forms.py:151
-#: .\administration\forms.py:161 .\administration\forms.py:162
-#: .\administration\forms.py:209 .\administration\forms.py:210
-#: .\administration\forms.py:220 .\administration\forms.py:221
-#: .\administration\templates\administration\articles\list.html:84
-#: .\administration\templates\administration\authors\list.html:114
+#: .\administration\forms.py:19 .\administration\forms.py:23
+#: .\administration\forms.py:162 .\administration\forms.py:166
+#: .\administration\forms.py:198 .\administration\forms.py:202
+#: .\administration\forms.py:235 .\administration\forms.py:239
+#: .\administration\forms.py:291 .\administration\forms.py:293
+#: .\administration\forms.py:558 .\administration\forms.py:562
+#: .\administration\forms.py:575 .\administration\forms.py:579
+#: .\administration\templates\administration\articles\list.html:39
+#: .\administration\templates\administration\authors\list.html:36
 #: .\administration\templates\administration\bats\list.html:44
+#: .\administration\templates\administration\families\list.html:39
+#: .\administration\templates\administration\genus\list.html:39
 #: .\administration\templates\administration\visits\list.html:42
 msgid "Name"
 msgstr ""
 
-#: .\administration\forms.py:22 .\administration\forms.py:37
+#: .\administration\forms.py:24 .\administration\forms.py:167
+#: .\administration\forms.py:203 .\administration\forms.py:240
+#: .\administration\forms.py:563 .\administration\forms.py:580
+msgid "Please enter name"
+msgstr ""
+
+#: .\administration\forms.py:29
 #: .\administration\templates\administration\bats\list.html:45
-#: .\bats\templates\bats\detail.html:47
+#: .\administration\templates\administration\genus\list.html:7
+#: .\administration\templates\administration\genus\list.html:21
+#: .\administration\templates\administration\genus\list.html:27
+#: .\administration\templates\administration\genus\update.html:20
+#: .\bats\models.py:26 .\bats\templates\bats\detail.html:49
+#: .\core\context_processors.py:95
 msgid "Genus"
 msgstr ""
 
-#: .\administration\forms.py:22 .\administration\forms.py:37
+#: .\administration\forms.py:30
 msgid "Select Genus"
 msgstr ""
 
-#: .\administration\forms.py:24 .\administration\forms.py:39
-#: .\administration\forms.py:111 .\administration\forms.py:152
-#: .\administration\forms.py:163 .\administration\forms.py:211
-#: .\administration\forms.py:222
+#: .\administration\forms.py:32
+msgid "Please enter genus"
+msgstr ""
+
+#: .\administration\forms.py:37 .\administration\forms.py:148
+#: .\administration\forms.py:245 .\administration\forms.py:297
 #: .\administration\templates\administration\bats\list.html:46
 msgid "Cover Image"
 msgstr ""
 
-#: .\administration\forms.py:61 .\administration\forms.py:83
-#: .\administration\forms.py:122 .\administration\forms.py:183
-#: .\administration\forms.py:242 .\templates\components\menu.html:35
-#: .\templates\components\menu.html:116
+#: .\administration\forms.py:51 .\administration\forms.py:91
+#: .\administration\forms.py:172 .\administration\forms.py:252
+#: .\administration\forms.py:304 .\administration\forms.py:508
+#: .\templates\components\menu.html:30 .\templates\components\menu.html:103
 msgid "Language"
 msgstr ""
 
-#: .\administration\forms.py:66 .\bats\templates\bats\detail.html:27
+#: .\administration\forms.py:53 .\administration\forms.py:93
+#: .\administration\forms.py:174
+msgid "Please enter language"
+msgstr ""
+
+#: .\administration\forms.py:61 .\bats\templates\bats\detail.html:29
 msgid "Distribution"
 msgstr ""
 
-#: .\administration\forms.py:68 .\bats\templates\bats\detail.html:29
+#: .\administration\forms.py:64 .\bats\templates\bats\detail.html:31
 msgid "Biology"
 msgstr ""
 
-#: .\administration\forms.py:70 .\bats\templates\bats\detail.html:31
+#: .\administration\forms.py:67 .\bats\templates\bats\detail.html:33
 msgid "Conservation"
 msgstr ""
 
-#: .\administration\forms.py:72 .\bats\templates\bats\detail.html:33
+#: .\administration\forms.py:70 .\bats\templates\bats\detail.html:35
 msgid "Habitat"
 msgstr ""
 
-#: .\administration\forms.py:74 .\bats\templates\bats\detail.html:35
+#: .\administration\forms.py:73 .\bats\templates\bats\detail.html:37
 msgid "Threats"
 msgstr ""
 
-#: .\administration\forms.py:94 .\administration\forms.py:194
-#: .\administration\forms.py:255
-#: .\administration\templates\administration\authors\list.html:115
+#: .\administration\forms.py:110 .\administration\forms.py:267
+#: .\administration\forms.py:322
+#: .\administration\templates\administration\authors\list.html:37
 #: .\administration\templates\administration\bats\create.html:171
 #: .\administration\templates\administration\bats\update.html:189
-#: .\administration\templates\administration\projects\create.html:110
-#: .\administration\templates\administration\projects\update.html:131
-#: .\administration\templates\administration\visits\create.html:118
-#: .\administration\templates\administration\visits\update.html:140
-#: .\venv\Lib\site-packages\django\db\models\fields\files.py:392
+#: .\administration\templates\administration\projects\create.html:91
+#: .\administration\templates\administration\projects\update.html:98
+#: .\administration\templates\administration\visits\create.html:100
+#: .\administration\templates\administration\visits\update.html:105
 msgid "Image"
 msgstr ""
 
-#: .\administration\forms.py:139 .\administration\forms.py:140
+#: .\administration\forms.py:208 .\administration\forms.py:212
 msgid "Link"
 msgstr ""
 
-#: .\administration\forms.py:141 .\administration\forms.py:142
-#: .\administration\templates\administration\articles\list.html:85
-#: .\administration\templates\administration\authors\list.html:53
-#: .\administration\templates\administration\authors\update.html:51
+#: .\administration\forms.py:213
+msgid "Please enter link"
+msgstr ""
+
+#: .\administration\forms.py:218 .\administration\forms.py:222
+#: .\administration\templates\administration\articles\list.html:40
+#: .\administration\templates\administration\authors\list.html:109
+#: .\administration\templates\administration\authors\update.html:56
 msgid "Author"
+msgstr ""
+
+#: .\administration\forms.py:223
+msgid "Please enter author name"
+msgstr ""
+
+#: .\administration\forms.py:346 .\administration\forms.py:350
+msgid "Username"
+msgstr ""
+
+#: .\administration\forms.py:351
+msgid "Please enter username"
+msgstr ""
+
+#: .\administration\forms.py:356 .\administration\forms.py:360
+msgid "Password"
+msgstr ""
+
+#: .\administration\forms.py:361
+msgid "Please enter password"
+msgstr ""
+
+#: .\administration\forms.py:372 .\administration\forms.py:376
+#: .\templates\components\footer.html:11 .\templates\components\header.html:25
+msgid "Phone"
+msgstr ""
+
+#: .\administration\forms.py:377
+msgid "Please enter phone"
+msgstr ""
+
+#: .\administration\forms.py:383 .\administration\forms.py:387
+#: .\templates\components\footer.html:15
+msgid "Email"
+msgstr ""
+
+#: .\administration\forms.py:388
+msgid "Please enter email"
+msgstr ""
+
+#: .\administration\forms.py:394 .\administration\forms.py:398
+msgid "Facebook link"
+msgstr ""
+
+#: .\administration\forms.py:399
+msgid "Please enter facebook link"
+msgstr ""
+
+#: .\administration\forms.py:405 .\administration\forms.py:409
+msgid "Instagram link"
+msgstr ""
+
+#: .\administration\forms.py:410
+msgid "Please enter instagram link"
+msgstr ""
+
+#: .\administration\forms.py:416 .\administration\forms.py:420
+msgid "YouTube link"
+msgstr ""
+
+#: .\administration\forms.py:421
+msgid "Please enter youtube link"
+msgstr ""
+
+#: .\administration\forms.py:427 .\administration\forms.py:431
+msgid "Banner Image"
+msgstr ""
+
+#: .\administration\forms.py:438
+msgid "Project Promo Image"
+msgstr ""
+
+#: .\administration\forms.py:448
+msgid "Site Visit Promo Image"
+msgstr ""
+
+#: .\administration\forms.py:458
+msgid "Article Promo Image"
+msgstr ""
+
+#: .\administration\forms.py:468
+msgid "Bat Promo Image"
+msgstr ""
+
+#: .\administration\forms.py:478 .\administration\forms.py:482
+msgid "Logo Image"
+msgstr ""
+
+#: .\administration\forms.py:513
+msgid "Please select language"
+msgstr ""
+
+#: .\administration\forms.py:520 .\administration\forms.py:524
+#: .\base\templates\base\about.html:4 .\core\context_processors.py:53
+#: .\core\context_processors.py:70
+msgid "About Us"
+msgstr ""
+
+#: .\administration\forms.py:531 .\administration\forms.py:535
+msgid "Banner"
+msgstr ""
+
+#: .\administration\forms.py:542 .\base\templates\base\privacy_policy.html:4
+#: .\core\context_processors.py:54
+msgid "Privacy Policy"
+msgstr ""
+
+#: .\administration\forms.py:585
+#: .\administration\templates\administration\genus\list.html:40
+#: .\bats\templates\bats\detail.html:48
+msgid "Family"
+msgstr ""
+
+#: .\administration\forms.py:586
+msgid "Select Family"
+msgstr ""
+
+#: .\administration\forms.py:588
+msgid "Please enter family"
 msgstr ""
 
 #: .\administration\models.py:9
@@ -163,11 +296,11 @@ msgstr ""
 msgid "Image field"
 msgstr ""
 
-#: .\administration\models.py:36
+#: .\administration\models.py:41
 msgid "Slug field"
 msgstr ""
 
-#: .\administration\models.py:47
+#: .\administration\models.py:52
 msgid "Name field"
 msgstr ""
 
@@ -180,23 +313,27 @@ msgstr ""
 #: .\administration\templates\administration\bats\update.html:5
 #: .\administration\templates\administration\dashboard.html:4
 #: .\administration\templates\administration\dashboard.html:15
+#: .\administration\templates\administration\families\list.html:7
+#: .\administration\templates\administration\genus\list.html:7
 #: .\administration\templates\administration\projects\create.html:5
 #: .\administration\templates\administration\projects\list.html:2
 #: .\administration\templates\administration\projects\update.html:5
 #: .\administration\templates\administration\visits\create.html:4
 #: .\administration\templates\administration\visits\list.html:2
 #: .\administration\templates\administration\visits\update.html:4
-#: .\templates\components\header.html:85 .\templates\components\menu.html:16
-#: .\templates\components\menu.html:81
+#: .\templates\components\header.html:30 .\templates\components\menu.html:11
+#: .\templates\components\menu.html:68
 msgid "Admin"
 msgstr ""
 
 #: .\administration\templates\administration\articles\list.html:7
 #: .\administration\templates\administration\articles\list.html:21
-#: .\administration\templates\administration\articles\list.html:75
+#: .\administration\templates\administration\articles\list.html:27
 #: .\administration\templates\administration\articles\update.html:20
-#: .\base\templates\base\articles.html:1 .\core\context_processors.py:25
-#: .\core\context_processors.py:35 .\templates\components\footer.html:58
+#: .\administration\templates\administration\site\info.html:20
+#: .\administration\templates\administration\site\texts.html:20
+#: .\base\templates\base\articles.html:4 .\core\context_processors.py:52
+#: .\core\context_processors.py:69 .\core\context_processors.py:85
 msgid "Articles"
 msgstr ""
 
@@ -209,59 +346,86 @@ msgstr ""
 #: .\administration\templates\administration\bats\list.html:17
 #: .\administration\templates\administration\bats\update.html:15
 #: .\administration\templates\administration\dashboard.html:4
+#: .\administration\templates\administration\families\list.html:17
+#: .\administration\templates\administration\families\update.html:13
+#: .\administration\templates\administration\genus\list.html:17
+#: .\administration\templates\administration\genus\update.html:13
 #: .\administration\templates\administration\projects\create.html:15
 #: .\administration\templates\administration\projects\list.html:14
 #: .\administration\templates\administration\projects\update.html:15
+#: .\administration\templates\administration\site\info.html:13
+#: .\administration\templates\administration\site\texts.html:13
 #: .\administration\templates\administration\visits\create.html:14
 #: .\administration\templates\administration\visits\list.html:15
 #: .\administration\templates\administration\visits\update.html:14
 msgid "Dashboard"
 msgstr ""
 
-#: .\administration\templates\administration\articles\list.html:29
-msgid "Add article"
-msgstr ""
-
-#: .\administration\templates\administration\articles\list.html:61
-#: .\administration\templates\administration\articles\update.html:75
-#: .\administration\templates\administration\authors\list.html:94
-#: .\administration\templates\administration\authors\update.html:103
-#: .\administration\templates\administration\bats\create.html:223
-#: .\administration\templates\administration\bats\update.html:274
-#: .\administration\templates\administration\projects\create.html:127
-#: .\administration\templates\administration\projects\update.html:164
-#: .\administration\templates\administration\visits\create.html:135
-#: .\administration\templates\administration\visits\update.html:173
-msgid "Save"
-msgstr ""
-
-#: .\administration\templates\administration\articles\list.html:86
-#: .\administration\templates\administration\authors\list.html:116
+#: .\administration\templates\administration\articles\list.html:41
+#: .\administration\templates\administration\authors\list.html:38
 #: .\administration\templates\administration\bats\list.html:47
+#: .\administration\templates\administration\families\list.html:40
+#: .\administration\templates\administration\genus\list.html:41
 #: .\administration\templates\administration\visits\list.html:43
 msgid "Operations"
 msgstr ""
 
-#: .\administration\templates\administration\articles\list.html:101
+#: .\administration\templates\administration\articles\list.html:56
 #: .\administration\templates\administration\articles\update.html:32
-#: .\administration\templates\administration\authors\list.html:141
+#: .\administration\templates\administration\authors\list.html:63
 #: .\administration\templates\administration\authors\update.html:20
 #: .\administration\templates\administration\bats\list.html:67
 #: .\administration\templates\administration\bats\update.html:34
+#: .\administration\templates\administration\families\list.html:52
+#: .\administration\templates\administration\families\update.html:32
+#: .\administration\templates\administration\genus\list.html:54
+#: .\administration\templates\administration\genus\update.html:32
 #: .\administration\templates\administration\projects\list.html:54
 #: .\administration\templates\administration\projects\update.html:34
+#: .\administration\templates\administration\site\info.html:32
+#: .\administration\templates\administration\site\texts.html:32
 #: .\administration\templates\administration\visits\list.html:55
 #: .\administration\templates\administration\visits\update.html:33
 msgid "Edit"
 msgstr ""
 
-#: .\administration\templates\administration\articles\list.html:108
-#: .\administration\templates\administration\authors\list.html:148
+#: .\administration\templates\administration\articles\list.html:63
+#: .\administration\templates\administration\authors\list.html:70
+#: .\administration\templates\administration\authors\update.html:119
 #: .\administration\templates\administration\bats\list.html:74
+#: .\administration\templates\administration\bats\update.html:293
+#: .\administration\templates\administration\families\list.html:59
+#: .\administration\templates\administration\families\update.html:72
+#: .\administration\templates\administration\genus\list.html:61
+#: .\administration\templates\administration\genus\update.html:80
 #: .\administration\templates\administration\projects\list.html:61
+#: .\administration\templates\administration\projects\update.html:150
 #: .\administration\templates\administration\visits\list.html:62
-#: .\venv\Lib\site-packages\django\forms\formsets.py:496
+#: .\administration\templates\administration\visits\update.html:157
 msgid "Delete"
+msgstr ""
+
+#: .\administration\templates\administration\articles\list.html:83
+msgid "Add article"
+msgstr ""
+
+#: .\administration\templates\administration\articles\list.html:112
+#: .\administration\templates\administration\articles\update.html:75
+#: .\administration\templates\administration\authors\list.html:150
+#: .\administration\templates\administration\authors\update.html:108
+#: .\administration\templates\administration\bats\create.html:223
+#: .\administration\templates\administration\bats\update.html:281
+#: .\administration\templates\administration\families\list.html:90
+#: .\administration\templates\administration\families\update.html:58
+#: .\administration\templates\administration\genus\list.html:98
+#: .\administration\templates\administration\genus\update.html:66
+#: .\administration\templates\administration\projects\create.html:108
+#: .\administration\templates\administration\projects\update.html:138
+#: .\administration\templates\administration\site\info.html:168
+#: .\administration\templates\administration\site\texts.html:92
+#: .\administration\templates\administration\visits\create.html:117
+#: .\administration\templates\administration\visits\update.html:145
+msgid "Save"
 msgstr ""
 
 #: .\administration\templates\administration\auth\login.html:13
@@ -271,34 +435,26 @@ msgstr ""
 
 #: .\administration\templates\administration\authors\list.html:4
 #: .\administration\templates\administration\authors\list.html:21
-#: .\administration\templates\administration\authors\list.html:105
+#: .\administration\templates\administration\authors\list.html:27
 #: .\administration\templates\administration\authors\update.html:12
 msgid "Authors"
 msgstr ""
 
-#: .\administration\templates\administration\authors\list.html:29
+#: .\administration\templates\administration\authors\list.html:85
 msgid "Add author"
 msgstr ""
 
-#: .\administration\templates\administration\authors\list.html:53
-#: .\administration\templates\administration\authors\update.html:51
+#: .\administration\templates\administration\authors\list.html:109
+#: .\administration\templates\administration\authors\update.html:56
 #: .\administration\templates\administration\bats\create.html:90
 #: .\administration\templates\administration\bats\update.html:94
-#: .\administration\templates\administration\projects\create.html:69
-#: .\administration\templates\administration\projects\update.html:75
-#: .\administration\templates\administration\visits\create.html:68
-#: .\administration\templates\administration\visits\update.html:75
 msgid "data for different languages"
 msgstr "Data for different languages"
 
-#: .\administration\templates\administration\authors\list.html:60
-#: .\administration\templates\administration\authors\update.html:59
+#: .\administration\templates\administration\authors\list.html:116
+#: .\administration\templates\administration\authors\update.html:64
 #: .\administration\templates\administration\bats\create.html:98
 #: .\administration\templates\administration\bats\update.html:101
-#: .\administration\templates\administration\projects\create.html:77
-#: .\administration\templates\administration\projects\update.html:83
-#: .\administration\templates\administration\visits\create.html:76
-#: .\administration\templates\administration\visits\update.html:83
 msgid "Data"
 msgstr ""
 
@@ -314,10 +470,10 @@ msgstr ""
 #: .\administration\templates\administration\bats\list.html:21
 #: .\administration\templates\administration\bats\list.html:27
 #: .\administration\templates\administration\bats\update.html:22
-#: .\bats\templates\bats\gallery.html:4 .\bats\templates\bats\index.html:4
-#: .\core\context_processors.py:19 .\core\context_processors.py:33
-#: .\templates\components\footer.html:49
-#: .\templates\components\statistics.html:18
+#: .\base\templates\base\search.html:67 .\bats\templates\bats\gallery.html:4
+#: .\bats\templates\bats\index.html:4 .\core\context_processors.py:49
+#: .\core\context_processors.py:67 .\core\context_processors.py:79
+#: .\templates\components\statistics.html:19
 msgid "Bats"
 msgstr ""
 
@@ -328,22 +484,35 @@ msgstr ""
 
 #: .\administration\templates\administration\bats\create.html:163
 #: .\administration\templates\administration\bats\update.html:183
-#: .\administration\templates\administration\projects\create.html:103
-#: .\administration\templates\administration\projects\update.html:124
-#: .\administration\templates\administration\visits\create.html:110
-#: .\administration\templates\administration\visits\update.html:133
+#: .\administration\templates\administration\projects\create.html:84
+#: .\administration\templates\administration\projects\update.html:91
+#: .\administration\templates\administration\visits\create.html:92
+#: .\administration\templates\administration\visits\update.html:98
 msgid "Additional images"
 msgstr ""
 
 #: .\administration\templates\administration\bats\create.html:188
 #: .\administration\templates\administration\bats\create.html:197
-#: .\administration\templates\administration\bats\update.html:223
-#: .\administration\templates\administration\bats\update.html:231
+#: .\administration\templates\administration\bats\update.html:230
+#: .\administration\templates\administration\bats\update.html:238
 msgid "Red Book information"
 msgstr ""
 
 #: .\administration\templates\administration\dashboard.html:27
 msgid "Sections"
+msgstr ""
+
+#: .\administration\templates\administration\families\list.html:7
+#: .\administration\templates\administration\families\list.html:21
+#: .\administration\templates\administration\families\list.html:27
+#: .\administration\templates\administration\families\update.html:20
+#: .\bats\models.py:14 .\core\context_processors.py:93
+msgid "Families"
+msgstr ""
+
+#: .\administration\templates\administration\families\list.html:74
+#: .\administration\templates\administration\genus\list.html:76
+msgid "Add family"
 msgstr ""
 
 #: .\administration\templates\administration\projects\create.html:5
@@ -353,36 +522,93 @@ msgstr ""
 msgid "Add Project"
 msgstr ""
 
-#: .\administration\templates\administration\projects\create.html:69
-#: .\administration\templates\administration\projects\update.html:75
-msgid "Project"
+#: .\administration\templates\administration\site\info.html:4
+#: .\administration\templates\administration\site\info.html:24
+#: .\administration\templates\administration\site\info.html:32
+#: .\administration\templates\administration\site\texts.html:4
+#: .\administration\templates\administration\site\texts.html:24
+#: .\administration\templates\administration\site\texts.html:32
+#: .\core\context_processors.py:89
+msgid "Site Info"
 msgstr ""
 
 #: .\administration\templates\administration\visits\create.html:4
+#: .\administration\templates\administration\visits\create.html:25
+#: .\administration\templates\administration\visits\create.html:33
 #: .\administration\templates\administration\visits\list.html:29
 msgid "Add Site Visit"
 msgstr ""
 
-#: .\administration\templates\administration\visits\create.html:25
-#: .\administration\templates\administration\visits\create.html:33
-msgid "Add site visit"
+#: .\administration\views.py:158
+msgid "Bat deleted!"
 msgstr ""
 
-#: .\administration\templates\administration\visits\create.html:68
-#: .\administration\templates\administration\visits\update.html:75
-msgid "Site Visit"
+#: .\administration\views.py:226
+msgid "Author deleted!"
 msgstr ""
 
-#: .\base\data.py:4
-msgid "Banner Title"
+#: .\administration\views.py:235
+msgid "Article added!"
 msgstr ""
 
-#: .\base\data.py:5
-msgid "Banner Text"
+#: .\administration\views.py:254
+msgid "Article updated!"
+msgstr ""
+
+#: .\administration\views.py:263
+msgid "Article deleted!"
+msgstr ""
+
+#: .\administration\views.py:351
+msgid "Project deleted!"
+msgstr ""
+
+#: .\administration\views.py:439
+msgid "Site Visit deleted!"
+msgstr ""
+
+#: .\administration\views.py:456
+msgid "Site Info saved!"
+msgstr ""
+
+#: .\administration\views.py:458
+msgid "Site Info cannot be saved!"
+msgstr ""
+
+#: .\administration\views.py:472
+msgid "Texts saved!"
+msgstr ""
+
+#: .\administration\views.py:474
+msgid "Texts cannot be saved!"
+msgstr ""
+
+#: .\administration\views.py:485
+msgid "Family added!"
+msgstr ""
+
+#: .\administration\views.py:504
+msgid "Family updated!"
+msgstr ""
+
+#: .\administration\views.py:513
+msgid "Family deleted!"
+msgstr ""
+
+#: .\administration\views.py:522
+msgid "Genus added!"
+msgstr ""
+
+#: .\administration\views.py:541
+msgid "Genus updated!"
+msgstr ""
+
+#: .\administration\views.py:550
+msgid "Genus deleted!"
 msgstr ""
 
 #: .\base\templates\base\index.html:5 .\bats\templates\bats\detail.html:16
-#: .\core\context_processors.py:17 .\templates\components\footer.html:46
+#: .\core\context_processors.py:48 .\core\context_processors.py:62
 msgid "Home"
 msgstr ""
 
@@ -390,12 +616,16 @@ msgstr ""
 msgid "Recent Projects"
 msgstr ""
 
-#: .\base\templates\base\index.html:59
+#: .\base\templates\base\index.html:44
+msgid "Some of the Bats"
+msgstr ""
+
+#: .\base\templates\base\index.html:67
 msgid "Recent Site Visits"
 msgstr ""
 
-#: .\base\templates\base\search.html:4 .\templates\components\header.html:110
-#: .\templates\components\menu.html:44
+#: .\base\templates\base\search.html:4 .\templates\components\header.html:128
+#: .\templates\components\menu.html:39
 msgid "Search"
 msgstr ""
 
@@ -403,19 +633,19 @@ msgstr ""
 msgid "Search results"
 msgstr ""
 
-#: .\bats\templates\bats\detail.html:38
+#: .\base\templates\base\search.html:25
+msgid "No record found according to your search!"
+msgstr ""
+
+#: .\bats\templates\bats\detail.html:40
 msgid "Red Book details"
 msgstr ""
 
-#: .\bats\templates\bats\detail.html:44
+#: .\bats\templates\bats\detail.html:46
 msgid "Scientific classification"
 msgstr ""
 
-#: .\bats\templates\bats\detail.html:46
-msgid "Family"
-msgstr ""
-
-#: .\bats\templates\bats\detail.html:48
+#: .\bats\templates\bats\detail.html:50
 msgid "Specie"
 msgstr ""
 
@@ -423,23 +653,27 @@ msgstr ""
 msgid "All"
 msgstr ""
 
-#: .\core\context_processors.py:27
-msgid "Our Authors"
-msgstr ""
-
-#: .\core\context_processors.py:34
+#: .\core\context_processors.py:68
 msgid "Gallery"
 msgstr ""
 
-#: .\core\settings.py:125
+#: .\core\context_processors.py:87
+msgid "Our Authors"
+msgstr ""
+
+#: .\core\context_processors.py:91
+msgid "Site Texts"
+msgstr ""
+
+#: .\core\settings.py:136
 msgid "English"
 msgstr ""
 
-#: .\core\settings.py:126
+#: .\core\settings.py:137
 msgid "Azerbaijani"
 msgstr ""
 
-#: .\templates\components\article.html:15
+#: .\templates\components\article.html:16
 msgid "Visit"
 msgstr ""
 
@@ -447,1292 +681,29 @@ msgstr ""
 msgid "See bats"
 msgstr ""
 
-#: .\templates\components\banner.html:51
-msgid "Watch our work"
-msgstr ""
-
-#: .\templates\components\bat.html:5 .\templates\components\bat2.html:5
-#: .\templates\components\slider\project.html:7
-#: .\templates\components\slider\visit.html:9
+#: .\templates\components\bat.html:7
+#: .\templates\components\slider\project.html:11
+#: .\templates\components\slider\visit.html:15
 msgid "More"
 msgstr ""
 
-#: .\templates\components\footer.html:16 .\templates\components\header.html:26
-msgid "Phone"
-msgstr ""
-
-#: .\templates\components\footer.html:20
-msgid "Email"
-msgstr ""
-
-#: .\templates\components\footer.html:43
+#: .\templates\components\footer.html:30
 msgid "Menu"
 msgstr ""
 
-#: .\templates\components\header.html:70 .\templates\components\menu.html:28
-#: .\templates\components\menu.html:99
+#: .\templates\components\header.html:82 .\templates\components\menu.html:23
+#: .\templates\components\menu.html:86
 msgid "Activities"
 msgstr ""
 
-#: .\templates\components\header.html:103
+#: .\templates\components\header.html:118
 msgid "Logout"
 msgstr ""
 
-#: .\templates\components\statistics.html:10
+#: .\templates\components\statistics.html:9
 msgid "Our country"
 msgstr ""
 
-#: .\venv\Lib\site-packages\ckeditor_uploader\forms.py:6
-msgid "Search files"
-msgstr ""
-
-#: .\venv\Lib\site-packages\ckeditor_uploader\templates\ckeditor\browse.html:5
-msgid "Select an image to embed"
-msgstr ""
-
-#: .\venv\Lib\site-packages\ckeditor_uploader\templates\ckeditor\browse.html:27
-msgid "Browse for the image you want, then click 'Embed Image' to continue..."
-msgstr ""
-
-#: .\venv\Lib\site-packages\ckeditor_uploader\templates\ckeditor\browse.html:29
-msgid ""
-"No images found. Upload images using the 'Image Button' dialog's 'Upload' "
-"tab."
-msgstr ""
-
-#: .\venv\Lib\site-packages\ckeditor_uploader\templates\ckeditor\browse.html:50
-msgid "Images in: "
-msgstr ""
-
-#: .\venv\Lib\site-packages\ckeditor_uploader\templates\ckeditor\browse.html:62
-#: .\venv\Lib\site-packages\ckeditor_uploader\templates\ckeditor\browse.html:80
-msgid "Embed Image"
-msgstr ""
-
-#: .\venv\Lib\site-packages\ckeditor_uploader\templates\ckeditor\browse.html:146
-msgid "Play Slideshow"
-msgstr ""
-
-#: .\venv\Lib\site-packages\ckeditor_uploader\templates\ckeditor\browse.html:147
-msgid "Pause Slideshow"
-msgstr ""
-
-#: .\venv\Lib\site-packages\ckeditor_uploader\templates\ckeditor\browse.html:148
-msgid "&lsaquo; Previous Photo"
-msgstr ""
-
-#: .\venv\Lib\site-packages\ckeditor_uploader\templates\ckeditor\browse.html:149
-msgid "Next Photo &rsaquo;"
-msgstr ""
-
-#: .\venv\Lib\site-packages\ckeditor_uploader\templates\ckeditor\browse.html:150
-msgid "Next &rsaquo;"
-msgstr ""
-
-#: .\venv\Lib\site-packages\ckeditor_uploader\templates\ckeditor\browse.html:151
-msgid "&lsaquo; Prev"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\contrib\messages\apps.py:15
-msgid "Messages"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\contrib\sitemaps\apps.py:8
-msgid "Site Maps"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\contrib\staticfiles\apps.py:9
-msgid "Static Files"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\contrib\syndication\apps.py:7
-msgid "Syndication"
-msgstr ""
-
-#. Translators: String used to replace omitted page numbers in elided page
-#. range generated by paginators, e.g. [1, 2, '…', 5, 6, 7, '…', 9, 10].
-#: .\venv\Lib\site-packages\django\core\paginator.py:30
-msgid "…"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\core\paginator.py:50
-msgid "That page number is not an integer"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\core\paginator.py:52
-msgid "That page number is less than 1"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\core\paginator.py:57
-msgid "That page contains no results"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\core\validators.py:22
-msgid "Enter a valid value."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\core\validators.py:104
-#: .\venv\Lib\site-packages\django\forms\fields.py:751
-msgid "Enter a valid URL."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\core\validators.py:164
-msgid "Enter a valid integer."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\core\validators.py:175
-msgid "Enter a valid email address."
-msgstr ""
-
-#. Translators: "letters" means latin letters: a-z and A-Z.
-#: .\venv\Lib\site-packages\django\core\validators.py:256
-msgid ""
-"Enter a valid “slug” consisting of letters, numbers, underscores or hyphens."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\core\validators.py:264
-msgid ""
-"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or "
-"hyphens."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\core\validators.py:276
-#: .\venv\Lib\site-packages\django\core\validators.py:284
-#: .\venv\Lib\site-packages\django\core\validators.py:313
-msgid "Enter a valid IPv4 address."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\core\validators.py:293
-#: .\venv\Lib\site-packages\django\core\validators.py:314
-msgid "Enter a valid IPv6 address."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\core\validators.py:305
-#: .\venv\Lib\site-packages\django\core\validators.py:312
-msgid "Enter a valid IPv4 or IPv6 address."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\core\validators.py:348
-msgid "Enter only digits separated by commas."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\core\validators.py:354
-#, python-format
-msgid "Ensure this value is %(limit_value)s (it is %(show_value)s)."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\core\validators.py:389
-#, python-format
-msgid "Ensure this value is less than or equal to %(limit_value)s."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\core\validators.py:398
-#, python-format
-msgid "Ensure this value is greater than or equal to %(limit_value)s."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\core\validators.py:407
-#, python-format
-msgid "Ensure this value is a multiple of step size %(limit_value)s."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\core\validators.py:417
-#, python-format
-msgid ""
-"Ensure this value has at least %(limit_value)d character (it has "
-"%(show_value)d)."
-msgid_plural ""
-"Ensure this value has at least %(limit_value)d characters (it has "
-"%(show_value)d)."
-msgstr[0] ""
-msgstr[1] ""
-
-#: .\venv\Lib\site-packages\django\core\validators.py:435
-#, python-format
-msgid ""
-"Ensure this value has at most %(limit_value)d character (it has "
-"%(show_value)d)."
-msgid_plural ""
-"Ensure this value has at most %(limit_value)d characters (it has "
-"%(show_value)d)."
-msgstr[0] ""
-msgstr[1] ""
-
-#: .\venv\Lib\site-packages\django\core\validators.py:458
-#: .\venv\Lib\site-packages\django\forms\fields.py:347
-#: .\venv\Lib\site-packages\django\forms\fields.py:386
-msgid "Enter a number."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\core\validators.py:460
-#, python-format
-msgid "Ensure that there are no more than %(max)s digit in total."
-msgid_plural "Ensure that there are no more than %(max)s digits in total."
-msgstr[0] ""
-msgstr[1] ""
-
-#: .\venv\Lib\site-packages\django\core\validators.py:465
-#, python-format
-msgid "Ensure that there are no more than %(max)s decimal place."
-msgid_plural "Ensure that there are no more than %(max)s decimal places."
-msgstr[0] ""
-msgstr[1] ""
-
-#: .\venv\Lib\site-packages\django\core\validators.py:470
-#, python-format
-msgid ""
-"Ensure that there are no more than %(max)s digit before the decimal point."
-msgid_plural ""
-"Ensure that there are no more than %(max)s digits before the decimal point."
-msgstr[0] ""
-msgstr[1] ""
-
-#: .\venv\Lib\site-packages\django\core\validators.py:539
-#, python-format
-msgid ""
-"File extension “%(extension)s” is not allowed. Allowed extensions are: "
-"%(allowed_extensions)s."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\core\validators.py:600
-msgid "Null characters are not allowed."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\base.py:1420
-#: .\venv\Lib\site-packages\django\forms\models.py:899
-msgid "and"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\base.py:1422
-#, python-format
-msgid "%(model_name)s with this %(field_labels)s already exists."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\constraints.py:17
-#, python-format
-msgid "Constraint “%(name)s” is violated."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:129
-#, python-format
-msgid "Value %(value)r is not a valid choice."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:130
-msgid "This field cannot be null."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:131
-msgid "This field cannot be blank."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:132
-#, python-format
-msgid "%(model_name)s with this %(field_label)s already exists."
-msgstr ""
-
-#. Translators: The 'lookup_type' is one of 'date', 'year' or
-#. 'month'. Eg: "Title must be unique for pub_date year"
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:136
-#, python-format
-msgid ""
-"%(field_label)s must be unique for %(date_field_label)s %(lookup_type)s."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:174
-#, python-format
-msgid "Field of type: %(field_type)s"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1065
-#, python-format
-msgid "“%(value)s” value must be either True or False."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1066
-#, python-format
-msgid "“%(value)s” value must be either True, False, or None."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1068
-msgid "Boolean (Either True or False)"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1118
-#, python-format
-msgid "String (up to %(max_length)s)"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1222
-msgid "Comma-separated integers"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1323
-#, python-format
-msgid ""
-"“%(value)s” value has an invalid date format. It must be in YYYY-MM-DD "
-"format."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1327
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1462
-#, python-format
-msgid ""
-"“%(value)s” value has the correct format (YYYY-MM-DD) but it is an invalid "
-"date."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1331
-msgid "Date (without time)"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1458
-#, python-format
-msgid ""
-"“%(value)s” value has an invalid format. It must be in YYYY-MM-DD HH:MM[:ss[."
-"uuuuuu]][TZ] format."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1466
-#, python-format
-msgid ""
-"“%(value)s” value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
-"[TZ]) but it is an invalid date/time."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1471
-msgid "Date (with time)"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1595
-#, python-format
-msgid "“%(value)s” value must be a decimal number."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1597
-msgid "Decimal number"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1754
-#, python-format
-msgid ""
-"“%(value)s” value has an invalid format. It must be in [DD] [[HH:]MM:]ss[."
-"uuuuuu] format."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1758
-msgid "Duration"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1810
-msgid "Email address"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1835
-msgid "File path"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1913
-#, python-format
-msgid "“%(value)s” value must be a float."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1915
-msgid "Floating point number"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1955
-#, python-format
-msgid "“%(value)s” value must be an integer."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1957
-msgid "Integer"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2049
-msgid "Big (8 byte) integer"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2066
-msgid "Small integer"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2074
-msgid "IPv4 address"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2105
-msgid "IP address"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2198
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2199
-#, python-format
-msgid "“%(value)s” value must be either None, True or False."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2201
-msgid "Boolean (Either True, False or None)"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2252
-msgid "Positive big integer"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2267
-msgid "Positive integer"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2282
-msgid "Positive small integer"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2298
-#, python-format
-msgid "Slug (up to %(max_length)s)"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2334
-msgid "Text"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2409
-#, python-format
-msgid ""
-"“%(value)s” value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] "
-"format."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2413
-#, python-format
-msgid ""
-"“%(value)s” value has the correct format (HH:MM[:ss[.uuuuuu]]) but it is an "
-"invalid time."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2417
-msgid "Time"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2525
-msgid "URL"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2549
-msgid "Raw binary data"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2614
-#, python-format
-msgid "“%(value)s” is not a valid UUID."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2616
-msgid "Universally unique identifier"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\files.py:232
-msgid "File"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\json.py:18
-msgid "A JSON object"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\json.py:20
-msgid "Value must be valid JSON."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\related.py:920
-#, python-format
-msgid "%(model)s instance with %(field)s %(value)r does not exist."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\related.py:922
-msgid "Foreign Key (type determined by related field)"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\related.py:1229
-msgid "One-to-one relationship"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\related.py:1286
-#, python-format
-msgid "%(from)s-%(to)s relationship"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\related.py:1288
-#, python-format
-msgid "%(from)s-%(to)s relationships"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\related.py:1336
-msgid "Many-to-many relationship"
-msgstr ""
-
-#. Translators: If found as last label character, these punctuation
-#. characters will prevent the default label_suffix to be appended to the label
-#: .\venv\Lib\site-packages\django\forms\boundfield.py:176
-msgid ":?.!"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\fields.py:91
-msgid "This field is required."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\fields.py:298
-msgid "Enter a whole number."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\fields.py:467
-#: .\venv\Lib\site-packages\django\forms\fields.py:1240
-msgid "Enter a valid date."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\fields.py:490
-#: .\venv\Lib\site-packages\django\forms\fields.py:1241
-msgid "Enter a valid time."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\fields.py:517
-msgid "Enter a valid date/time."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\fields.py:551
-msgid "Enter a valid duration."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\fields.py:552
-#, python-brace-format
-msgid "The number of days must be between {min_days} and {max_days}."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\fields.py:618
-msgid "No file was submitted. Check the encoding type on the form."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\fields.py:619
-msgid "No file was submitted."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\fields.py:620
-msgid "The submitted file is empty."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\fields.py:622
-#, python-format
-msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
-msgid_plural ""
-"Ensure this filename has at most %(max)d characters (it has %(length)d)."
-msgstr[0] ""
-msgstr[1] ""
-
-#: .\venv\Lib\site-packages\django\forms\fields.py:627
-msgid "Please either submit a file or check the clear checkbox, not both."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\fields.py:693
-msgid ""
-"Upload a valid image. The file you uploaded was either not an image or a "
-"corrupted image."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\fields.py:856
-#: .\venv\Lib\site-packages\django\forms\fields.py:948
-#: .\venv\Lib\site-packages\django\forms\models.py:1572
-#, python-format
-msgid "Select a valid choice. %(value)s is not one of the available choices."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\fields.py:950
-#: .\venv\Lib\site-packages\django\forms\fields.py:1069
-#: .\venv\Lib\site-packages\django\forms\models.py:1570
-msgid "Enter a list of values."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\fields.py:1070
-msgid "Enter a complete value."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\fields.py:1309
-msgid "Enter a valid UUID."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\fields.py:1339
-msgid "Enter a valid JSON."
-msgstr ""
-
-#. Translators: This is the default suffix added to form field labels
-#: .\venv\Lib\site-packages\django\forms\forms.py:98
-msgid ":"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\forms.py:248
-#: .\venv\Lib\site-packages\django\forms\forms.py:332
-#, python-format
-msgid "(Hidden field %(name)s) %(error)s"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\formsets.py:63
-#, python-format
-msgid ""
-"ManagementForm data is missing or has been tampered with. Missing fields: "
-"%(field_names)s. You may need to file a bug report if the issue persists."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\formsets.py:67
-#, python-format
-msgid "Please submit at most %(num)d form."
-msgid_plural "Please submit at most %(num)d forms."
-msgstr[0] ""
-msgstr[1] ""
-
-#: .\venv\Lib\site-packages\django\forms\formsets.py:72
-#, python-format
-msgid "Please submit at least %(num)d form."
-msgid_plural "Please submit at least %(num)d forms."
-msgstr[0] ""
-msgstr[1] ""
-
-#: .\venv\Lib\site-packages\django\forms\formsets.py:483
-#: .\venv\Lib\site-packages\django\forms\formsets.py:490
-msgid "Order"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\models.py:892
-#, python-format
-msgid "Please correct the duplicate data for %(field)s."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\models.py:897
-#, python-format
-msgid "Please correct the duplicate data for %(field)s, which must be unique."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\models.py:904
-#, python-format
-msgid ""
-"Please correct the duplicate data for %(field_name)s which must be unique "
-"for the %(lookup)s in %(date_field)s."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\models.py:913
-msgid "Please correct the duplicate values below."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\models.py:1344
-msgid "The inline value did not match the parent instance."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\models.py:1435
-msgid "Select a valid choice. That choice is not one of the available choices."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\models.py:1574
-#, python-format
-msgid "“%(pk)s” is not a valid value."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\utils.py:226
-#, python-format
-msgid ""
-"%(datetime)s couldn’t be interpreted in time zone %(current_timezone)s; it "
-"may be ambiguous or it may not exist."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\widgets.py:439
-msgid "Clear"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\widgets.py:440
-msgid "Currently"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\widgets.py:441
-msgid "Change"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\widgets.py:770
-msgid "Unknown"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\widgets.py:771
-msgid "Yes"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\widgets.py:772
-msgid "No"
-msgstr ""
-
-#. Translators: Please do not add spaces around commas.
-#: .\venv\Lib\site-packages\django\template\defaultfilters.py:853
-msgid "yes,no,maybe"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\template\defaultfilters.py:883
-#: .\venv\Lib\site-packages\django\template\defaultfilters.py:900
-#, python-format
-msgid "%(size)d byte"
-msgid_plural "%(size)d bytes"
-msgstr[0] ""
-msgstr[1] ""
-
-#: .\venv\Lib\site-packages\django\template\defaultfilters.py:902
-#, python-format
-msgid "%s KB"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\template\defaultfilters.py:904
-#, python-format
-msgid "%s MB"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\template\defaultfilters.py:906
-#, python-format
-msgid "%s GB"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\template\defaultfilters.py:908
-#, python-format
-msgid "%s TB"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\template\defaultfilters.py:910
-#, python-format
-msgid "%s PB"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dateformat.py:77
-msgid "p.m."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dateformat.py:78
-msgid "a.m."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dateformat.py:83
-msgid "PM"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dateformat.py:84
-msgid "AM"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dateformat.py:155
-msgid "midnight"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dateformat.py:157
-msgid "noon"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:7
-msgid "Monday"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:8
-msgid "Tuesday"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:9
-msgid "Wednesday"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:10
-msgid "Thursday"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:11
-msgid "Friday"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:12
-msgid "Saturday"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:13
-msgid "Sunday"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:16
-msgid "Mon"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:17
-msgid "Tue"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:18
-msgid "Wed"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:19
-msgid "Thu"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:20
-msgid "Fri"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:21
-msgid "Sat"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:22
-msgid "Sun"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:25
-msgid "January"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:26
-msgid "February"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:27
-msgid "March"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:28
-msgid "April"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:29
-msgid "May"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:30
-msgid "June"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:31
-msgid "July"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:32
-msgid "August"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:33
-msgid "September"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:34
-msgid "October"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:35
-msgid "November"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:36
-msgid "December"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:39
-msgid "jan"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:40
-msgid "feb"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:41
-msgid "mar"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:42
-msgid "apr"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:43
-msgid "may"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:44
-msgid "jun"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:45
-msgid "jul"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:46
-msgid "aug"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:47
-msgid "sep"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:48
-msgid "oct"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:49
-msgid "nov"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:50
-msgid "dec"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:53
-msgctxt "abbrev. month"
-msgid "Jan."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:54
-msgctxt "abbrev. month"
-msgid "Feb."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:55
-msgctxt "abbrev. month"
-msgid "March"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:56
-msgctxt "abbrev. month"
-msgid "April"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:57
-msgctxt "abbrev. month"
-msgid "May"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:58
-msgctxt "abbrev. month"
-msgid "June"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:59
-msgctxt "abbrev. month"
-msgid "July"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:60
-msgctxt "abbrev. month"
-msgid "Aug."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:61
-msgctxt "abbrev. month"
-msgid "Sept."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:62
-msgctxt "abbrev. month"
-msgid "Oct."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:63
-msgctxt "abbrev. month"
-msgid "Nov."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:64
-msgctxt "abbrev. month"
-msgid "Dec."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:67
-msgctxt "alt. month"
-msgid "January"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:68
-msgctxt "alt. month"
-msgid "February"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:69
-msgctxt "alt. month"
-msgid "March"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:70
-msgctxt "alt. month"
-msgid "April"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:71
-msgctxt "alt. month"
-msgid "May"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:72
-msgctxt "alt. month"
-msgid "June"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:73
-msgctxt "alt. month"
-msgid "July"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:74
-msgctxt "alt. month"
-msgid "August"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:75
-msgctxt "alt. month"
-msgid "September"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:76
-msgctxt "alt. month"
-msgid "October"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:77
-msgctxt "alt. month"
-msgid "November"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:78
-msgctxt "alt. month"
-msgid "December"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\ipv6.py:8
-msgid "This is not a valid IPv6 address."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\text.py:76
-#, python-format
-msgctxt "String to return when truncating text"
-msgid "%(truncated_text)s…"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\text.py:252
-msgid "or"
-msgstr ""
-
-#. Translators: This string is used as a separator between list elements
-#: .\venv\Lib\site-packages\django\utils\text.py:271
-#: .\venv\Lib\site-packages\django\utils\timesince.py:94
-msgid ", "
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\timesince.py:9
-#, python-format
-msgid "%(num)d year"
-msgid_plural "%(num)d years"
-msgstr[0] ""
-msgstr[1] ""
-
-#: .\venv\Lib\site-packages\django\utils\timesince.py:10
-#, python-format
-msgid "%(num)d month"
-msgid_plural "%(num)d months"
-msgstr[0] ""
-msgstr[1] ""
-
-#: .\venv\Lib\site-packages\django\utils\timesince.py:11
-#, python-format
-msgid "%(num)d week"
-msgid_plural "%(num)d weeks"
-msgstr[0] ""
-msgstr[1] ""
-
-#: .\venv\Lib\site-packages\django\utils\timesince.py:12
-#, python-format
-msgid "%(num)d day"
-msgid_plural "%(num)d days"
-msgstr[0] ""
-msgstr[1] ""
-
-#: .\venv\Lib\site-packages\django\utils\timesince.py:13
-#, python-format
-msgid "%(num)d hour"
-msgid_plural "%(num)d hours"
-msgstr[0] ""
-msgstr[1] ""
-
-#: .\venv\Lib\site-packages\django\utils\timesince.py:14
-#, python-format
-msgid "%(num)d minute"
-msgid_plural "%(num)d minutes"
-msgstr[0] ""
-msgstr[1] ""
-
-#: .\venv\Lib\site-packages\django\views\csrf.py:111
-msgid "Forbidden"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\csrf.py:112
-msgid "CSRF verification failed. Request aborted."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\csrf.py:116
-msgid ""
-"You are seeing this message because this HTTPS site requires a “Referer "
-"header” to be sent by your web browser, but none was sent. This header is "
-"required for security reasons, to ensure that your browser is not being "
-"hijacked by third parties."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\csrf.py:122
-msgid ""
-"If you have configured your browser to disable “Referer” headers, please re-"
-"enable them, at least for this site, or for HTTPS connections, or for “same-"
-"origin” requests."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\csrf.py:127
-msgid ""
-"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or "
-"including the “Referrer-Policy: no-referrer” header, please remove them. The "
-"CSRF protection requires the “Referer” header to do strict referer checking. "
-"If you’re concerned about privacy, use alternatives like <a rel=\"noreferrer"
-"\" …> for links to third-party sites."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\csrf.py:136
-msgid ""
-"You are seeing this message because this site requires a CSRF cookie when "
-"submitting forms. This cookie is required for security reasons, to ensure "
-"that your browser is not being hijacked by third parties."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\csrf.py:142
-msgid ""
-"If you have configured your browser to disable cookies, please re-enable "
-"them, at least for this site, or for “same-origin” requests."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\csrf.py:148
-msgid "More information is available with DEBUG=True."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\generic\dates.py:44
-msgid "No year specified"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\generic\dates.py:64
-#: .\venv\Lib\site-packages\django\views\generic\dates.py:115
-#: .\venv\Lib\site-packages\django\views\generic\dates.py:214
-msgid "Date out of range"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\generic\dates.py:94
-msgid "No month specified"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\generic\dates.py:147
-msgid "No day specified"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\generic\dates.py:194
-msgid "No week specified"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\generic\dates.py:349
-#: .\venv\Lib\site-packages\django\views\generic\dates.py:380
-#, python-format
-msgid "No %(verbose_name_plural)s available"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\generic\dates.py:652
-#, python-format
-msgid ""
-"Future %(verbose_name_plural)s not available because %(class_name)s."
-"allow_future is False."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\generic\dates.py:692
-#, python-format
-msgid "Invalid date string “%(datestr)s” given format “%(format)s”"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\generic\detail.py:56
-#, python-format
-msgid "No %(verbose_name)s found matching the query"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\generic\list.py:70
-msgid "Page is not “last”, nor can it be converted to an int."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\generic\list.py:77
-#, python-format
-msgid "Invalid page (%(page_number)s): %(message)s"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\generic\list.py:169
-#, python-format
-msgid "Empty list and “%(class_name)s.allow_empty” is False."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\static.py:38
-msgid "Directory indexes are not allowed here."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\static.py:40
-#, python-format
-msgid "“%(path)s” does not exist"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\static.py:79
-#, python-format
-msgid "Index of %(directory)s"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:7
-#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:221
-msgid "The install worked successfully! Congratulations!"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:207
-#, python-format
-msgid ""
-"View <a href=\"https://docs.djangoproject.com/en/%(version)s/releases/\" "
-"target=\"_blank\" rel=\"noopener\">release notes</a> for Django %(version)s"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:222
-#, python-format
-msgid ""
-"You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
-"%(version)s/ref/settings/#debug\" target=\"_blank\" rel=\"noopener"
-"\">DEBUG=True</a> is in your settings file and you have not configured any "
-"URLs."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:230
-msgid "Django Documentation"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:231
-msgid "Topics, references, &amp; how-to’s"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:239
-msgid "Tutorial: A Polling App"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:240
-msgid "Get started with Django"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:248
-msgid "Django Community"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:249
-msgid "Connect, get help, or contribute"
-msgstr ""
-
-#: .\venv\Lib\site-packages\isort\main.py:158
-msgid "show this help message and exit"
-msgstr ""
-
-#: .\venv\Lib\site-packages\pylint_django\tests\input\func_noerror_gettext_lazy_format.py:7
-#, python-brace-format
-msgid "{something}"
+#: .\templates\components\statistics.html:13
+msgid "Statistics"
 msgstr ""

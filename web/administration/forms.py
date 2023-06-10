@@ -517,11 +517,11 @@ class SiteTextForm(forms.ModelForm):
         disabled=True,
     )
     about = forms.CharField(
-        label=_("About"),
+        label=_("About Us"),
         widget=forms.Textarea(
             attrs={
                 "class": "form-control form-control-sm",
-                "placeholder": _("About"),
+                "placeholder": _("About Us"),
                 "rows": 25,
             }
         ),

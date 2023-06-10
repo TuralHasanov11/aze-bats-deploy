@@ -50,7 +50,7 @@ def footer_menu(request):
             {"title": _("Projects"), "route": "activities:project-list"},
             {"title": _("Site Visits"), "route": "activities:site-visit-list"},
             {"title": _("Articles"), "route": "base:articles"},
-            {"title": _("About"), "route": "base:about"},
+            {"title": _("About Us"), "route": "base:about"},
             {"title": _("Privacy Policy"), "route": "base:privacy-policy"}
         ]
     }
@@ -73,7 +73,7 @@ def menu(request):
 
 
 def admin_menu(request):
-    if request.user.is_authenticated:
+    if request.user:
         return {
             "admin_menu": [
                 {"route": "administration:bat-list", "text": _("Bats")},

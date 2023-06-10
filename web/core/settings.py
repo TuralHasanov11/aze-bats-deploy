@@ -118,7 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 LOGIN_URL = "administration:login"
-LOGIN_REDIRECT_URL = "administration:index"
+LOGIN_REDIRECT_URL = "administration:dashboard"
 
 LANGUAGE_CODE = 'en-us'
 

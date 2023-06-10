@@ -19,6 +19,12 @@ else:
     ALLOWED_HOSTS = [SITE_HOST]
 
 
+if not DEBUG:
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_TRUSTED_ORIGINS = [SITE_URL]
+
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',

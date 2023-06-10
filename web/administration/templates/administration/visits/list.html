@@ -54,13 +54,15 @@
                   href="{% url 'administration:visit-update' id=visit.id %}"
                   >{% translate "Edit" %}</a
                 >
-                <button
-                  type="button"
-                  class="btn btn-danger btn-delete"
-                  data-url="{% url 'administration:visit-delete' id=visit.id %}"
-                >
-                  {% translate "Delete" %}
-                </button>
+                <form class="d-inline-block" method="POST" action="{% url 'administration:visit-delete' pk=visit.pk %}">
+                  <button
+                    type="submit"
+                    class="btn btn-danger btn-delete"
+                  >
+                    {% translate "Delete" %}
+                  </button>
+                  {% csrf_token %}
+                </form>
               </td>
             </tr>
             {% endfor %}
@@ -75,9 +77,4 @@
     </div>
   </div>
 </section>
-{% endblock content%} {% block scripts %}
-<script>
-  let csrftoken = "{{ csrf_token }}";
-</script>
-<script src="{% static 'js/delete-table-record.js' %}"></script>
-{% endblock scripts %}
+{% endblock content %}

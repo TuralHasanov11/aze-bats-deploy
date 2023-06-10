@@ -13323,6 +13323,18 @@ section.section {
     transition: background .3s
 }
 
+.form__delete {
+    display: inline-block;
+    border: 2px solid #fdd340;
+    border-radius: 0;
+    background: 0 0;
+    font-weight: 700;
+    padding: 16px 70px;
+    -webkit-transition: background .3s;
+    -o-transition: background .3s;
+    transition: background .3s
+}
+
 .form__submit:hover {
     background: #fdd340
 }

@@ -12,9 +12,9 @@ from django.views.generic.list import ListView
 def index(request):
     genusSlug = request.GET.get("genus", None)
     if genusSlug:
-        bats = Bat.objects.filter(genus__slug=genusSlug)
+        bats = Bat.objects.order_by('name').filter(genus__slug=genusSlug)
     else:
-        bats = Bat.objects.all()
+        bats = Bat.objects.order_by('name').all()
 
     pagination = paginator.Paginator(bats, 10)
     pageNumber = request.GET.get("page")
@@ -31,14 +31,13 @@ class GalleryView(ListView):
     context_object_name = "bats"
 
     def get_queryset(self):
-        return super().get_queryset().select_related("genus").all()
+        return super().get_queryset().select_related("genus").order_by('name').all()
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["bat_promo_image"] = SiteInfo.objects.only('bat_promo_image').first().bat_promo_image
         return context
     
-
 
 @require_GET
 def detail(request, slug: str):

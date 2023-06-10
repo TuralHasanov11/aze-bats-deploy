@@ -13,7 +13,7 @@ class ProjectListView(ListView):
     context_object_name = "projects"
 
     def get_queryset(self):
-        return super().get_queryset().filter(language=get_language())
+        return super().get_queryset().order_by('-created_at').filter(language=get_language())
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -34,7 +34,7 @@ class SiteVisitListView(ListView):
     context_object_name = "visits"
 
     def get_queryset(self):
-        return super().get_queryset().filter(language=get_language())
+        return super().get_queryset().order_by('-created_at').filter(language=get_language())
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

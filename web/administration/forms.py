@@ -1,6 +1,6 @@
 from activities.models import Project, ProjectImage, SiteVisit, SiteVisitImage
-from base.models import Author, AuthorAttributes, SiteInfo, SiteText
-from bats.models import (Genus, Bat, BatAttributes, BatImage,
+from base.models import Author, AuthorAttributes, SiteInfo, SiteText, Article
+from bats.models import (Genus, Bat, BatAttributes, BatImage, Family,
                          BatRedBook)
 from ckeditor_uploader import widgets as ckeditor_widgets
 from django import forms
@@ -226,7 +226,7 @@ class ArticleForm(forms.ModelForm):
     )
 
     class Meta:
-        model = Author
+        model = Article
         fields = "__all__"
 
 
@@ -551,3 +551,45 @@ class SiteTextForm(forms.ModelForm):
 
 SiteTextFormSet = forms.modelformset_factory(
     model=SiteText, form=SiteTextForm, max_num=len(settings.LANGUAGES))
+
+
+class FamilyForm(forms.ModelForm):
+    name = forms.CharField(
+        label=_("Name"),
+        widget=forms.TextInput(
+            attrs={
+                "class": "form-control",
+                "placeholder": _("Name"),
+                "title": _("Please enter name"),
+            }
+        ),
+    )
+
+    class Meta:
+        model = Family
+        fields = "__all__"
+
+
+class GenusForm(forms.ModelForm):
+    name = forms.CharField(
+        label=_("Name"),
+        widget=forms.TextInput(
+            attrs={
+                "class": "form-control",
+                "placeholder": _("Name"),
+                "title": _("Please enter name"),
+            }
+        ),
+    )
+    family = forms.ModelChoiceField(
+        label=_("Family"),
+        initial=_("Select Family"),
+        widget=forms.Select(
+            attrs={"class": "form-select", "title": _("Please enter family")}
+        ),
+        queryset=Family.objects.all(),
+    )
+
+    class Meta:
+        model = Genus
+        fields = "__all__"

@@ -25,6 +25,11 @@
             {% translate "Phone" %}:
             <a href="tel:{{site_info.phone}}">{{site_info.phone}}</a>
           </div>
+          {% if user.is_authenticated %}
+          <div class="header__phones d-none d-xl-block">
+            <a href="{% url 'administration:dashboard' %}">{% translate "Admin" %}</a>
+          </div>
+          {% endif %}
         </div>
         <div class="header__lower-inner d-none d-xl-block">
           <ul class="header__socials">
@@ -35,7 +40,6 @@
               </a>
             </li>
             {% endfor %}
-            
           </ul>
         </div>
       </div>
@@ -94,24 +98,14 @@
               ><span>{{menu.articles.text}}</span></a
             >
           </li>
-
-          {% if user.is_authenticated %}
           <li
-            class="main-menu__item main-menu__item--has-child {% if 'administration' in request.resolver_match.namespaces %}main-menu__item--active{% endif %}"
+            class="main-menu__item {% if 'base' in request.resolver_match.namespaces and request.resolver_match.url_name in menu.about.route %}main-menu__item--active{% endif %}"
           >
-            <a class="main-menu__link" href="javascript:void(0);"
-              ><span>{% translate "Admin" %}</span></a
+            <a class="main-menu__link" href="{% url menu.about.route %}"
+              ><span>{{menu.about.text}}</span></a
             >
-            <ul class="main-menu__sub-list sub-list--style-2">
-              {% for item in menu.admin %}
-              <li
-                class="{% if 'administration' in request.resolver_match.namespaces and request.resolver_match.url_name in item.route %}item--active{% endif %}"
-              >
-                <a href="{% url item.route %}"><span>{{item.text}}</span></a>
-              </li>
-              {% endfor %}
-            </ul>
           </li>
+          {% if user.is_authenticated %}
           <li class="main-menu__item main-menu__item--has-child">
             <a class="main-menu__link" href="javascript:void(0);"
               ><span>{{user.username}}</span></a

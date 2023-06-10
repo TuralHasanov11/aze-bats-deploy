@@ -6,6 +6,8 @@ class Article(models.Model):
     name = custom_models.NameField()
     url = models.URLField(blank=True, null=True)
     author = models.CharField(null=False, blank=False, max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ["name"]
@@ -57,14 +59,20 @@ class SiteInfo(models.Model):
     youtube_link = models.URLField(null=True, blank=True)
     banner_image = models.ImageField(
         upload_to="site/", null=True, blank=True, default="site/banner.jpg")
+    map_image = models.ImageField(
+        upload_to="site/", null=True, blank=True, default="site/map.jpg")
+    about_promo_image = models.ImageField(
+        upload_to="site/", null=True, blank=True, default="site/about_promo.jpg")
+    privacy_policy_promo_image = models.ImageField(
+        upload_to="site/", null=True, blank=True, default="site/privacy_policy_promo.jpg")
     article_promo_image = models.ImageField(
-        upload_to="site/", null=True, blank=True, default="site/article_promo_image.jpg")
+        upload_to="site/", null=True, blank=True, default="site/article_promo.jpg")
     bat_promo_image = models.ImageField(
-        upload_to="site/", null=True, blank=True, default="site/bat_promo_image.jpg")
+        upload_to="site/", null=True, blank=True, default="site/bat_promo.jpg")
     project_promo_image = models.ImageField(
-        upload_to="site/", null=True, blank=True, default="site/project_promo_image.jpg")
+        upload_to="site/", null=True, blank=True, default="site/project_promo.jpg")
     site_visit_promo_image = models.ImageField(
-        upload_to="site/", null=True, blank=True, default="site/site_visit_promo_image.jpg")
+        upload_to="site/", null=True, blank=True, default="site/site_visit_promo.jpg")
     logo_image = models.ImageField(
         upload_to="site/", null=True, blank=True, default="site/logo.png")
     created_at = models.DateTimeField(auto_now_add=True)

@@ -4,7 +4,7 @@
 {% block stylesheet %}
 <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
 {% endblock stylesheet %} 
-{% block title %}{% translate "Admin" %} - {% translate "Articles" %}{% endblock title %} 
+{% block title %}{% translate "Admin" %} - {% translate "Genus" %}{% endblock title %} 
 {% block content %}
 <section class="section">
   <div class="container py-5">
@@ -18,13 +18,13 @@
           >
         </li>
         <li class="breadcrumbs__item breadcrumbs__item--active">
-          {% translate "Articles" %}
+          {% translate "Genus" %}
         </li>
       </ul>
     </div>
     <div class="row">
       <div class="col-xl-10">
-        <h4 class="elements__title">{% translate "Articles" %}</h4>
+        <h4 class="elements__title">{% translate "Genus" %}</h4>
       </div>
     </div>
     <div class="card card-body mb-5">
@@ -37,25 +37,23 @@
             <tr>
               <th scope="col">#</th>
               <th scope="col">{% translate "Name" %}</th>
-              <th scope="col">{% translate "Author" %}</th>
+              <th scope="col">{% translate "Family" %}</th>
               <th scope="col">{% translate "Operations" %}</th>
             </tr>
           </thead>
           <tbody>
-            {% for article in articles %}
+            {% for gen in genus %}
             <tr class="data-row">
-              <td>{{article.id}}</td>
-              <td>
-                <a href="{{article.url}}" target="_blank" rel="noopener noreferrer">{{article.name}}</a>
-              </td>
-              <td>{{article.author}}</td>
+              <td>{{forloop.counter}}</td>
+              <td>{{gen.name}}</td>
+              <td>{{gen.family}}</td>
               <td>
                 <a
                   class="btn btn-warning"
-                  href="{% url 'administration:article-update' pk=article.pk %}"
+                  href="{% url 'administration:genus-update' pk=gen.pk %}"
                   >{% translate "Edit" %}</a
                 >
-                <form class="d-inline-block" method="POST" action="{% url 'administration:article-delete' pk=article.pk %}">
+                <form class="d-inline-block" method="POST" action="{% url 'administration:genus-delete' pk=gen.pk %}">
                   <button
                     type="submit"
                     class="btn btn-danger btn-delete"
@@ -70,17 +68,12 @@
           </tbody>
         </table>
       </div>
-      <div class="row top-70">
-        <div class="col-12">
-            {% include "components/pagination.html" with pagination=articles %}
-        </div>
-      </div>
     </div>
     <div class="row">
       <div class="col-12">
         <div class="heading heading--primary heading--center">
           <h4 class="heading__title no-margin-bottom">
-            <span>{% translate "Add article" %}</span>
+            <span>{% translate "Add family" %}</span>
           </h4>
         </div>
         <form class="form" method="post">
@@ -88,25 +81,18 @@
             {% include "components/form/hidden_fields.html" with hidden_fields=form.hidden_fields %}
             {{form.non_form_errors}}
             <div class="row">
-              <div class="col-12 col-md-6 col-xl-4 bottom-20">
+              <div class="col-12 col-md-6 bottom-20">
                 <label class="form-label" for="{{ form.name.id_for_label }}"
                   >{{ form.name.label }}</label
                 >
                 {{form.name}} {{ form.name.errors }}
               </div>
-              <div class="col-12 col-md-6 col-xl-4 bottom-20">
-                <label class="form-label" for="{{ form.url.id_for_label }}"
-                  >{{ form.url.label }}</label
+              <div class="col-12 col-md-6 bottom-20">
+                <label class="form-label" for="{{ form.family.id_for_label }}"
+                  >{{ form.family.label }}</label
                 >
-                {{form.url}} {{ form.url.errors }}
+                {{form.family}} {{ form.family.errors }}
               </div>
-              <div class="col-12 col-md-6 col-xl-4 bottom-20">
-                <label class="form-label" for="{{ form.author.id_for_label }}"
-                  >{{ form.author.label }}</label
-                >
-                {{form.author}} {{ form.author.errors }}
-              </div>
-
               <div class="col-12 bottom-20 text-center">
                 <button class="form__submit text_decoration-none" type="submit">
                   {% translate "Save" %}

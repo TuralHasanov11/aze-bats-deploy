@@ -2,6 +2,7 @@
     --main-color: #6E2A9C;
     --secondary-color: #2eb872;
     --main-color-transparent: rgb(110, 42, 156, 0.5);
+    --delete-color: tomato;
 }
 
 a {
@@ -84,6 +85,17 @@ a {
 
 .form__submit:hover {
     background: var(--main-color);
+    color: white !important;
+}
+
+.form__delete {
+    border-color: var(--delete-color) !important;
+    text-decoration: none !important;
+    color: black !important;
+}
+
+.form__delete:hover {
+    background: var(--delete-color);
     color: white !important;
 }
 

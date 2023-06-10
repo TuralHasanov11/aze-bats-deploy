@@ -49,7 +49,9 @@ def footer_menu(request):
             {"title": _("Bats"), "route": "bats:index"},
             {"title": _("Projects"), "route": "activities:project-list"},
             {"title": _("Site Visits"), "route": "activities:site-visit-list"},
-            {"title": _("Articles"), "route": "base:articles"}
+            {"title": _("Articles"), "route": "base:articles"},
+            {"title": _("About"), "route": "base:about"},
+            {"title": _("Privacy Policy"), "route": "base:privacy-policy"}
         ]
     }
 
@@ -58,7 +60,22 @@ def menu(request):
     return {
         "menu": {
             "home": {"route": "base:index", "text": _("Home")},
-            "admin": [
+            "activities": [
+                {"route": "activities:project-list", "text": _("Projects")},
+                {"route": "activities:site-visit-list", "text": _("Site Visits")},
+            ],
+            "bats": {"route": "bats:index", "text": _("Bats")},
+            "gallery": {"route": "bats:gallery", "text": _("Gallery")},
+            "articles": {"route": "base:articles", "text": _("Articles")},
+            "about": {"route": "base:about", "text": _("About Us")},
+        }
+    }
+
+
+def admin_menu(request):
+    if request.user.is_authenticated:
+        return {
+            "admin_menu": [
                 {"route": "administration:bat-list", "text": _("Bats")},
                 {"route": "administration:project-list",
                     "text": _("Projects")},
@@ -72,13 +89,10 @@ def menu(request):
                     "text": _("Site Info")},
                 {"route": "administration:site-texts",
                     "text": _("Site Texts")},
+                {"route": "administration:family-list-create",
+                    "text": _("Families")},
+                {"route": "administration:genus-list-create",
+                    "text": _("Genus")},
             ],
-            "activities": [
-                {"route": "activities:project-list", "text": _("Projects")},
-                {"route": "activities:site-visit-list", "text": _("Site Visits")},
-            ],
-            "bats": {"route": "bats:index", "text": _("Bats")},
-            "gallery": {"route": "bats:gallery", "text": _("Gallery")},
-            "articles": {"route": "base:articles", "text": _("Articles")},
         }
-    }
+    return None

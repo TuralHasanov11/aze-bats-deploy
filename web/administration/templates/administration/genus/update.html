@@ -1,7 +1,7 @@
 {% extends 'app.html' %} {% load static %} {% block stylesheet %}
 <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
 {% endblock stylesheet %} {% load i18n %} {% block title %}{% translate "Admin"
-%} - {{article.name}}{% endblock title %} {% block content %}
+%} - {{genus.name}}{% endblock title %} {% block content %}
 <section class="section">
   <div class="container py-5">
     <div class="bottom-40">
@@ -16,12 +16,12 @@
         <li class="breadcrumbs__item">
           <a
             class="breadcrumbs__link"
-            href="{% url 'administration:article-list-create' %}"
-            >{% translate "Articles" %}</a
+            href="{% url 'administration:genus-list-create' %}"
+            >{% translate "Genus" %}</a
           >
         </li>
         <li class="breadcrumbs__item breadcrumbs__item--active">
-          {{article.name}}
+          {{genus.name}}
         </li>
       </ul>
     </div>
@@ -29,7 +29,7 @@
       <div class="col-12 bottom-20">
         <div class="heading heading--primary heading--center">
           <h4 class="heading__title no-margin-bottom">
-            <span>{% translate "Edit" %} - {{article.name}}</span>
+            <span>{% translate "Edit" %} - {{genus.name}}</span>
           </h4>
         </div>
       </div>
@@ -38,14 +38,14 @@
       {% include 'components/messages.html' with messages=messages %}
     </div>
     <div class="row">
-      <div class="col-12">
+      <div class="col-12 mb-3">
         <form class="form" method="post" enctype="multipart/form-data">
           {{ form.media }}
           <div class="card card-body">
             {% include "components/form/hidden_fields.html" with hidden_fields=form.hidden_fields %}
             {{form.non_form_errors}}
             <div class="row">
-              <div class="col-12 col-md-6 col-xl-4 bottom-20">
+              <div class="col-12 col-md-6 bottom-20">
                 <label
                   class="elements__subtitle fs-5"
                   for="{{ form.name.id_for_label }}"
@@ -53,23 +53,14 @@
                 >
                 {{form.name}} {{ form.name.errors }}
               </div>
-              <div class="col-12 col-md-6 col-xl-4 bottom-20">
+              <div class="col-12 col-md-6 bottom-20">
                 <label
                   class="elements__subtitle fs-5"
-                  for="{{ form.url.id_for_label }}"
-                  >{{ form.url.label }}</label
+                  for="{{ form.family.id_for_label }}"
+                  >{{ form.family.label }}</label
                 >
-                {{form.url}} {{ form.url.errors }}
+                {{form.family}} {{ form.family.errors }}
               </div>
-              <div class="col-12 col-md-6 col-xl-4 bottom-20">
-                <label
-                  class="elements__subtitle fs-5"
-                  for="{{ form.author.id_for_label }}"
-                  >{{ form.author.label }}</label
-                >
-                {{form.author}} {{ form.author.errors }}
-              </div>
-
               <div class="col-12 bottom-20 text-center">
                 <button class="form__submit text_decoration-none" type="submit">
                   {% translate "Save" %}
@@ -79,6 +70,17 @@
           </div>
           {% csrf_token %}
         </form>
+      </div>
+      <div class="col-12 text-center">
+        <form method="POST" action="{% url 'administration:genus-delete' pk=genus.pk %}">
+            <button
+              type="submit"
+              class="form__delete"
+            >
+              {% translate "Delete" %}
+            </button>
+            {% csrf_token %}
+          </form>
       </div>
     </div>
   </div>

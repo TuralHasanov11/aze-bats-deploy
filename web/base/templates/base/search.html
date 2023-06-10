@@ -3,10 +3,10 @@
 {% load static %}
 {% block title %}{% translate "Search" %}{% endblock title %}
 {% block content %}
-<section class="section events-carousel no-padding-bottom">
+<section class="section events-carousel no-padding-bottom mt-5">
     <div class="container">
       <div class="row bottom-50 align-items-end">
-        <div class="col-lg-8">
+        <div class="col-lg-12 text-center">
           <div class="heading heading--style-2 heading--green">
             <h2 class="heading__title no-margin-bottom"><span>{% translate "Search results" %}</span></h2>
           </div>
@@ -14,6 +14,21 @@
       </div>
     </div>
 </section>
+
+{% if not projects and not bats and not visits %}
+<section class="section events-carousel">
+  <img class="events-carousel__bg" src="{% static 'img/skin-bg.jpg' %}" alt="bg"/>
+    <div class="container">
+      <div class="row bottom-50 align-items-end">
+        <div class="col-lg-12">
+          <div class="heading heading--style-3 heading--green  text-center">
+            <h6 class="no-margin-bottom"><span>{% translate "No record found according to your search!" %}</span></h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endif %}
 
 {% if projects %}
 <section class="section events-carousel">

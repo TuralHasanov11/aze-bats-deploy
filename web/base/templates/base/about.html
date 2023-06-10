@@ -1,0 +1,23 @@
+{% extends 'app.html' %} 
+{% load i18n %}
+{% load static %}
+{% block title %}{% translate "About Us" %}{% endblock title %}
+{% block content %}
+
+{% with promo_image=about_promo_image.url promo_title="About Us" %}
+{% include "components/promo.html" with promo_image=promo_image promo_title=promo_title %}
+{% endwith %}
+
+<section class="section events-carousel">
+  <img class="events-carousel__bg" src="{% static 'img/skin-bg.jpg' %}" alt="bg"/>
+    <div class="container">
+      <div class="row bottom-50 align-items-end">
+        <div class="col-lg-12">
+          {{about_text}}
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+{% endblock content %}

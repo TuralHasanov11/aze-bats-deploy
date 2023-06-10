@@ -29,9 +29,9 @@
     <div class="row bottom-50">
       <div class="col-12 bottom-20">
         <div class="heading heading--primary heading--center">
-          <h2 class="heading__title no-margin-bottom">
+          <h4 class="heading__title no-margin-bottom">
             <span>{% translate "Edit" %} - {{visit.name}}</span>
-          </h2>
+          </h4>
         </div>
       </div>
     </div>
@@ -39,7 +39,7 @@
       {% include 'components/messages.html' with messages=messages %}
     </div>
     <div class="row">
-      <div class="col-12">
+      <div class="col-12 mb-3">
         <form class="form" method="post" enctype="multipart/form-data">
           {{ form.media }}
           <div class="card card-body bottom-40">
@@ -146,6 +146,17 @@
             </button>
           </div>
           {% csrf_token %}
+        </form>
+      </div>
+      <div class="col-12 text-center">
+        <form method="POST" action="{% url 'administration:visit-delete' pk=visit.pk %}">
+            <button
+              type="submit"
+              class="form__delete"
+            >
+              {% translate "Delete" %}
+            </button>
+            {% csrf_token %}
         </form>
       </div>
     </div>

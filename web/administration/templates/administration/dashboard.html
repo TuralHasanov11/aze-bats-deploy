@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="row offset-margin">
-            {% for item in menu.admin %}
+            {% for item in admin_menu %}
             <div class="col-sm-6 col-md-4 col-xl-3">
                 <div class="pricing-item pricing-item--style-1 text-center">
                     <div class="pricing-item__lower"><a class="pricing-item__button button button--rounded button--main" href="{% url item.route %}">{{item.text}}</a></div>

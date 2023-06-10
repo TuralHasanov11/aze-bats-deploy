@@ -73,6 +73,7 @@ TEMPLATES = [
                 'core.context_processors.config',
                 'core.context_processors.menu',
                 'core.context_processors.footer_menu',
+                'core.context_processors.admin_menu',
             ],
         },
     },

@@ -4,10 +4,10 @@ from administration.forms import (ArticleForm, AuthorAttributesFormset,
                                   ProjectImageFormset, SiteVisitForm,
                                   SiteVisitImageFormset,
                                   BatAttributesFormset,
-                                  BatImageFormset, BatRedBookFormset, SiteInfoForm, SiteTextFormSet,
+                                  BatImageFormset, BatRedBookFormset, SiteInfoForm, SiteTextFormSet, FamilyForm, GenusForm,
                                   UserLoginForm)
 from base.models import Article, Author, SiteText, SiteInfo
-from bats.models import Bat
+from bats.models import Bat, Family, Genus
 from django.contrib import messages
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
@@ -475,3 +475,77 @@ def siteTexts(request):
     else:
         formset = SiteTextFormSet(initial=SiteText.objects.all())
     return render(request, 'administration/site/texts.html', {"formset": formset})
+
+
+class FamilyListCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+    model = Family
+    form_class = FamilyForm
+    login_url = reverse_lazy('administration:index')
+    template_name = 'administration/families/list.html'
+    success_message = _("Family added!")
+    success_url = reverse_lazy("administration:family-list-create")
+    paginate_by = 20
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        pagination = Paginator(self.get_queryset(), self.paginate_by)
+        pageNumber = self.request.GET.get('page')
+        families = pagination.get_page(pageNumber)
+        context['families'] = families
+        return context
+    
+
+class FamilyUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    form_class = FamilyForm
+    model = Family
+    login_url = reverse_lazy('administration:index')
+    template_name = 'administration/families/update.html'
+    context_object_name = 'family'
+    success_message = _("Family updated!")
+
+    def get_success_url(self):
+        return reverse("administration:family-update", kwargs={"pk": self.object.pk})
+    
+
+class FamilyDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
+    model = Family
+    login_url = reverse_lazy("administration:index")
+    success_message = _("Family deleted!")
+    success_url = reverse_lazy("administration:family-list-create")
+
+
+class GenusListCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+    model = Genus
+    form_class = GenusForm
+    login_url = reverse_lazy('administration:index')
+    template_name = 'administration/genus/list.html'
+    success_message = _("Genus added!")
+    success_url = reverse_lazy("administration:genus-list-create")
+    paginate_by = 20
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        pagination = Paginator(self.get_queryset(), self.paginate_by)
+        pageNumber = self.request.GET.get('page')
+        genus = pagination.get_page(pageNumber)
+        context['genus'] = genus
+        return context
+    
+
+class GenusUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    form_class = GenusForm
+    model = Genus
+    login_url = reverse_lazy('administration:index')
+    template_name = 'administration/genus/update.html'
+    context_object_name = 'genus'
+    success_message = _("Genus updated!")
+
+    def get_success_url(self):
+        return reverse("administration:genus-update", kwargs={"pk": self.object.pk})
+    
+
+class GenusDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
+    model = Genus
+    login_url = reverse_lazy("administration:index")
+    success_message = _("Genus deleted!")
+    success_url = reverse_lazy("administration:genus-list-create")

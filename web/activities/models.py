@@ -9,6 +9,8 @@ class Project(models.Model):
     cover_image = custom_models.ImageField(directory='projects')
     description = custom_models.RichTextEditorField()
     language = custom_models.LanguageField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.name
@@ -26,6 +28,8 @@ class SiteVisit(models.Model):
     description = custom_models.RichTextEditorField()
     results = custom_models.RichTextEditorField()
     language = custom_models.LanguageField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = "Site Visit"

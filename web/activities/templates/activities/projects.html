@@ -13,6 +13,9 @@
 <section class="section blog">
   <div class="container">
     <div class="row">
+      <div class="col-xl-10">
+        <h4 class="elements__title">{{promo_title}}</h4>
+      </div>
       {% for project in projects %}
       <div class="col-12 col-md-6 col-xl-4">
         {% include "components/project.html" with project=project %}

@@ -1,12 +1,12 @@
 from activities.models import Project, SiteVisit
 from administration.forms import (ArticleForm, AuthorAttributesFormset,
-                                  AuthorForm, BatForm, ProjectForm,
-                                  ProjectImageFormset, SiteVisitForm,
-                                  SiteVisitImageFormset,
-                                  BatAttributesFormset,
-                                  BatImageFormset, BatRedBookFormset, SiteInfoForm, SiteTextFormSet, FamilyForm, GenusForm,
-                                  UserLoginForm)
-from base.models import Article, Author, SiteText, SiteInfo
+                                  AuthorForm, BatAttributesFormset, BatForm,
+                                  BatImageFormset, BatRedBookFormset,
+                                  FamilyForm, GenusForm, ProjectForm,
+                                  ProjectImageFormset, SiteInfoForm,
+                                  SiteTextFormSet, SiteVisitForm,
+                                  SiteVisitImageFormset, UserLoginForm)
+from base.models import Article, Author, SiteInfo, SiteText
 from bats.models import Bat, Family, Genus
 from django.contrib import messages
 from django.contrib.auth import views as auth_views
@@ -230,8 +230,8 @@ class AuthorDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
 class ArticleListCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Article
     form_class = ArticleForm
-    login_url = reverse_lazy('administration:index')
-    template_name = 'administration/articles/list.html'
+    login_url = reverse_lazy("administration:index")
+    template_name = "administration/articles/list.html"
     success_message = _("Article added!")
     success_url = reverse_lazy("administration:article-list-create")
     paginate_by = 20
@@ -239,23 +239,23 @@ class ArticleListCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView)
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         pagination = Paginator(self.get_queryset(), self.paginate_by)
-        pageNumber = self.request.GET.get('page')
+        pageNumber = self.request.GET.get("page")
         articles = pagination.get_page(pageNumber)
-        context['articles'] = articles
+        context["articles"] = articles
         return context
-    
+
 
 class ArticleUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     form_class = ArticleForm
     model = Article
-    login_url = reverse_lazy('administration:index')
-    template_name = 'administration/articles/update.html'
-    context_object_name = 'article'
+    login_url = reverse_lazy("administration:index")
+    template_name = "administration/articles/update.html"
+    context_object_name = "article"
     success_message = _("Article updated!")
 
     def get_success_url(self):
         return reverse("administration:article-update", kwargs={"pk": self.object.pk})
-    
+
 
 class ArticleDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = Article
@@ -278,10 +278,7 @@ def projectCreate(request):
     if request.POST:
         form = ProjectForm(data=request.POST, files=request.FILES)
         images_formset = ProjectImageFormset(data=request.POST, files=request.FILES)
-        if (
-            form.is_valid()
-            and images_formset.is_valid()
-        ):
+        if form.is_valid() and images_formset.is_valid():
             try:
                 with transaction.atomic():
                     project = form.save()
@@ -312,16 +309,11 @@ def projectCreate(request):
 def projectUpdate(request, id):
     project = Project.objects.get(id=id)
     if request.POST:
-        form = ProjectForm(
-            instance=project, data=request.POST, files=request.FILES
-        )
+        form = ProjectForm(instance=project, data=request.POST, files=request.FILES)
         images_formset = ProjectImageFormset(
             instance=project, data=request.POST, files=request.FILES
         )
-        if (
-            form.is_valid()
-            and images_formset.is_valid()
-        ):
+        if form.is_valid() and images_formset.is_valid():
             try:
                 with transaction.atomic():
                     project = form.save()
@@ -366,10 +358,7 @@ def siteVisitCreate(request):
     if request.POST:
         form = SiteVisitForm(data=request.POST, files=request.FILES)
         images_formset = SiteVisitImageFormset(data=request.POST, files=request.FILES)
-        if (
-            form.is_valid()
-            and images_formset.is_valid()
-        ):
+        if form.is_valid() and images_formset.is_valid():
             try:
                 with transaction.atomic():
                     visit = form.save()
@@ -400,16 +389,11 @@ def siteVisitCreate(request):
 def siteVisitUpdate(request, id):
     visit = SiteVisit.objects.get(id=id)
     if request.POST:
-        form = SiteVisitForm(
-            instance=visit, data=request.POST, files=request.FILES
-        )
+        form = SiteVisitForm(instance=visit, data=request.POST, files=request.FILES)
         images_formset = SiteVisitImageFormset(
             instance=visit, data=request.POST, files=request.FILES
         )
-        if (
-            form.is_valid()
-            and images_formset.is_valid()
-        ):
+        if form.is_valid() and images_formset.is_valid():
             try:
                 with transaction.atomic():
                     visit = form.save()
@@ -441,16 +425,16 @@ class SiteVisitDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
 
 
 @login_required
-@require_http_methods(['GET', 'POST'])
+@require_http_methods(["GET", "POST"])
 def siteInfo(request):
     siteInfo = SiteInfo.objects.first()
-    if request.method == 'POST':
+    if request.method == "POST":
         if siteInfo:
             form = SiteInfoForm(
-                instance=siteInfo, data=request.POST, files=request.FILES)
+                instance=siteInfo, data=request.POST, files=request.FILES
+            )
         else:
-            form = SiteInfoForm(
-                data=request.POST, files=request.FILES)
+            form = SiteInfoForm(data=request.POST, files=request.FILES)
         if form.is_valid():
             form.save()
             messages.success(request, _("Site Info saved!"))
@@ -458,15 +442,16 @@ def siteInfo(request):
         messages.error(request, _("Site Info cannot be saved!"))
     else:
         form = SiteInfoForm(instance=siteInfo)
-    return render(request, 'administration/site/info.html', {"form": form, "site_info": siteInfo})
+    return render(
+        request, "administration/site/info.html", {"form": form, "site_info": siteInfo}
+    )
 
 
 @login_required
-@require_http_methods(['GET', 'POST'])
+@require_http_methods(["GET", "POST"])
 def siteTexts(request):
-    if request.method == 'POST':
-        formset = SiteTextFormSet(
-            initial=SiteText.objects.all(), data=request.POST)
+    if request.method == "POST":
+        formset = SiteTextFormSet(initial=SiteText.objects.all(), data=request.POST)
         if formset.is_valid():
             formset.save()
             messages.success(request, _("Texts saved!"))
@@ -474,14 +459,14 @@ def siteTexts(request):
         messages.error(request, _("Texts cannot be saved!"))
     else:
         formset = SiteTextFormSet(initial=SiteText.objects.all())
-    return render(request, 'administration/site/texts.html', {"formset": formset})
+    return render(request, "administration/site/texts.html", {"formset": formset})
 
 
 class FamilyListCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Family
     form_class = FamilyForm
-    login_url = reverse_lazy('administration:index')
-    template_name = 'administration/families/list.html'
+    login_url = reverse_lazy("administration:index")
+    template_name = "administration/families/list.html"
     success_message = _("Family added!")
     success_url = reverse_lazy("administration:family-list-create")
     paginate_by = 20
@@ -489,23 +474,23 @@ class FamilyListCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         pagination = Paginator(self.get_queryset(), self.paginate_by)
-        pageNumber = self.request.GET.get('page')
+        pageNumber = self.request.GET.get("page")
         families = pagination.get_page(pageNumber)
-        context['families'] = families
+        context["families"] = families
         return context
-    
+
 
 class FamilyUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     form_class = FamilyForm
     model = Family
-    login_url = reverse_lazy('administration:index')
-    template_name = 'administration/families/update.html'
-    context_object_name = 'family'
+    login_url = reverse_lazy("administration:index")
+    template_name = "administration/families/update.html"
+    context_object_name = "family"
     success_message = _("Family updated!")
 
     def get_success_url(self):
         return reverse("administration:family-update", kwargs={"pk": self.object.pk})
-    
+
 
 class FamilyDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = Family
@@ -517,8 +502,8 @@ class FamilyDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
 class GenusListCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Genus
     form_class = GenusForm
-    login_url = reverse_lazy('administration:index')
-    template_name = 'administration/genus/list.html'
+    login_url = reverse_lazy("administration:index")
+    template_name = "administration/genus/list.html"
     success_message = _("Genus added!")
     success_url = reverse_lazy("administration:genus-list-create")
     paginate_by = 20
@@ -526,23 +511,23 @@ class GenusListCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         pagination = Paginator(self.get_queryset(), self.paginate_by)
-        pageNumber = self.request.GET.get('page')
+        pageNumber = self.request.GET.get("page")
         genus = pagination.get_page(pageNumber)
-        context['genus'] = genus
+        context["genus"] = genus
         return context
-    
+
 
 class GenusUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     form_class = GenusForm
     model = Genus
-    login_url = reverse_lazy('administration:index')
-    template_name = 'administration/genus/update.html'
-    context_object_name = 'genus'
+    login_url = reverse_lazy("administration:index")
+    template_name = "administration/genus/update.html"
+    context_object_name = "genus"
     success_message = _("Genus updated!")
 
     def get_success_url(self):
         return reverse("administration:genus-update", kwargs={"pk": self.object.pk})
-    
+
 
 class GenusDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = Genus

@@ -19362,7 +19362,7 @@ a:hover {
 }
 
 .promo-slider__item--style-2 .promo-slider__button {
-    color: inherit;
+    color: black;
     width: 100%;
     max-width: 190px;
     margin-top: 30px

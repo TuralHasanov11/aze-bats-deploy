@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
-import dj_database_url
 
+import dj_database_url
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
 
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'rosetta',
     'axes',
+    'storages',
 
     'activities',
     'bats',
@@ -221,8 +222,27 @@ LOGGING = {
 }
 
 
+USE_S3 = str(os.environ.get("USE_S3")) == "True"
+
+if USE_S3:
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', None)
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', None)
+    AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME', None)
+    AWS_S3_FILE_OVERWRITE = str(os.environ.get(
+        "AWS_S3_FILE_OVERWRITE")) == "True"
+    AWS_DEFAULT_ACL = None
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+    AWS_QUERYSTRING_AUTH = False
+    DEFAULT_FILE_STORAGE = 'core.storages.MediaStore'
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    PUBLIC_MEDIA_LOCATION = 'media'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
+else:
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = BASE_DIR / 'media'
+
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
+STATIC_ROOT = BASE_DIR / 'static_cdn'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]

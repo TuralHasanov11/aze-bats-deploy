@@ -1,12 +1,11 @@
 from activities.models import Project, SiteVisit
-from base.models import Article, Author, AuthorAttributes, SiteText
+from base.models import Article, Author, AuthorAttributes, SiteInfo, SiteText
 from bats.models import Bat
 from django.db.models import Prefetch
 from django.shortcuts import redirect, render
 from django.utils.translation import get_language
 from django.views.decorators.http import require_GET
 from django.views.generic.list import ListView
-from base.models import SiteInfo
 
 
 @require_GET
@@ -17,9 +16,9 @@ def index(request):
     bats = Bat.objects.all()[:12]
     batCount = Bat.objects.count()
     projectCount = Project.objects.count()
-    visits = SiteVisit.objects.all()[:4]
-    projects = Project.objects.all()[:4]
-    visitCount = Bat.objects.count()
+    visits = SiteVisit.objects.filter(language=get_language())[:4]
+    projects = Project.objects.filter(language=get_language())[:4]
+    visitCount = SiteVisit.objects.filter(language=get_language()).count()
     banner = SiteText.objects.filter(language=get_language()).only('banner_text', 'banner_title').first()
     siteInfo = SiteInfo.objects.only('banner_image', 'map_image').first()
 

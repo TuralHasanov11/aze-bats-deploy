@@ -50,7 +50,7 @@
           <tbody>
             {% for bat in bats %}
             <tr class="data-row">
-              <td>{{bat.id}}</td>
+              <td>{{forloop.counter}}</td>
               <td>{{bat.name}}</td>
               <td>{{bat.genus}}</td>
               <td>

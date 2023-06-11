@@ -45,7 +45,7 @@
           <tbody>
             {% for project in projects %}
             <tr class="data-row">
-              <td>{{project.id}}</td>
+              <td>{{forloop.counter}}</td>
               <td>{{project.name}}</td>
               <td>
                 <a

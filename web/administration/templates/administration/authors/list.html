@@ -41,7 +41,7 @@
           <tbody>
             {% for author in authors %}
             <tr class="data-row">
-              <td>{{author.id}}</td>
+              <td>{{forloop.counter}}</td>
               <td>
                 {% for item in author.author_attributes.all %}
                 <li class="list-unstyled">

@@ -46,7 +46,7 @@
           <tbody>
             {% for visit in visits %}
             <tr class="data-row">
-              <td>{{visit.id}}</td>
+              <td>{{forloop.counter}}</td>
               <td>{{visit.name}}</td>
               <td>
                 <a

@@ -44,7 +44,7 @@
           <tbody>
             {% for article in articles %}
             <tr class="data-row">
-              <td>{{article.id}}</td>
+              <td>{{forloop.counter}}</td>
               <td>
                 <a href="{{article.url}}" target="_blank" rel="noopener noreferrer">{{article.name}}</a>
               </td>

@@ -4,7 +4,9 @@
 {% block title %}{{visit.name}}{% endblock title %}
 {% block content %}
 
-{% with promo_image=visit.cover_image.url promo_pre_title="Site Visit" promo_title=visit.name %}
+{% translate "Site Visits" as promo_pre_title%}
+
+{% with promo_image=visit.cover_image.url promo_title=visit.name %}
 {% include "components/promo.html" with promo_image=promo_image promo_pre_title=promo_pre_title promo_title=promo_title %}
 {% endwith %}
 

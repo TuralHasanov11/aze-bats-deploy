@@ -4,8 +4,10 @@
 {% block title %}{% translate "Articles" %}{% endblock title %} 
 {% block content %}
 
-{% with promo_image=article_promo_image.url promo_pre_title='' promo_title="Articles" %}
-{% include "components/promo.html" with promo_image=promo_image promo_pre_title=promo_pre_title promo_title=promo_title %}
+{% translate "Articles" as promo_title%}
+
+{% with promo_image=article_promo_image.url %}
+{% include "components/promo.html" with promo_image=promo_image promo_title=promo_title %}
 {% endwith %}
 <section class="section no-padding-top">
   <div class="container py-5">

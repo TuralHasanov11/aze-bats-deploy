@@ -4,7 +4,10 @@
 {% block title %} {% translate "Bats" %} {% endblock title %} 
 {% block content %}
 
-{% with promo_image=bat_promo_image.url promo_pre_title="Images" promo_title="Gallery" %}
+{% translate "Images" as promo_pre_title%}
+{% translate "Gallery" as promo_title%}
+
+{% with promo_image=bat_promo_image.url %}
 {% include "components/promo.html" with promo_image=promo_image promo_pre_title=promo_pre_title promo_title=promo_title %}
 {% endwith %}
 

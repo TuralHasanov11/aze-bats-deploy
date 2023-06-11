@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-10 23:22+0200\n"
+"POT-Creation-Date: 2023-06-11 19:20+0200\n"
 "PO-Revision-Date: 2022-11-13 09:49+0400\n"
 "Last-Translator:   <hasanovtural11@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,9 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.9.8\n"
 
+#: .\activities\templates\activities\project.html:7
 #: .\activities\templates\activities\projects.html:4
+#: .\activities\templates\activities\projects.html:7
 #: .\administration\templates\administration\projects\create.html:22
 #: .\administration\templates\administration\projects\list.html:2
 #: .\administration\templates\administration\projects\list.html:18
@@ -31,19 +33,9 @@ msgstr ""
 msgid "Projects"
 msgstr ""
 
-#: .\activities\templates\activities\visit.html:20 .\administration\forms.py:58
-#: .\administration\forms.py:98 .\administration\forms.py:179
-#: .\administration\forms.py:257 .\administration\forms.py:309
-#: .\bats\templates\bats\detail.html:27
-msgid "Description"
-msgstr ""
-
-#: .\activities\templates\activities\visit.html:24
-#: .\administration\forms.py:312
-msgid "Results"
-msgstr ""
-
+#: .\activities\templates\activities\visit.html:7
 #: .\activities\templates\activities\visits.html:4
+#: .\activities\templates\activities\visits.html:8
 #: .\administration\templates\administration\visits\create.html:21
 #: .\administration\templates\administration\visits\list.html:2
 #: .\administration\templates\administration\visits\list.html:19
@@ -53,6 +45,18 @@ msgstr ""
 #: .\core\context_processors.py:65 .\core\context_processors.py:83
 #: .\templates\components\statistics.html:44
 msgid "Site Visits"
+msgstr ""
+
+#: .\activities\templates\activities\visit.html:22 .\administration\forms.py:58
+#: .\administration\forms.py:98 .\administration\forms.py:179
+#: .\administration\forms.py:257 .\administration\forms.py:309
+#: .\bats\templates\bats\detail.html:27
+msgid "Description"
+msgstr ""
+
+#: .\activities\templates\activities\visit.html:26
+#: .\administration\forms.py:312
+msgid "Results"
 msgstr ""
 
 #: .\administration\forms.py:14
@@ -256,8 +260,8 @@ msgid "Please select language"
 msgstr ""
 
 #: .\administration\forms.py:520 .\administration\forms.py:524
-#: .\base\templates\base\about.html:4 .\core\context_processors.py:53
-#: .\core\context_processors.py:70
+#: .\base\templates\base\about.html:4 .\base\templates\base\about.html:7
+#: .\core\context_processors.py:53 .\core\context_processors.py:70
 msgid "About Us"
 msgstr ""
 
@@ -266,7 +270,7 @@ msgid "Banner"
 msgstr ""
 
 #: .\administration\forms.py:542 .\base\templates\base\privacy_policy.html:4
-#: .\core\context_processors.py:54
+#: .\base\templates\base\privacy_policy.html:7 .\core\context_processors.py:54
 msgid "Privacy Policy"
 msgstr ""
 
@@ -332,8 +336,9 @@ msgstr ""
 #: .\administration\templates\administration\articles\update.html:20
 #: .\administration\templates\administration\site\info.html:20
 #: .\administration\templates\administration\site\texts.html:20
-#: .\base\templates\base\articles.html:4 .\core\context_processors.py:52
-#: .\core\context_processors.py:69 .\core\context_processors.py:85
+#: .\base\templates\base\articles.html:4 .\base\templates\base\articles.html:7
+#: .\core\context_processors.py:52 .\core\context_processors.py:69
+#: .\core\context_processors.py:85
 msgid "Articles"
 msgstr ""
 
@@ -559,51 +564,51 @@ msgstr ""
 msgid "Article deleted!"
 msgstr ""
 
-#: .\administration\views.py:351
+#: .\administration\views.py:343
 msgid "Project deleted!"
 msgstr ""
 
-#: .\administration\views.py:439
+#: .\administration\views.py:423
 msgid "Site Visit deleted!"
 msgstr ""
 
-#: .\administration\views.py:456
+#: .\administration\views.py:440
 msgid "Site Info saved!"
 msgstr ""
 
-#: .\administration\views.py:458
+#: .\administration\views.py:442
 msgid "Site Info cannot be saved!"
 msgstr ""
 
-#: .\administration\views.py:472
+#: .\administration\views.py:457
 msgid "Texts saved!"
 msgstr ""
 
-#: .\administration\views.py:474
+#: .\administration\views.py:459
 msgid "Texts cannot be saved!"
 msgstr ""
 
-#: .\administration\views.py:485
+#: .\administration\views.py:470
 msgid "Family added!"
 msgstr ""
 
-#: .\administration\views.py:504
+#: .\administration\views.py:489
 msgid "Family updated!"
 msgstr ""
 
-#: .\administration\views.py:513
+#: .\administration\views.py:498
 msgid "Family deleted!"
 msgstr ""
 
-#: .\administration\views.py:522
+#: .\administration\views.py:507
 msgid "Genus added!"
 msgstr ""
 
-#: .\administration\views.py:541
+#: .\administration\views.py:526
 msgid "Genus updated!"
 msgstr ""
 
-#: .\administration\views.py:550
+#: .\administration\views.py:535
 msgid "Genus deleted!"
 msgstr ""
 
@@ -649,12 +654,20 @@ msgstr ""
 msgid "Specie"
 msgstr ""
 
-#: .\bats\templates\bats\index.html:20
-msgid "All"
+#: .\bats\templates\bats\gallery.html:7
+msgid "Images"
 msgstr ""
 
-#: .\core\context_processors.py:68
+#: .\bats\templates\bats\gallery.html:8 .\core\context_processors.py:68
 msgid "Gallery"
+msgstr ""
+
+#: .\bats\templates\bats\index.html:7
+msgid "All Bats"
+msgstr ""
+
+#: .\bats\templates\bats\index.html:22
+msgid "All"
 msgstr ""
 
 #: .\core\context_processors.py:87
@@ -665,11 +678,11 @@ msgstr ""
 msgid "Site Texts"
 msgstr ""
 
-#: .\core\settings.py:136
+#: .\core\settings.py:148
 msgid "English"
 msgstr ""
 
-#: .\core\settings.py:137
+#: .\core\settings.py:149
 msgid "Azerbaijani"
 msgstr ""
 

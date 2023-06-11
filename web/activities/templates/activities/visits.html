@@ -4,8 +4,11 @@
 {% block title %}{% translate "Site Visits" %}{% endblock title %}
 {% block content %}
 
-{% with promo_image=site_visit_promo_image.url promo_pre_title="" promo_title="Site Visits" %}
-{% include "components/promo.html" with promo_image=promo_image promo_pre_title=promo_pre_title promo_title=promo_title %}
+
+{% translate "Site Visits" as promo_title%}
+
+{% with promo_image=site_visit_promo_image.url %}
+{% include "components/promo.html" with promo_image=promo_image promo_title=promo_title %}
 {% endwith %}
 
 <section class="section">

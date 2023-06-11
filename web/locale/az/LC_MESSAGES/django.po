@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-10 23:22+0200\n"
-"PO-Revision-Date: 2023-06-10 23:21+0400\n"
+"POT-Creation-Date: 2023-06-11 19:20+0200\n"
+"PO-Revision-Date: 2023-06-11 19:20+0400\n"
 "Last-Translator:   <hasanovtural11@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,7 +19,9 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.9.9\n"
 
+#: .\activities\templates\activities\project.html:7
 #: .\activities\templates\activities\projects.html:4
+#: .\activities\templates\activities\projects.html:7
 #: .\administration\templates\administration\projects\create.html:22
 #: .\administration\templates\administration\projects\list.html:2
 #: .\administration\templates\administration\projects\list.html:18
@@ -31,19 +33,9 @@ msgstr ""
 msgid "Projects"
 msgstr "Proyektlər"
 
-#: .\activities\templates\activities\visit.html:20 .\administration\forms.py:58
-#: .\administration\forms.py:98 .\administration\forms.py:179
-#: .\administration\forms.py:257 .\administration\forms.py:309
-#: .\bats\templates\bats\detail.html:27
-msgid "Description"
-msgstr "Təsviri"
-
-#: .\activities\templates\activities\visit.html:24
-#: .\administration\forms.py:312
-msgid "Results"
-msgstr "Nəticələr"
-
+#: .\activities\templates\activities\visit.html:7
 #: .\activities\templates\activities\visits.html:4
+#: .\activities\templates\activities\visits.html:8
 #: .\administration\templates\administration\visits\create.html:21
 #: .\administration\templates\administration\visits\list.html:2
 #: .\administration\templates\administration\visits\list.html:19
@@ -54,6 +46,18 @@ msgstr "Nəticələr"
 #: .\templates\components\statistics.html:44
 msgid "Site Visits"
 msgstr "Ərazi Səfərləri"
+
+#: .\activities\templates\activities\visit.html:22
+#: .\administration\forms.py:58 .\administration\forms.py:98
+#: .\administration\forms.py:179 .\administration\forms.py:257
+#: .\administration\forms.py:309 .\bats\templates\bats\detail.html:27
+msgid "Description"
+msgstr "Təsviri"
+
+#: .\activities\templates\activities\visit.html:26
+#: .\administration\forms.py:312
+msgid "Results"
+msgstr "Nəticələr"
 
 #: .\administration\forms.py:14
 msgid "Is it a Red Book specie?"
@@ -256,8 +260,8 @@ msgid "Please select language"
 msgstr "Dili seçin"
 
 #: .\administration\forms.py:520 .\administration\forms.py:524
-#: .\base\templates\base\about.html:4 .\core\context_processors.py:53
-#: .\core\context_processors.py:70
+#: .\base\templates\base\about.html:4 .\base\templates\base\about.html:7
+#: .\core\context_processors.py:53 .\core\context_processors.py:70
 msgid "About Us"
 msgstr "Haqqımızda"
 
@@ -266,7 +270,7 @@ msgid "Banner"
 msgstr "Banner"
 
 #: .\administration\forms.py:542 .\base\templates\base\privacy_policy.html:4
-#: .\core\context_processors.py:54
+#: .\base\templates\base\privacy_policy.html:7 .\core\context_processors.py:54
 msgid "Privacy Policy"
 msgstr "Məxfilik Mətni"
 
@@ -332,8 +336,9 @@ msgstr "Admin"
 #: .\administration\templates\administration\articles\update.html:20
 #: .\administration\templates\administration\site\info.html:20
 #: .\administration\templates\administration\site\texts.html:20
-#: .\base\templates\base\articles.html:4 .\core\context_processors.py:52
-#: .\core\context_processors.py:69 .\core\context_processors.py:85
+#: .\base\templates\base\articles.html:4 .\base\templates\base\articles.html:7
+#: .\core\context_processors.py:52 .\core\context_processors.py:69
+#: .\core\context_processors.py:85
 msgid "Articles"
 msgstr "Məqalələr"
 
@@ -559,51 +564,51 @@ msgstr "Məqalə yeniləndi!"
 msgid "Article deleted!"
 msgstr "Məqalə silindi!"
 
-#: .\administration\views.py:351
+#: .\administration\views.py:343
 msgid "Project deleted!"
 msgstr "Proyekt silindi!"
 
-#: .\administration\views.py:439
+#: .\administration\views.py:423
 msgid "Site Visit deleted!"
 msgstr "Ərazi Səfəri silindi!"
 
-#: .\administration\views.py:456
+#: .\administration\views.py:440
 msgid "Site Info saved!"
 msgstr "Sayt Məlumatı saxlandı!"
 
-#: .\administration\views.py:458
+#: .\administration\views.py:442
 msgid "Site Info cannot be saved!"
 msgstr "Sayt Məlumatı saxlanmadı!"
 
-#: .\administration\views.py:472
+#: .\administration\views.py:457
 msgid "Texts saved!"
 msgstr "Mətnlər saxlandı!"
 
-#: .\administration\views.py:474
+#: .\administration\views.py:459
 msgid "Texts cannot be saved!"
 msgstr "Mətn saxlanmadı!"
 
-#: .\administration\views.py:485
+#: .\administration\views.py:470
 msgid "Family added!"
 msgstr "Ailə əlavə olundu!"
 
-#: .\administration\views.py:504
+#: .\administration\views.py:489
 msgid "Family updated!"
 msgstr "Ailə yeniləndi!"
 
-#: .\administration\views.py:513
+#: .\administration\views.py:498
 msgid "Family deleted!"
 msgstr "Ailə silindi!"
 
-#: .\administration\views.py:522
+#: .\administration\views.py:507
 msgid "Genus added!"
 msgstr "Genus əlavə olundu!"
 
-#: .\administration\views.py:541
+#: .\administration\views.py:526
 msgid "Genus updated!"
 msgstr "Genus yeniləndi!"
 
-#: .\administration\views.py:550
+#: .\administration\views.py:535
 msgid "Genus deleted!"
 msgstr "Genus silindi!"
 
@@ -649,13 +654,22 @@ msgstr "Elmi təsnifat"
 msgid "Specie"
 msgstr "Yarasa"
 
-#: .\bats\templates\bats\index.html:20
-msgid "All"
-msgstr "Bütün"
+#: .\bats\templates\bats\gallery.html:7
+#| msgid "Image"
+msgid "Images"
+msgstr "Şəkillər"
 
-#: .\core\context_processors.py:68
+#: .\bats\templates\bats\gallery.html:8 .\core\context_processors.py:68
 msgid "Gallery"
 msgstr "Qalereya"
+
+#: .\bats\templates\bats\index.html:7
+msgid "All Bats"
+msgstr "Bütün Yarasalar"
+
+#: .\bats\templates\bats\index.html:22
+msgid "All"
+msgstr "Bütün"
 
 #: .\core\context_processors.py:87
 msgid "Our Authors"
@@ -665,11 +679,11 @@ msgstr "Müəlliflər"
 msgid "Site Texts"
 msgstr "Sayt Mətnləri"
 
-#: .\core\settings.py:136
+#: .\core\settings.py:148
 msgid "English"
 msgstr "İngiliscə"
 
-#: .\core\settings.py:137
+#: .\core\settings.py:149
 msgid "Azerbaijani"
 msgstr "Azərbaycanca"
 

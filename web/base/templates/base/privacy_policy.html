@@ -4,7 +4,9 @@
 {% block title %}{% translate "Privacy Policy" %}{% endblock title %}
 {% block content %}
 
-{% with promo_image=privacy_policy_promo_image.url promo_title="Privacy Policy" %}
+{% translate "Privacy Policy" as promo_title%}
+
+{% with promo_image=privacy_policy_promo_image.url %}
 {% include "components/promo.html" with promo_image=promo_image promo_title=promo_title %}
 {% endwith %}
 

@@ -92,6 +92,7 @@
           {{ form.media }} 
           {% include "components/form/hidden_fields.html" with hidden_fields=form.hidden_fields %}
           {{form.non_form_errors}}
+          {{form.non_field_errors}}
           <div class="card bottom-40 card-body">
             <div class="row">
               <div class="col-12 bottom-20">

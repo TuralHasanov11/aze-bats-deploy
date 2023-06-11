@@ -233,6 +233,7 @@
               {{ red_book_formset.management_form }} {% for formset_item in red_book_formset %} 
               {% include "components/form/hidden_fields.html" with hidden_fields=formset_item.hidden_fields %}
               {{formset_item.non_form_errors}}
+              {{form.non_field_errors}}
               <div class="row">
                 <h4>
                   {% translate "Red Book information" %} {{forloop.counter}}

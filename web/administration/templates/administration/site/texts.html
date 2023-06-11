@@ -44,6 +44,7 @@
           <div class="card card-body">
             {% include "components/form/hidden_fields.html" with hidden_fields=formset.hidden_fields %}
             {{formset.non_form_errors}}
+            {{form.non_field_errors}}
             <div class="row">
                 {{ formset.management_form }} 
               {% for formset_item in formset %} 

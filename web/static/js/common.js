@@ -328,42 +328,54 @@
 		document.querySelectorAll('input').forEach(function (element) {
 			if (!element.checkValidity()) {
 				element.setCustomValidity(element.getAttribute('title'))
+				element.classList.add('is-invalid')
 			} else {
 				element.setCustomValidity("");
+				element.classList.remove('is-invalid')
 			}
 			element.addEventListener('input', function (event) {
 				if (!event.currentTarget.checkValidity()) {
 					event.currentTarget.setCustomValidity(event.currentTarget.getAttribute('title'))
+					element.classList.add('is-invalid')
 				}
 				event.currentTarget.setCustomValidity("");
+				element.classList.remove('is-invalid')
 			})
 		})
 	
 		document.querySelectorAll('select').forEach(function (element) {
 			if (!element.checkValidity()) {
 				element.setCustomValidity(element.getAttribute('title'))
+				element.classList.add('is-invalid')
 			} else {
 				element.setCustomValidity("");
+				element.classList.remove('is-invalid')
 			}
 			element.addEventListener('change', function (event) {
 				if (!event.currentTarget.checkValidity()) {
 					event.currentTarget.setCustomValidity(event.currentTarget.getAttribute('title'))
+					element.classList.add('is-invalid')
 				}
 				event.currentTarget.setCustomValidity("");
+				element.classList.remove('is-invalid')
 			})
 		})
 	
 		document.querySelectorAll('textarea').forEach(function (element) {
 			if (!element.checkValidity()) {
+				element.classList.add('is-invalid')
 				element.setCustomValidity(element.getAttribute('title'))
 			} else {
 				element.setCustomValidity("");
+				element.classList.remove('is-invalid')
 			}
 			element.addEventListener('input', function (event) {
 				if (!event.currentTarget.checkValidity()) {
 					event.currentTarget.setCustomValidity(event.currentTarget.getAttribute('title'))
+					element.classList.add('is-invalid')
 				}
 				event.currentTarget.setCustomValidity("");
+				element.classList.remove('is-invalid')
 			})
 		})
 

@@ -1,7 +1,6 @@
 from activities.models import Project, ProjectImage, SiteVisit, SiteVisitImage
-from base.models import Author, AuthorAttributes, SiteInfo, SiteText, Article
-from bats.models import (Genus, Bat, BatAttributes, BatImage, Family,
-                         BatRedBook)
+from base.models import Article, Author, AuthorAttributes, SiteInfo, SiteText
+from bats.models import Bat, BatAttributes, BatImage, BatRedBook, Family, Genus
 from ckeditor_uploader import widgets as ckeditor_widgets
 from django import forms
 from django.conf import settings
@@ -13,7 +12,7 @@ class BatForm(forms.ModelForm):
     is_red_book = forms.BooleanField(
         label=_("Is it a Red Book specie?"),
         widget=forms.CheckboxInput(attrs={"class": "form-check-input"}),
-        required=False
+        required=False,
     )
     name = forms.CharField(
         label=_("Name"),
@@ -36,7 +35,7 @@ class BatForm(forms.ModelForm):
     cover_image = forms.ImageField(
         label=_("Cover Image"),
         widget=forms.ClearableFileInput(
-            attrs={"multiple": False, "class": "form-control"}
+            attrs={"multiple": False, "class": "form-control", "title": _("Please upload image")}
         ),
         required=True,
     )
@@ -147,7 +146,7 @@ class AuthorForm(forms.ModelForm):
     cover_image = forms.ImageField(
         label=_("Cover Image"),
         widget=forms.ClearableFileInput(
-            attrs={"multiple": False, "class": "form-control"}
+            attrs={"multiple": False, "class": "form-control", "title": _("Please upload image")}
         ),
         required=False,
     )
@@ -176,7 +175,9 @@ class AuthorAttributesForm(forms.ModelForm):
         choices=settings.LANGUAGES,
     )
     description = forms.CharField(
-        label=_("Description"), required=False, widget=ckeditor_widgets.CKEditorUploadingWidget()
+        label=_("Description"),
+        required=False,
+        widget=ckeditor_widgets.CKEditorUploadingWidget(),
     )
 
     class Meta:
@@ -244,7 +245,7 @@ class ProjectForm(forms.ModelForm):
     cover_image = forms.ImageField(
         label=_("Cover Image"),
         widget=forms.ClearableFileInput(
-            attrs={"multiple": False, "class": "form-control"}
+            attrs={"multiple": False, "class": "form-control", "title": _("Please upload image")}
         ),
         required=False,
     )
@@ -290,13 +291,17 @@ class SiteVisitForm(forms.ModelForm):
     name = forms.CharField(
         label=_("Name"),
         widget=forms.TextInput(
-            attrs={"class": "form-control", "placeholder": _("Name")}
+            attrs={
+                "class": "form-control",
+                "placeholder": _("Name"),
+                "title": _("Please enter name"),
+            }
         ),
     )
     cover_image = forms.ImageField(
         label=_("Cover Image"),
         widget=forms.ClearableFileInput(
-            attrs={"multiple": False, "class": "form-control"}
+            attrs={"multiple": False, "class": "form-control", "title": _("Please upload image")}
         ),
         required=True,
     )
@@ -550,7 +555,8 @@ class SiteTextForm(forms.ModelForm):
 
 
 SiteTextFormSet = forms.modelformset_factory(
-    model=SiteText, form=SiteTextForm, max_num=len(settings.LANGUAGES))
+    model=SiteText, form=SiteTextForm, max_num=len(settings.LANGUAGES)
+)
 
 
 class FamilyForm(forms.ModelForm):

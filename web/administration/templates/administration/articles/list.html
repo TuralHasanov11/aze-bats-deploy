@@ -87,6 +87,7 @@
           <div class="card card-body">
             {% include "components/form/hidden_fields.html" with hidden_fields=form.hidden_fields %}
             {{form.non_form_errors}}
+            {{form.non_field_errors}}
             <div class="row">
               <div class="col-12 col-md-6 col-xl-4 bottom-20">
                 <label class="form-label" for="{{ form.name.id_for_label }}"

@@ -1,7 +1,7 @@
 {% extends 'app.html' %} {% load static %} {% block stylesheet %}
 <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
 {% endblock stylesheet %} {% load i18n %} {% block title %}{% translate "Admin"
-%} - {% translate "Site Info" %} {% endblock title %} {% block content %}
+%} - {% translate "Site Texts" %} {% endblock title %} {% block content %}
 <section class="section">
   <div class="container py-5">
     <div class="bottom-40">
@@ -13,15 +13,8 @@
             >{% translate "Dashboard" %}</a
           >
         </li>
-        <li class="breadcrumbs__item">
-          <a
-            class="breadcrumbs__link"
-            href="{% url 'administration:site-info' %}"
-            >{% translate "Articles" %}</a
-          >
-        </li>
         <li class="breadcrumbs__item breadcrumbs__item--active">
-            {% translate "Site Info" %}
+            {% translate "Site Texts" %}
         </li>
       </ul>
     </div>
@@ -29,7 +22,7 @@
       <div class="col-12 bottom-20">
         <div class="heading heading--primary heading--center">
           <h4 class="heading__title no-margin-bottom">
-            <span>{% translate "Edit" %} - {% translate "Site Info" %}</span>
+            <span>{% translate "Edit" %} - {% translate "Site Texts" %}</span>
           </h4>
         </div>
       </div>

@@ -145,8 +145,8 @@ USE_TZ = True
 LANGUAGE_CODE = 'az'
 
 LANGUAGES = (
-    ('en', _('English')),
     ('az', _('Azerbaijani')),
+    ('en', _('English')),
 )
 
 LOCALE_PATHS = (

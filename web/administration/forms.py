@@ -527,7 +527,7 @@ class SiteTextForm(forms.ModelForm):
             attrs={
                 "class": "form-control form-control-sm",
                 "placeholder": _("About Us"),
-                "rows": 25,
+                "rows": 10,
             }
         ),
         required=False,
@@ -538,7 +538,7 @@ class SiteTextForm(forms.ModelForm):
             attrs={
                 "class": "form-control form-control-sm",
                 "placeholder": _("Banner"),
-                "rows": 25,
+                "rows": 10,
             }
         ),
         required=False,

@@ -1,13 +1,25 @@
 from activities.models import Project, SiteVisit
-from administration.forms import (ArticleForm, AuthorAttributesFormset,
-                                  AuthorForm, BatAttributesFormset, BatForm,
-                                  BatImageFormset, BatRedBookFormset,
-                                  FamilyForm, GenusForm, ProjectForm,
-                                  ProjectImageFormset, SiteInfoForm,
-                                  SiteTextFormSet, SiteVisitForm,
-                                  SiteVisitImageFormset, UserLoginForm)
+from administration.forms import (
+    ArticleForm,
+    AuthorAttributesFormset,
+    AuthorForm,
+    BatAttributesFormset,
+    BatForm,
+    BatImageFormset,
+    BatRedBookFormset,
+    FamilyForm,
+    GenusForm,
+    ProjectForm,
+    ProjectImageFormset,
+    SiteInfoForm,
+    SiteTextFormSet,
+    SiteVisitForm,
+    SiteVisitImageFormset,
+    UserLoginForm,
+)
 from base.models import Article, Author, SiteInfo, SiteText
 from bats.models import Bat, Family, Genus
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
@@ -54,9 +66,7 @@ class BatListView(LoginRequiredMixin, ListView):
 def batCreate(request):
     if request.POST:
         form = BatForm(request.POST, request.FILES)
-        attributes_formset = BatAttributesFormset(
-            data=request.POST, files=request.FILES
-        )
+        attributes_formset = BatAttributesFormset(data=request.POST, files=request.FILES)
         red_book_formset = BatRedBookFormset(data=request.POST, files=request.FILES)
         images_formset = BatImageFormset(data=request.POST, files=request.FILES)
         if (
@@ -108,15 +118,9 @@ def batUpdate(request, id: int):
     bat = Bat.objects.get(id=id)
     if request.POST:
         form = BatForm(instance=bat, data=request.POST, files=request.FILES)
-        attributes_formset = BatAttributesFormset(
-            instance=bat, data=request.POST, files=request.FILES
-        )
-        images_formset = BatImageFormset(
-            instance=bat, data=request.POST, files=request.FILES
-        )
-        red_book_formset = BatRedBookFormset(
-            instance=bat, data=request.POST, files=request.FILES
-        )
+        attributes_formset = BatAttributesFormset(instance=bat, data=request.POST, files=request.FILES)
+        images_formset = BatImageFormset(instance=bat, data=request.POST, files=request.FILES)
+        red_book_formset = BatRedBookFormset(instance=bat, data=request.POST, files=request.FILES)
         if (
             form.is_valid()
             and attributes_formset.is_valid()
@@ -164,9 +168,7 @@ class BatDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
 def authorListCreate(request):
     if request.POST:
         form = AuthorForm(data=request.POST, files=request.FILES)
-        attributes_formset = AuthorAttributesFormset(
-            data=request.POST, files=request.FILES
-        )
+        attributes_formset = AuthorAttributesFormset(data=request.POST, files=request.FILES)
         if form.is_valid() and attributes_formset.is_valid():
             try:
                 with transaction.atomic():
@@ -197,9 +199,7 @@ def authorUpdate(request, id):
     author = Author.objects.get(id=id)
     if request.POST:
         form = AuthorForm(instance=author, data=request.POST, files=request.FILES)
-        attributes_formset = AuthorAttributesFormset(
-            instance=author, data=request.POST, files=request.FILES
-        )
+        attributes_formset = AuthorAttributesFormset(instance=author, data=request.POST, files=request.FILES)
         if form.is_valid() and attributes_formset.is_valid():
             try:
                 with transaction.atomic():
@@ -310,9 +310,7 @@ def projectUpdate(request, id):
     project = Project.objects.get(id=id)
     if request.POST:
         form = ProjectForm(instance=project, data=request.POST, files=request.FILES)
-        images_formset = ProjectImageFormset(
-            instance=project, data=request.POST, files=request.FILES
-        )
+        images_formset = ProjectImageFormset(instance=project, data=request.POST, files=request.FILES)
         if form.is_valid() and images_formset.is_valid():
             try:
                 with transaction.atomic():
@@ -390,9 +388,7 @@ def siteVisitUpdate(request, id):
     visit = SiteVisit.objects.get(id=id)
     if request.POST:
         form = SiteVisitForm(instance=visit, data=request.POST, files=request.FILES)
-        images_formset = SiteVisitImageFormset(
-            instance=visit, data=request.POST, files=request.FILES
-        )
+        images_formset = SiteVisitImageFormset(instance=visit, data=request.POST, files=request.FILES)
         if form.is_valid() and images_formset.is_valid():
             try:
                 with transaction.atomic():
@@ -427,12 +423,13 @@ class SiteVisitDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
 @login_required
 @require_http_methods(["GET", "POST"])
 def siteInfo(request):
-    siteInfo = SiteInfo.objects.first()
+    try:
+        siteInfo = SiteInfo.objects.first()
+    except SiteInfo.DoesNotExist:
+        siteInfo = SiteInfo.objects.create()
     if request.method == "POST":
         if siteInfo:
-            form = SiteInfoForm(
-                instance=siteInfo, data=request.POST, files=request.FILES
-            )
+            form = SiteInfoForm(instance=siteInfo, data=request.POST, files=request.FILES)
         else:
             form = SiteInfoForm(data=request.POST, files=request.FILES)
         if form.is_valid():
@@ -442,23 +439,24 @@ def siteInfo(request):
         messages.error(request, _("Site Info cannot be saved!"))
     else:
         form = SiteInfoForm(instance=siteInfo)
-    return render(
-        request, "administration/site/info.html", {"form": form, "site_info": siteInfo}
-    )
+    return render(request, "administration/site/info.html", {"form": form, "site_info": siteInfo})
 
 
 @login_required
 @require_http_methods(["GET", "POST"])
 def siteTexts(request):
+    if SiteText.objects.count() == 0:
+        SiteText.site_texts.create_many_by_languages(languages=settings.LANGUAGES)
+    site_texts = SiteText.objects.all().order_by("language")
     if request.method == "POST":
-        formset = SiteTextFormSet(initial=SiteText.objects.all(), data=request.POST)
+        formset = SiteTextFormSet(initial=site_texts, data=request.POST)
         if formset.is_valid():
             formset.save()
             messages.success(request, _("Texts saved!"))
             return redirect("administration:site-texts")
         messages.error(request, _("Texts cannot be saved!"))
     else:
-        formset = SiteTextFormSet(initial=SiteText.objects.all())
+        formset = SiteTextFormSet(initial=site_texts)
     return render(request, "administration/site/texts.html", {"formset": formset})
 
 

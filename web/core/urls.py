@@ -15,7 +15,7 @@ sitemaps = {
 
 
 urlpatterns = [
-    path("django-admin/", admin.site.urls),
+    path(f"django-admin-{settings.DJANGO_ADMIN_URL_SUFFIX}/", admin.site.urls),
     path("logs/", include("log_viewer.urls")),
     path(
         "sitemap.xml",
@@ -28,9 +28,13 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     path("", include("base.urls")),
-    path("admin/", include("administration.urls")),
+    path(
+        f"admin-{settings.ADMIN_URL_SUFFIX}/",
+        include("administration.urls", namespace="administration"),
+    ),
     path("bats/", include("bats.urls")),
     path("activities/", include("activities.urls")),
+    prefix_default_language=False,
 )
 
 if settings.DEBUG:

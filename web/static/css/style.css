@@ -252,3 +252,8 @@ a {
 .button--main {
     border: 2px solid var(--main-color) !important;
 }
+
+.django-ckeditor-widget {
+    display: block !important;
+    width: 100%;
+  }

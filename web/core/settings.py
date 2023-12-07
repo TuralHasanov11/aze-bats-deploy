@@ -114,7 +114,7 @@ if DATABASE_URL:
 
 
 AUTHENTICATION_BACKENDS = [
-    "axes.backends.AxesStandaloneBackend",
+    # "axes.backends.AxesStandaloneBackend",
     "django.contrib.auth.backends.ModelBackend",
 ]
 
@@ -281,10 +281,14 @@ MESSAGE_TAGS = {
 }
 
 
-AXES_COOLOFF_TIME = 0.25
-AXES_FAILURE_LIMIT = 6
+AXES_COOLOFF_TIME = 0.20
+AXES_FAILURE_LIMIT = 10
 AXES_RESET_ON_SUCCESS = True
 
 
 MAINTENANCE_MODE = int(os.environ.get("MAINTENANCE_MODE", 0))
 MAINTENANCE_BYPASS_QUERY = os.environ.get("MAINTENANCE_BYPASS_QUERY")
+
+
+DJANGO_ADMIN_URL_SUFFIX = os.environ.get("DJANGO_ADMIN_URL_SUFFIX")
+ADMIN_URL_SUFFIX = os.environ.get("ADMIN_URL_SUFFIX")

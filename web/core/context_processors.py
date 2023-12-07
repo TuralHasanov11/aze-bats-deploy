@@ -35,7 +35,6 @@ def site_info(request):
         "site_info": {
             "phone": "",
             "email": "",
-            "banner_image": "",
             "logo_image": "",
             "social_links": []
         }
